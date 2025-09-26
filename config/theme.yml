@@ -71,9 +71,9 @@ global_settings:
         - ps_contactinfo
         - ps_languageselector
         - ps_currencyselector
-        - ps_customersignin
       displayTop:
         - ps_searchbarjqauto
+        - ps_customersignin
         - ps_shoppingcart
       displayNavFullWidth:
         # - ps_mainmenu

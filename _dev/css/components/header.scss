@@ -70,7 +70,6 @@
     }
 
     .language-selector {
-      margin-top: 0.9375rem;
       white-space: nowrap;
     }
 
@@ -125,7 +124,20 @@
       display: inline-block;
 
       #contact-link {
-        margin-top: 0.9375rem;
+        // margin-top: 0.9375rem;
+
+        .mb-contact {
+          &-us,
+          &-tel {
+            color: $white;
+            font-size: 0.8125rem;
+            background-color: $fp-blue;
+
+            &:hover {
+              opacity: 0.8;
+            }
+          }
+        }
       }
     }
 
@@ -143,7 +155,7 @@
   }
 
   .header-top {
-    padding: 1.25rem 0;
+    padding: 0;
 
     > .container {
       position: relative;
@@ -151,6 +163,86 @@
       > .row:first-of-type {
         display: flex;
         align-items: center;
+      }
+    }
+
+    .nav {
+      display: grid;
+      // grid-template-columns: 250px 1fr calc(100% - 250px / 2 - 1fr) calc(100% - 250px / 2 - 1fr);
+      grid-template-columns: 250px 1fr 75px 75px;
+      grid-template-areas: "logo search userinfo cart";
+      grid-gap: 1rem;
+      align-items: center;
+      justify-items: center;
+
+      width: 100%;
+
+      .user-info {
+        a {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+
+          font-weight: bold;
+          font-size: 0.8125rem;
+          color: $fp-orange;
+
+          width: 100%;
+          text-align: center;
+
+          img {
+            height: 28px;
+            width: 28px;
+            object-fit: contain;
+            margin-bottom: 4px;
+          }
+        }
+      }
+
+      .blockcart {
+        .header {
+          width: 100%;
+          position: relative;
+
+          a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            font-weight: bold;
+            font-size: 0.8125rem;
+            color: $fp-orange;
+          }
+
+          img {
+            height: 28px;
+            width: 28px;
+            object-fit: contain;
+            margin-bottom: 4px;
+          }
+
+          .cart-products-count {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+
+            min-width: 24px;
+            min-height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: bold;
+
+            color: $white;
+            background: $fp-orange;
+            border-radius: 50%;
+            padding: 0 6px;
+            aspect-ratio: 1 / 1;
+          }
+        }
       }
     }
 
@@ -167,9 +259,9 @@
       text-transform: uppercase;
     }
 
-    .search-widget {
-      float: right;
-    }
+    // .search-widget {
+    //   float: right;
+    // }
   }
 
   .top-menu-link {
