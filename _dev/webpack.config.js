@@ -53,7 +53,12 @@ let config = {
             MiniCssExtractPlugin.loader,
             'css-loader',
             'postcss-loader',
-            'sass-loader',
+            {
+              loader: 'sass-loader',
+              options: {
+                implementation: require('sass'),
+              },
+            },
           ],
       },
       {
