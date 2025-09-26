@@ -1,10 +1,10 @@
-name: classic
-display_name: Classic
-version: 2.2.0
+name: fairplay_by_mobytic
+display_name: FairPlay by Mobytic
+version: 1.0.0
+description: "FairPlay theme for PrestaShop 8.2.x"
 author:
-  name: "PrestaShop SA and Contributors"
-  email: "contact@prestashop.com"
-  url: "https://www.prestashop-project.org"
+  name: "Mobytic"
+  url: "https://mobytic.com"
 
 meta:
   compatibility:
