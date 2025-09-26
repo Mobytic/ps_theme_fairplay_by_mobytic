@@ -1,10 +1,10 @@
 $fp-red: #e51915;
-$fp-blue: #009fe3;
+$fp-blue: #0d9fac;
+// $fp-blue: #009fe3;
 $fp-yellow: #fecc00;
 $fp-orange: #fdae00;
 $fp-orange-dark: #dd6a3b;
-$fp-beige: #fAf5ed;
-
+$fp-beige: #faf5ed;
 
 $white: #fff;
 $black: #000;
@@ -17,7 +17,8 @@ $gray-light-second: #dbdbdb;
 $gray-lighter: #f6f6f6;
 $gray-lighter-second: #f7f7f7;
 $border-gray: #ddd;
-$brand-primary: #24b9d7;
+$brand-primary: $fp-red;
+// $brand-primary: #24b9d7;
 $brand-secondary: #f39d72;
 $brand-success: #4cbb6c;
 $brand-warning: #ff9a52;

@@ -1,0 +1,35 @@
+#header {
+  .ets_mm_megamenu {
+    @include media-breakpoint-down(sm) {
+      margin-top: 8px;
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 77px;
+
+      .ets_mm_megamenu_content {
+        border: none;
+      }
+
+      .container {
+        background: transparent;
+      }
+
+      .ybc-menu-button-toggle_icon {
+        scale: 1.25;
+      }
+    }
+
+    .ets_mm_megamenu_content {
+      > .container {
+        @media (max-width: 991px) {
+          width: 100%;
+        }
+      }
+
+      .mm_menu_content_title {
+        min-height: 40px;
+      }
+    }
+  }
+}

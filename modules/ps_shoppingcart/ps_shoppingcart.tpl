@@ -22,7 +22,7 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
-<div id="_desktop_cart">
+<div id="_desktop_cart nav-cart">
   <div class="blockcart cart-preview {if $cart.products_count > 0}active{else}inactive{/if}"
     data-refresh-url="{$refresh_url}">
     <div class="header">

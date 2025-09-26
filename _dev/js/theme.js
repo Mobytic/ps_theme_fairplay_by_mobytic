@@ -30,7 +30,7 @@ import 'bootstrap-touchspin';
 import 'jquery-touchswipe';
 import './selectors';
 
-import './responsive';
+// import './responsive';
 import './checkout';
 import './customer';
 import './listing';

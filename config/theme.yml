@@ -50,6 +50,7 @@ global_settings:
     PS_IMAGE_QUALITY: png
   modules:
     to_enable:
+      - ets_megamenu
       - ps_searchbarjqauto
       - ps_linklist
     to_disable:
@@ -77,7 +78,7 @@ global_settings:
         - ps_shoppingcart
       displayNavFullWidth:
         # - ps_mainmenu
-        - ets_megamenu
+        # - ets_megamenu
         - blockreassurance
       displayHome:
         - ps_imageslider

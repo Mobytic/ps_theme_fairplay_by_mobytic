@@ -1,9 +1,24 @@
+.autocomplete-suggestions {
+  box-shadow: 0 8px 10px 0 rgba(0, 0, 0, 0.5) !important;
+}
+
 #header {
   position: relative;
   z-index: 999;
   color: $gray;
   background: $white;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.11);
+
+  .header {
+    &-nav,
+    &-top {
+      > .container {
+        @media (max-width: 991px) {
+          width: 100%;
+        }
+      }
+    }
+  }
 
   .logo {
     max-width: 100%;
@@ -40,6 +55,12 @@
     border-bottom: $gray-light 2px solid;
     background: $fp-red;
 
+    .mb-shipping-info {
+      padding: 0.2rem 0.5rem;
+      font-size: 0.8125rem;
+      color: $white;
+    }
+
     #menu-icon {
       margin: 0 1rem;
       vertical-align: middle;
@@ -58,11 +79,37 @@
 
     .currency-selector {
       white-space: nowrap;
+      padding: 0.2rem 0.5rem;
+      background-color: $fp-orange-dark;
+
+      button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+
+        span.expand-more {
+          color: $white;
+          font-size: 0.8125rem;
+        }
+
+        i.expand-more {
+          color: $white;
+        }
+      }
     }
 
     .user-info {
       text-align: right;
       white-space: nowrap;
+
+      @include media-breakpoint-down(sm) {
+        img {
+          height: 24px;
+          width: 24px;
+          object-fit: contain;
+        }
+      }
 
       .account {
         margin-left: $small-space;
@@ -71,6 +118,24 @@
 
     .language-selector {
       white-space: nowrap;
+      padding: 0.2rem 0.5rem;
+      background-color: $fp-orange;
+
+      button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+
+        span.expand-more {
+          color: $white;
+          font-size: 0.8125rem;
+        }
+
+        i.expand-more {
+          color: $white;
+        }
+      }
     }
 
     .cart-preview {
@@ -125,8 +190,18 @@
       background-color: $fp-blue;
 
       #contact-link {
-        // margin-top: 0.9375rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
         margin: 0;
+        padding: 0.2rem 0;
+
+        > div {
+          border-right: 1px solid rgba(255, 255, 255, 0.5);
+          &:last-child {
+            border-right: none;
+          }
+        }
 
         .mb-contact {
           &-us,
@@ -135,17 +210,11 @@
             align-items: center;
             justify-content: center;
 
+            padding: 0 0.5rem;
+
             color: $white;
             background-color: $fp-blue;
-            padding: 0.2rem 0.5rem;
-
             font-size: 0.8125rem;
-
-            border-right: 1px solid rgba(255, 255, 255, 0.5);
-
-            &:last-child {
-              border-right: none;
-            }
 
             &:hover {
               opacity: 0.8;
@@ -155,6 +224,11 @@
               font-size: 1rem;
               vertical-align: middle;
               margin-right: 0.3125rem;
+            }
+
+            i,
+            span {
+              margin-bottom: -8px;
             }
           }
         }
@@ -188,7 +262,6 @@
 
     .nav {
       display: grid;
-      // grid-template-columns: 250px 1fr calc(100% - 250px / 2 - 1fr) calc(100% - 250px / 2 - 1fr);
       grid-template-columns: 250px 1fr 75px 75px;
       grid-template-areas: "logo search userinfo cart";
       grid-gap: 1rem;
@@ -196,6 +269,45 @@
       justify-items: center;
 
       width: 100%;
+
+      @include media-breakpoint-down(sm) {
+        grid-template-columns: 4fr 1fr 1fr 1fr;
+        grid-template-areas:
+          "logo userinfo cart ."
+          "search search search search";
+        grid-gap: 0.5rem;
+
+        .search-widget {
+          width: 100%;
+          margin: 0;
+
+          input {
+            border-radius: 0;
+          }
+        }
+
+        .logo {
+          justify-self: baseline;
+          img {
+            height: 60px;
+            width: auto;
+            object-fit: contain;
+          }
+        }
+      }
+
+      #nav-user_info {
+        grid-area: userinfo;
+      }
+      #nav-cart {
+        grid-area: cart;
+      }
+      .logo {
+        grid-area: logo;
+      }
+      .search-widget {
+        grid-area: search;
+      }
 
       .user-info {
         a {
@@ -300,10 +412,11 @@
       display: flex;
       align-items: center;
       min-height: 50px;
+      background-color: $fp-beige;
 
       img {
         width: auto;
-        max-height: 2rem;
+        max-height: 70px;
       }
 
       > h1 {

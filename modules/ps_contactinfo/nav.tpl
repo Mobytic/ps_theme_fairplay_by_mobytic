@@ -37,14 +37,18 @@
       } *}
 
       {* phone icone + a *}
-      <a class="mb-contact-us" href="{$urls.pages.contact}">
-        <i class="material-icons d-inline">&#xe0be;</i>
-        <span>{l s='Contact us' d='Shop.Theme.Global'}</span>
-      </a>
-      <a class="mb-contact-tel" href="tel:{$contact_infos['phone']|replace:' ':''}">
-        <i class="material-icons d-inline">&#xe0cd;</i>
-        <span>{$contact_infos.phone}</span>
-      </a>
+      <div>
+        <a class="mb-contact-us" href="{$urls.pages.contact}">
+          <i class="material-icons d-inline">&#xe0be;</i>
+          <span>{l s='Contact us' d='Shop.Theme.Global'}</span>
+        </a>
+      </div>
+      <div>
+        <a class="mb-contact-tel" href="tel:{$contact_infos['phone']|replace:' ':''}">
+          <i class="material-icons d-inline">&#xe0cd;</i>
+          <span>{$contact_infos.phone}</span>
+        </a>
+      </div>
 
     {else}
       <a class="mb-contact-us" href="{$urls.pages.contact}">

@@ -22,7 +22,7 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
-<div id="_desktop_user_info">
+<div id="_desktop_user_info nav-user_info">
   <div class="user-info">
     {if $logged}
       {* <a class="logout hidden-sm-down" href="{$urls.actions.logout}" rel="nofollow">
