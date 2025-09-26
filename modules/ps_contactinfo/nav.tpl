@@ -26,7 +26,7 @@
   <div id="contact-link">
     {if $contact_infos.phone}
       {* [1][/1] is for a HTML tag. *}
-      {l
+      {* {l
         s='Call us: [1]%phone%[/1]'
         sprintf=[
           '[1]' => "<a href='tel:{$contact_infos['phone']|replace:' ':''}'>",
@@ -34,9 +34,23 @@
           '%phone%' => $contact_infos.phone
         ]
         d='Shop.Theme.Global'
-      }
+      } *}
+
+      {* phone icone + a *}
+      <a class="mb-contact-us" href="{$urls.pages.contact}">
+        <i class="material-icons d-inline">&#xe0be;</i>
+        <span>{l s='Contact us' d='Shop.Theme.Global'}</span>
+      </a>
+      <a class="mb-contact-tel" href="tel:{$contact_infos['phone']|replace:' ':''}">
+        <i class="material-icons d-inline">&#xe0cd;</i>
+        <span>{$contact_infos.phone}</span>
+      </a>
+
     {else}
-      <a href="{$urls.pages.contact}">{l s='Contact us' d='Shop.Theme.Global'}</a>
+      <a class="mb-contact-us" href="{$urls.pages.contact}">
+        <i class="material-icons d-inline">&#xe0be;</i>
+        <span>{l s='Contact us' d='Shop.Theme.Global'}</span>
+      </a>
     {/if}
   </div>
 </div>

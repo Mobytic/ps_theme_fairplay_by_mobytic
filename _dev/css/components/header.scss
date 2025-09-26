@@ -36,8 +36,9 @@
   }
 
   .header-nav {
-    max-height: 50px;
+    // max-height: 50px;
     border-bottom: $gray-light 2px solid;
+    background: $fp-red;
 
     #menu-icon {
       margin: 0 1rem;
@@ -56,14 +57,10 @@
     }
 
     .currency-selector {
-      margin-top: 0.9375rem;
-      margin-left: 0.9375rem;
       white-space: nowrap;
     }
 
     .user-info {
-      margin-top: 0.9375rem;
-      margin-left: 2.5rem;
       text-align: right;
       white-space: nowrap;
 

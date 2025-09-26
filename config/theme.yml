@@ -50,12 +50,14 @@ global_settings:
     PS_IMAGE_QUALITY: png
   modules:
     to_enable:
+      - ps_searchbarjqauto
       - ps_linklist
+    to_disable:
+      - ps_mainmenu
+      - ps_searchbar
   hooks:
     modules_to_hook:
       displayAfterBodyOpeningTag:
-        - blockreassurance
-      displayNavFullWidth:
         - blockreassurance
       displayAdminCustomers:
         - blockwishlist
@@ -64,16 +66,19 @@ global_settings:
         - psgdpr
       displayMyAccountBlock:
         - blockwishlist
-      displayNav1:
-        - ps_contactinfo
+      # displayNav1:
       displayNav2:
+        - ps_contactinfo
         - ps_languageselector
         - ps_currencyselector
         - ps_customersignin
-        - ps_shoppingcart
       displayTop:
-        - ps_mainmenu
-        - ps_searchbar
+        - ps_searchbarjqauto
+        - ps_shoppingcart
+      displayNavFullWidth:
+        # - ps_mainmenu
+        - ets_megamenu
+        - blockreassurance
       displayHome:
         - ps_imageslider
         - ps_featuredproducts
@@ -105,7 +110,7 @@ global_settings:
       displayContactContent:
         - contactform
       displaySearch:
-        - ps_searchbar
+        - ps_searchbarjqauto
       displayProductAdditionalInfo:
         - ps_sharebuttons
         - productcomments
