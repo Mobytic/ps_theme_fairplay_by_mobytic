@@ -1,14 +1,13 @@
-name: fairplay_by_mobytic
-display_name: FairPlay by Mobytic
+name: fairplay-by-mobytic
+display_name: "FairPlay by Mobytic"
 version: 1.0.0
-description: "FairPlay theme for PrestaShop 8.2.x"
 author:
   name: "Mobytic"
   url: "https://mobytic.com"
 
 meta:
   compatibility:
-    from: 8.2.1
+    from: 8.1.0
     to: ~
 
   available_layouts:
@@ -45,7 +44,6 @@ assets:
 #  cart:
 #    - id: cat-extra-lib
 #    path: assets/js/cart-lib.js
-
 
 global_settings:
   configuration:
@@ -124,31 +122,31 @@ global_settings:
     cart_default:
       width: 125
       height: 125
-      scope: [ products ]
+      scope: [products]
     small_default:
       width: 98
       height: 98
-      scope: [ products, categories, manufacturers, suppliers ]
+      scope: [products, categories, manufacturers, suppliers]
     medium_default:
       width: 452
       height: 452
-      scope: [ products, manufacturers, suppliers ]
+      scope: [products, manufacturers, suppliers]
     home_default:
       width: 250
       height: 250
-      scope: [ products ]
+      scope: [products]
     large_default:
       width: 800
       height: 800
-      scope: [ products, manufacturers, suppliers ]
+      scope: [products, manufacturers, suppliers]
     category_default:
       width: 141
       height: 180
-      scope: [ categories ]
+      scope: [categories]
     stores_default:
       width: 170
       height: 115
-      scope: [ stores ]
+      scope: [stores]
   new_password_policy_feature: true
 
 theme_settings:
