@@ -29,7 +29,8 @@
     {/block}
   </div>
 </div>
-<div class="footer-container">
+<div class="footer-container"
+  style="background-image: url('{$urls.theme_assets}img/fairplay-jeux-mulhouse-presentation.jpg');">
   <div class="container">
     <div class="row">
       {block name='hook_footer'}
@@ -54,3 +55,6 @@
     </div>
   </div>
 </div>
+
+
+<div class="footer-subcontainer" style="background-image: url('{$urls.theme_assets}img/bg-header.png');"></div>
