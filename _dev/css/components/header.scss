@@ -122,19 +122,39 @@
 
     #_desktop_contact_link {
       display: inline-block;
+      background-color: $fp-blue;
 
       #contact-link {
         // margin-top: 0.9375rem;
+        margin: 0;
 
         .mb-contact {
           &-us,
           &-tel {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
             color: $white;
-            font-size: 0.8125rem;
             background-color: $fp-blue;
+            padding: 0.2rem 0.5rem;
+
+            font-size: 0.8125rem;
+
+            border-right: 1px solid rgba(255, 255, 255, 0.5);
+
+            &:last-child {
+              border-right: none;
+            }
 
             &:hover {
               opacity: 0.8;
+            }
+
+            i {
+              font-size: 1rem;
+              vertical-align: middle;
+              margin-right: 0.3125rem;
             }
           }
         }
