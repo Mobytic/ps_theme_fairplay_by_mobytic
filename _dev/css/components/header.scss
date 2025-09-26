@@ -259,9 +259,16 @@
       text-transform: uppercase;
     }
 
-    // .search-widget {
-    //   float: right;
-    // }
+    .search-widget {
+      width: 80%;
+
+      input {
+        width: 100%;
+        border-radius: 50px;
+        background-color: $fp-beige;
+        border: none;
+      }
+    }
   }
 
   .top-menu-link {
