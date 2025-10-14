@@ -32,7 +32,7 @@
           <li>
             <div class="subcategory-image">
               <a href="{$subcategory.url}" title="{$subcategory.name|escape:'html':'UTF-8'}" class="img">
-                {if !empty($subcategory.image.large.url)}
+                {* {if !empty($subcategory.image.large.url)}
                   <picture>
                     {if !empty($subcategory.image.large.sources.avif)}<source srcset="{$subcategory.image.large.sources.avif}" type="image/avif">{/if}
                     {if !empty($subcategory.image.large.sources.webp)}<source srcset="{$subcategory.image.large.sources.webp}" type="image/webp">{/if}
@@ -44,7 +44,7 @@
                       width="{$subcategory.image.large.width}"
                       height="{$subcategory.image.large.height}"/>
                   </picture>
-                {/if}
+                {/if} *}
               </a>
             </div>
 
