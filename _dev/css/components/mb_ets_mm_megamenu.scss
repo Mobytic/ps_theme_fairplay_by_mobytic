@@ -31,5 +31,32 @@
         min-height: 40px;
       }
     }
+
+    .ets_mm_megamenu_content,
+    .ets_mm_megamenu_content_content,
+    .mm_menus_ul {
+      background: $fp-beige;
+    }
+
+    .mm_block_type_category {
+      > .h4 {
+        > a {
+          color: $fp-blue;
+
+          @media (min-width: 768px) {
+            color: $fp-blue !important;
+          }
+        }
+      }
+      .ets_mm_block_content {
+        a {
+          color: $gray-darker;
+
+          &:hover {
+            color: $fp-blue;
+          }
+        }
+      }
+    }
   }
 }

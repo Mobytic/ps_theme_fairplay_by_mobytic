@@ -30,7 +30,7 @@
   </div>
 </div>
 <div class="footer-container"
-  style="background-image: url('{$urls.theme_assets}img/fairplay-jeux-mulhouse-presentation.jpg');">
+  style="background-image: url('{_PS_THEME_URI_}upload/img/fairplay-jeux-mulhouse-presentation.jpg');">
   <div class="container">
     <div class="row">
       {block name='hook_footer'}
@@ -57,4 +57,4 @@
 </div>
 
 
-<div class="footer-subcontainer" style="background-image: url('{$urls.theme_assets}img/bg-header.png');"></div>
+<div class="footer-subcontainer" style="background-image: url('{_PS_THEME_URI_}upload/img/bg-header.png');"></div>

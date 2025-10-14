@@ -11,6 +11,13 @@ body {
   direction: ltr;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  .container {
+    max-width: 1400px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 ul {
@@ -64,7 +71,8 @@ label .color,
 .h1,
 .h2,
 .h3 {
-  color: $gray-darker;
+  color: $fp-orange;
+  font-weight: bold;
   text-transform: uppercase;
 }
 
@@ -229,8 +237,7 @@ textarea {
 .form-control-select {
   height: 2.625rem;
   padding: 0 0.5rem;
-  background:
-    $gray-light
+  background: $gray-light
     url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAQAAAD9CzEMAAAAPklEQVR4Ae3TwREAEBQD0V/6do4SXPZg7EsBhsQ8IEmSMOsiuEfg3gL3oXC7wK0bd1G4o8X9F4yIkyQfSrIByQBjp7QuND8AAAAASUVORK5CYII=")
     no-repeat scroll right 0.5rem center / 1.25rem 1.25rem;
   /* stylelint-disable */

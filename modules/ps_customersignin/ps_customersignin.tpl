@@ -31,14 +31,14 @@
       </a> *}
       <a class="account" href="{$urls.pages.my_account}"
         title="{l s='View my customer account' d='Shop.Theme.Customeraccount'}" rel="nofollow">
-        <img src="{$urls.theme_assets}img/icons/user.png" alt="{l s='Sign in' d='Shop.Theme.Actions'}" />
+        <img src="{_PS_THEME_URI_}upload/img/icons/user.png" alt="{l s='Sign in' d='Shop.Theme.Actions'}" />
         <span class="hidden-sm-down">{$customerName}</span>
         {* <i class="material-icons hidden-md-up logged">&#xE7FF;</i> *}
       </a>
     {else}
       <a href="{$urls.pages.authentication}?back={$urls.current_url|urlencode}"
         title="{l s='Log in to your customer account' d='Shop.Theme.Customeraccount'}" rel="nofollow">
-        <img src="{$urls.theme_assets}img/icons/user.png" alt="{l s='Sign in' d='Shop.Theme.Actions'}" />
+        <img src="{_PS_THEME_URI_}upload/img/icons/user.png" alt="{l s='Sign in' d='Shop.Theme.Actions'}" />
         <span class="hidden-sm-down">{l s='Account' d='Shop.Theme.Actions'}</span>
         {* get img from theme/assets/img/icons/user *}
         {* <i class="material-icons">&#xE7FF;</i> *}

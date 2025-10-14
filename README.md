@@ -23,3 +23,9 @@ This is the default theme that was originally introduced with PrestaShop 1.7. It
 This theme is released under the [Academic Free License 3.0][AFL-3.0] 
 
 [AFL-3.0]: https://opensource.org/licenses/AFL-3.0
+
+
+
+
+
+<!-- {_PS_THEME_URI_} → {_PS_THEME_URI_} -->

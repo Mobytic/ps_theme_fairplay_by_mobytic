@@ -41,7 +41,8 @@ $product-description-height: 70px;
     padding: 0;
     margin: 0 0.8125rem;
 
-    @at-root .page-index &, .page-search & {
+    @at-root .page-index &,
+      .page-search & {
       width: 25%;
       min-width: 250px;
     }
@@ -66,8 +67,20 @@ $product-description-height: 70px;
     overflow: hidden;
     background: $white;
 
+    border: 1px solid $gray-second;
+    border-radius: 25px;
+
+    width: 100%;
+    min-height: 380px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
     &:hover,
     &:focus {
+      box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25);
+
       .highlighted-informations {
         top: calc(100% - 4.4rem);
 

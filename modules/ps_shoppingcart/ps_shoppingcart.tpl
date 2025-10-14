@@ -31,7 +31,7 @@
           aria-label="{l s='Shopping cart link containing %nbProducts% product(s)' sprintf=['%nbProducts%' => $cart.products_count] d='Shop.Theme.Checkout'}"
           href="{$cart_url}">
         {* {/if} *}
-        <img src="{$urls.theme_assets}img/icons/card.png" alt="{l s='Shopping cart' d='Shop.Theme.Actions'}" />
+        <img src="{_PS_THEME_URI_}upload/img/icons/card.png" alt="{l s='Shopping cart' d='Shop.Theme.Actions'}" />
 
         {* <i class="material-icons shopping-cart" aria-hidden="true">shopping_cart</i> *}
         <span class="hidden-sm-down">{l s='Cart' d='Shop.Theme.Checkout'}</span>

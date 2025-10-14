@@ -78,7 +78,7 @@ global_settings:
         - ps_shoppingcart
       displayNavFullWidth:
         # - ps_mainmenu
-        # - ets_megamenu
+        - ets_megamenu
         - blockreassurance
       displayHome:
         - ps_imageslider

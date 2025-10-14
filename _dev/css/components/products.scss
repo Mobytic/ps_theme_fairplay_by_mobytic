@@ -704,13 +704,15 @@
     width: fit-content;
     padding: 0.3125rem 0.4375rem;
     margin-top: $small-space;
-    font-size: $base-font-size;
+    margin-left: $small-space;
+    font-size: $font-size-xs;
     font-weight: 700;
     color: $white;
     text-transform: uppercase;
     word-break: break-word;
     pointer-events: auto;
     background: $brand-primary;
+    border-radius: 15px;
 
     &.online-only {
       position: absolute;
