@@ -28,6 +28,9 @@ $product-description-height: 70px;
     border: 1px solid $fp-blue;
     border-radius: 50px;
 
+    display: block;
+    width: fit-content;
+
     @at-root .lang-rtl & {
       .material-icons {
         transform: rotate(-180deg);
