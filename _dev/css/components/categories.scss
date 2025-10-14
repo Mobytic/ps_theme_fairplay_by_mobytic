@@ -331,7 +331,9 @@
 .block-categories {
   padding: 1.563rem 1.25rem;
   margin-bottom: 1.563rem;
-  background: $white;
+  background: $fp-beige;
+  border-radius: 24px;
+  overflow: hidden;
 
   .h6 {
     font-size: 1.5rem;
