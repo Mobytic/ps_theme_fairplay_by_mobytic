@@ -54,7 +54,7 @@
               </a>
             </h5>
 
-            {$subcategory.description|@var_dump}
+            {$subcategory|@var_dump}
             {* {if $subcategory.description}
               <div class="cat_desc">{$subcategory.description|unescape:'html' nofilter}</div>
             {/if} *}
