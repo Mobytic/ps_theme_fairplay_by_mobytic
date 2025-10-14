@@ -31,6 +31,7 @@
         {foreach from=$subcategories item=subcategory}
           <li>
             <div class="subcategory-image">
+            {$subcategory.url|@var_dump}
               {* <a href="{$subcategory.url}" title="{$subcategory.name|escape:'html':'UTF-8'}" class="img"> *}
                 {if !empty($subcategory.image.large.url)}
                   <picture>
@@ -48,11 +49,11 @@
               {* </a> *}
             </div>
 
-            <h5>
+            {* <h5>
               <a class="subcategory-name" href="{$subcategory.url}">
                 {$subcategory.name|truncate:25:'...'|escape:'html':'UTF-8'}
               </a>
-            </h5>
+            </h5> *}
             {* {if $subcategory.description}
               <div class="cat_desc">{$subcategory.description|unescape:'html' nofilter}</div>
             {/if} *}
