@@ -75,7 +75,7 @@
           &.mm_has_sub {
             &.active {
               background: $fp-red;
-              a {
+              > a {
                 color: $white;
               }
             }
