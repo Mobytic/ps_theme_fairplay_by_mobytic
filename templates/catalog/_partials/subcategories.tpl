@@ -32,11 +32,11 @@
           <li>
             <div class="subcategory-image">
               <a href="{$subcategory.link}" title="{$subcategory.name|escape:'html':'UTF-8'}" class="img">
-                {assign var=image_url value=$subcategory.image.category_default.url|default:$subcategory.image.bySize.category_default.url|default:$subcategory.thumbnail.category_default.url|default:$subcategory.image.url|default:$urls.no_picture_image.category_default.url}
-                {assign var=image_avif value=$subcategory.image.category_default.sources.avif|default:$subcategory.image.bySize.category_default.sources.avif|default:$subcategory.thumbnail.category_default.sources.avif|default:$urls.no_picture_image.category_default.sources.avif}
-                {assign var=image_webp value=$subcategory.image.category_default.sources.webp|default:$subcategory.image.bySize.category_default.sources.webp|default:$subcategory.thumbnail.category_default.sources.webp|default:$urls.no_picture_image.category_default.sources.webp}
-                {assign var=image_width value=$subcategory.image.category_default.width|default:$subcategory.image.bySize.category_default.width|default:$subcategory.thumbnail.category_default.width|default:$urls.no_picture_image.category_default.width}
-                {assign var=image_height value=$subcategory.image.category_default.height|default:$subcategory.image.bySize.category_default.height|default:$subcategory.thumbnail.category_default.height|default:$urls.no_picture_image.category_default.height}
+                {assign var=image_url value=$subcategory.image.large.url|default:$subcategory.image.bySize.category_default.url|default:$subcategory.thumbnail.large.url|default:$subcategory.image.url|default:$urls.no_picture_image.large.url}
+                {assign var=image_avif value=$subcategory.image.large.sources.avif|default:$subcategory.image.bySize.category_default.sources.avif|default:$subcategory.thumbnail.large.sources.avif|default:$urls.no_picture_image.large.sources.avif}
+                {assign var=image_webp value=$subcategory.image.large.sources.webp|default:$subcategory.image.bySize.category_default.sources.webp|default:$subcategory.thumbnail.large.sources.webp|default:$urls.no_picture_image.large.sources.webp}
+                {assign var=image_width value=$subcategory.image.large.width|default:$subcategory.image.bySize.category_default.width|default:$subcategory.thumbnail.large.width|default:$urls.no_picture_image.large.width}
+                {assign var=image_height value=$subcategory.image.large.height|default:$subcategory.image.bySize.category_default.height|default:$subcategory.thumbnail.large.height|default:$urls.no_picture_image.large.height}
 
                 <picture>
                   {if !empty($image_avif)}
