@@ -23,7 +23,7 @@
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
 {if !empty($subcategories)}
-  {if (isset($display_subcategories) && $display_subcategories eq 1) || !isset($display_subcategories) }
+  {* {if (isset($display_subcategories) && $display_subcategories eq 1) || !isset($display_subcategories) }
     <div id="subcategories" class="card card-block">
       <h2 class="subcategory-heading">{l s='Subcategories' d='Shop.Theme.Category'}</h2>
 
@@ -32,7 +32,7 @@
           <li>
             <div class="subcategory-image">
               <a href="{$subcategory.url}" title="{$subcategory.name|escape:'html':'UTF-8'}" class="img">
-                {* {if !empty($subcategory.image.large.url)}
+                {if !empty($subcategory.image.large.url)}
                   <picture>
                     {if !empty($subcategory.image.large.sources.avif)}<source srcset="{$subcategory.image.large.sources.avif}" type="image/avif">{/if}
                     {if !empty($subcategory.image.large.sources.webp)}<source srcset="{$subcategory.image.large.sources.webp}" type="image/webp">{/if}
@@ -44,7 +44,7 @@
                       width="{$subcategory.image.large.width}"
                       height="{$subcategory.image.large.height}"/>
                   </picture>
-                {/if} *}
+                {/if}
               </a>
             </div>
 
@@ -60,5 +60,5 @@
         {/foreach}
       </ul>
     </div>
-  {/if}
+  {/if} *}
 {/if}
