@@ -21,7 +21,10 @@ $product-description-height: 70px;
     margin-bottom: 1.5rem;
     clear: both;
     font-weight: 500;
-    color: $gray;
+    color: $fp-blue;
+    padding: 0.5rem 1rem;
+    border: 1px solid $fp-blue;
+    border-radius: 50px;
 
     @at-root .lang-rtl & {
       .material-icons {
