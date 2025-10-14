@@ -30,34 +30,29 @@
       <ul class="subcategories-list">
         {foreach from=$subcategories item=subcategory}
           <li>
+            {* Build the href: use provided link if present, else generate it *}
+            {assign var=href value=$subcategory.link|default:$link->getCategoryLink($subcategory.id_category, $subcategory.link_rewrite)}
+
+            {* Build the image URL: if we have an id_image, point to /img/c/... ; else use the category placeholder *}
+            {if $subcategory.id_image}
+              {assign var=img_url value=$link->getImageLink($subcategory.link_rewrite, 'c/'|cat:$subcategory.id_image, 'category_default')}
+            {else}
+              {assign var=img_url value="{$urls.img_cat_url}{$language.iso_code}-default-category_default.jpg"}
+            {/if}
+
             <div class="subcategory-image">
-            {$subcategory|@print_r}
-              <a href="{$subcategory.link}" title="{$subcategory.name|escape:'html':'UTF-8'}" class="img">
-                {assign var=image_url value=$subcategory.image.large.url|default:$subcategory.image.bySize.category_default.url|default:$subcategory.thumbnail.large.url|default:$subcategory.image.url|default:$urls.no_picture_image.large.url}
-                {assign var=image_avif value=$subcategory.image.large.sources.avif|default:$subcategory.image.bySize.category_default.sources.avif|default:$subcategory.thumbnail.large.sources.avif|default:$urls.no_picture_image.large.sources.avif}
-                {assign var=image_webp value=$subcategory.image.large.sources.webp|default:$subcategory.image.bySize.category_default.sources.webp|default:$subcategory.thumbnail.large.sources.webp|default:$urls.no_picture_image.large.sources.webp}
-                {assign var=image_width value=$subcategory.image.large.width|default:$subcategory.image.bySize.category_default.width|default:$subcategory.thumbnail.large.width|default:$urls.no_picture_image.large.width}
-                {assign var=image_height value=$subcategory.image.large.height|default:$subcategory.image.bySize.category_default.height|default:$subcategory.thumbnail.large.height|default:$urls.no_picture_image.large.height}
-
-                <picture>
-                  {if !empty($image_avif)}
-                    <source srcset="{$image_avif}" type="image/avif">
-                  {/if}
-                  {if !empty($image_webp)}
-                    <source srcset="{$image_webp}" type="image/webp">
-                  {/if}
-                  <img class="img-fluid" src="{$image_url}" alt="{$subcategory.name|escape:'html':'UTF-8'}" loading="lazy"
-                    width="{$image_width}" height="{$image_height}" decoding="async" />
-                </picture>
-
+              <a href="{$href}" title="{$subcategory.name|escape:'html':'UTF-8'}" class="img">
+                <img class="img-fluid" src="{$img_url}" alt="{$subcategory.name|escape:'html':'UTF-8'}" loading="lazy"
+                  decoding="async" />
               </a>
             </div>
 
             <span>
-              <a class="subcategory-name" href="{$subcategory.link}">
+              <a class="subcategory-name" href="{$href}">
                 {$subcategory.name|truncate:25:'...'|escape:'html':'UTF-8'}
               </a>
             </span>
+
             {if $subcategory.description}
               <div class="cat_desc">{$subcategory.description|unescape:'html' nofilter}</div>
             {/if}
