@@ -64,7 +64,15 @@
     }
 
     .mm_columns_ul {
-          border-radius: 0 0 24px 24px;
+      border-radius: 0 0 24px 24px;
+    }
+
+    .ets_mm_megamenu_content_content {
+      .mm_menus_ul {
+        > li {
+          border: none;
+        }
+      }
     }
   }
 
