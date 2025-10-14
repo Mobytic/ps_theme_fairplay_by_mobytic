@@ -32,7 +32,7 @@
           <li>
             <div class="subcategory-image">
               <a href="{$subcategory.link}" title="{$subcategory.name|escape:'html':'UTF-8'}" class="img">
-                {$subcategory.image.large|@var_dump}
+                {$subcategory.image|@var_dump}
                 {if !empty($subcategory.image.large.url)}
                   <picture>
                     {if !empty($subcategory.image.large.sources.avif)}
