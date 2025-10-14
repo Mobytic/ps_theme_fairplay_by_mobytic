@@ -446,11 +446,17 @@
   }
 }
 #category {
-  .h6 {
-    font-size: 1.5rem;
-    font-weight: 500;
-    color: $fp-blue;
-    text-transform: initial;
+  #left-column {
+    * {
+      font-size: $font-size-sm;
+    }
+    
+    .h6 {
+      font-size: 1rem;
+      font-weight: 500;
+      color: $fp-blue;
+      text-transform: initial !important;
+    }
   }
 }
 
