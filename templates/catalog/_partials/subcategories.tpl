@@ -53,9 +53,9 @@
                 {$subcategory.name|truncate:25:'...'|escape:'html':'UTF-8'}
               </a>
             </h5> *}
-            {if $subcategory.description}
+            {* {if $subcategory.description}
               <div class="cat_desc">{$subcategory.description|unescape:'html' nofilter}</div>
-            {/if}
+            {/if} *}
           </li>
         {/foreach}
       </ul>
