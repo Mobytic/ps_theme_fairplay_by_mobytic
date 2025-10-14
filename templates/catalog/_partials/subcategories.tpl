@@ -32,13 +32,13 @@
           <li>
             <div class="subcategory-image">
               <a href="{$subcategory.link}" title="{$subcategory.name|escape:'html':'UTF-8'}" class="img">
-                {if !empty($subcategory.image.large.url)}
+                {if !empty($subcategory.image.large.link)}
                   <picture>
                     {if !empty($subcategory.image.large.sources.avif)}<source srcset="{$subcategory.image.large.sources.avif}" type="image/avif">{/if}
                     {if !empty($subcategory.image.large.sources.webp)}<source srcset="{$subcategory.image.large.sources.webp}" type="image/webp">{/if}
                     <img
                       class="img-fluid"
-                      src="{$subcategory.image.large.url}"
+                      src="{$subcategory.image.large.link}"
                       alt="{$subcategory.name|escape:'html':'UTF-8'}"
                       loading="lazy"
                       width="{$subcategory.image.large.width}"
