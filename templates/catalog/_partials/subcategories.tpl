@@ -31,7 +31,7 @@
         {foreach from=$subcategories item=subcategory}
           <li>
             <div class="subcategory-image">
-              <a href="{$subcategory.url}" title="{$subcategory.name|escape:'html':'UTF-8'}" class="img">
+              <a href="{$subcategory.link}" title="{$subcategory.name|escape:'html':'UTF-8'}" class="img">
                 {assign var=image_url value=$subcategory.image.bySize.category_default.url|default:$urls.no_picture_image.large.url}
                 {assign var=image_avif value=$subcategory.thumbnail.large.sources.avif|default:$urls.no_picture_image.large.sources.avif}
                 {assign var=image_webp value=$subcategory.thumbnail.large.sources.webp|default:$urls.no_picture_image.large.sources.webp}
@@ -53,13 +53,13 @@
             </div>
 
             <span>
-              <a class="subcategory-name" href="{$subcategory.url}">
+              <a class="subcategory-name" href="{$subcategory.link}">
                 {$subcategory.name|truncate:25:'...'|escape:'html':'UTF-8'}
               </a>
             </span>
-            {* {if $subcategory.description}
+            {if $subcategory.description}
               <div class="cat_desc">{$subcategory.description|unescape:'html' nofilter}</div>
-            {/if} *}
+            {/if}
           </li>
         {/foreach}
       </ul>
