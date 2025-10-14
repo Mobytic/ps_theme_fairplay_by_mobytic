@@ -24,36 +24,42 @@
  *}
 {if !empty($subcategories)}
   {if (isset($display_subcategories) && $display_subcategories eq 1) || !isset($display_subcategories) }
-    <div id="subcategories" class="card card-block">
-      <h2 class="subcategory-heading">{l s='Subcategories' d='Shop.Theme.Category'}</h2>
+    <div id="subcategories" class="mb-card card-block">
+      {* <h2 class="subcategory-heading">{l s='Subcategories' d='Shop.Theme.Category'}</h2> *}
 
       <ul class="subcategories-list">
         {foreach from=$subcategories item=subcategory}
           <li>
             <div class="subcategory-image">
-              <a href="{$subcategory.link}" title="{$subcategory.name|escape:'html':'UTF-8'}" class="img">
-                {$subcategory|@var_dump}
-                {if !empty($subcategory.image.large.url)}
-                  <picture>
-                    {if !empty($subcategory.image.large.sources.avif)}
-                    <source srcset="{$subcategory.image.large.sources.avif}" type="image/avif">{/if}
-                    {if !empty($subcategory.image.large.sources.webp)}
-                    <source srcset="{$subcategory.image.large.sources.webp}" type="image/webp">{/if}
-                    <img class="img-fluid" src="{$subcategory.image.large.url}" alt="{$subcategory.name|escape:'html':'UTF-8'}"
-                      loading="lazy" width="{$subcategory.image.large.width}" height="{$subcategory.image.large.height}" />
-                  </picture>
-                {/if}
-                {* </a> *}
+              <a href="{$subcategory.url}" title="{$subcategory.name|escape:'html':'UTF-8'}" class="img">
+                {assign var=image_url value=$subcategory.image.bySize.category_default.url|default:$urls.no_picture_image.large.url}
+                {assign var=image_avif value=$subcategory.thumbnail.large.sources.avif|default:$urls.no_picture_image.large.sources.avif}
+                {assign var=image_webp value=$subcategory.thumbnail.large.sources.webp|default:$urls.no_picture_image.large.sources.webp}
+                {assign var=image_width value=$subcategory.thumbnail.large.width|default:$urls.no_picture_image.large.width}
+                {assign var=image_height value=$subcategory.thumbnail.large.height|default:$urls.no_picture_image.large.height}
+
+                <picture>
+                  {if !empty($image_avif)}
+                    <source srcset="{$image_avif}" type="image/avif">
+                  {/if}
+                  {if !empty($image_webp)}
+                    <source srcset="{$image_webp}" type="image/webp">
+                  {/if}
+                  <img class="img-fluid" src="{$image_url}" alt="{$subcategory.name|escape:'html':'UTF-8'}" loading="lazy"
+                    width="{$image_width}" height="{$image_height}" decoding="async" />
+                </picture>
+
+              </a>
             </div>
 
-            <h5>
-              <a class="subcategory-name" href="{$subcategory.link}">
+            <span>
+              <a class="subcategory-name" href="{$subcategory.url}">
                 {$subcategory.name|truncate:25:'...'|escape:'html':'UTF-8'}
               </a>
-            </h5>
-            {if $subcategory.description}
+            </span>
+            {* {if $subcategory.description}
               <div class="cat_desc">{$subcategory.description|unescape:'html' nofilter}</div>
-            {/if}
+            {/if} *}
           </li>
         {/foreach}
       </ul>
