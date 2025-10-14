@@ -29,9 +29,9 @@
 
       <ul class="subcategories-list">
         {foreach from=$subcategories item=subcategory}
-          {* <li>
+          <li>
             <div class="subcategory-image">
-              <a href="{$subcategory.url}" title="{$subcategory.name|escape:'html':'UTF-8'}" class="img">
+              {* <a href="{$subcategory.url}" title="{$subcategory.name|escape:'html':'UTF-8'}" class="img"> *}
                 {if !empty($subcategory.image.large.url)}
                   <picture>
                     {if !empty($subcategory.image.large.sources.avif)}<source srcset="{$subcategory.image.large.sources.avif}" type="image/avif">{/if}
@@ -45,18 +45,18 @@
                       height="{$subcategory.image.large.height}"/>
                   </picture>
                 {/if}
-              </a>
+              {* </a> *}
             </div>
 
-            <h5>
+            {* <h5>
               <a class="subcategory-name" href="{$subcategory.url}">
                 {$subcategory.name|truncate:25:'...'|escape:'html':'UTF-8'}
               </a>
-            </h5>
-            {if $subcategory.description}
+            </h5> *}
+            {* {if $subcategory.description}
               <div class="cat_desc">{$subcategory.description|unescape:'html' nofilter}</div>
-            {/if}
-          </li> *}
+            {/if} *}
+          </li>
         {/foreach}
       </ul>
     </div>
