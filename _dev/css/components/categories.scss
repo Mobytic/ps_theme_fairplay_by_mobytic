@@ -19,12 +19,6 @@
       }
     }
   }
-
-  .h6 {
-    font-size: 1.5rem;
-    font-weight: 500;
-    color: $fp-blue !important;
-  }
 }
 
 .block-category {
@@ -449,6 +443,13 @@
 
   img {
     width: 100%;
+  }
+}
+#category {
+  .h6 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: $fp-blue;
   }
 }
 
