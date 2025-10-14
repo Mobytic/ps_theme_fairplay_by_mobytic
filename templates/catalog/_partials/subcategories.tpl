@@ -31,6 +31,7 @@
         {foreach from=$subcategories item=subcategory}
           <li>
             <div class="subcategory-image">
+            {$subcategory|@print_r}
               <a href="{$subcategory.link}" title="{$subcategory.name|escape:'html':'UTF-8'}" class="img">
                 {assign var=image_url value=$subcategory.image.large.url|default:$subcategory.image.bySize.category_default.url|default:$subcategory.thumbnail.large.url|default:$subcategory.image.url|default:$urls.no_picture_image.large.url}
                 {assign var=image_avif value=$subcategory.image.large.sources.avif|default:$subcategory.image.bySize.category_default.sources.avif|default:$subcategory.thumbnail.large.sources.avif|default:$urls.no_picture_image.large.sources.avif}
