@@ -448,11 +448,11 @@
 #category {
   #left-column {
     * {
-      font-size: $font-size-sm;
-    }
-    
-    .h6 {
       font-size: 1rem;
+    }
+
+    .h6 {
+      font-size: 1.125rem;
       font-weight: 500;
       color: $fp-blue;
       text-transform: initial !important;
