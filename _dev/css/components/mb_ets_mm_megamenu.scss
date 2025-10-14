@@ -58,18 +58,18 @@
     //     }
     //   }
     // }
+  }
 
-    @media (min-width: 768px) {
-      .layout_layout1 .ets_mm_block_content ul li a::before {
-        margin-right: 4px;
-        margin-left: 0;
-        color: $fp-orange;
-        border-radius: 50px;
-        overflow: hidden;
-        width: 6px;
-        height: 6px;
-        background: $fp-orange;
-      }
+  @media (min-width: 768px) {
+    .layout_layout1 .ets_mm_block_content ul li a::before {
+      margin-right: 4px;
+      margin-left: 0;
+      color: $fp-orange;
+      border-radius: 50px;
+      overflow: hidden;
+      width: 6px;
+      height: 6px;
+      background: $fp-orange;
     }
   }
 }
