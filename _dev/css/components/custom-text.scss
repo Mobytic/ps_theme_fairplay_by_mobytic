@@ -32,7 +32,7 @@
 
 .page-content.page-cms {
   padding: 1.25rem;
-  text-align: justify;
+  // text-align: justify;
   background: $white;
 
   .cms-box {
@@ -41,14 +41,113 @@
     }
   }
 
-  ul {
-    @extend p;
-    list-style: disc inside none;
-  }
+  // ul {
+  //   @extend p;
+  //   list-style: disc inside none;
+  // }
 }
 
 @include media-breakpoint-down(md) {
   #block-cmsinfo {
     padding: $medium-space $large-space;
+  }
+}
+
+.product-description {
+  * {
+    color: $black;
+  }
+
+  h2,
+  h3,
+  h4 {
+    font-weight: 600;
+    text-transform: none;
+    text-align: left;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  h2 {
+    color: $black;
+    font-size: 1.4rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  h3 {
+    color: $black;
+    font-size: 1.2rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  h4 {
+    color: $black;
+    font-size: 1.125rem;
+    margin-top: 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+
+  p {
+    color: #232323;
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+  }
+
+  ul,
+  ol {
+    color: #232323;
+    padding-left: 1.25rem;
+    list-style-position: inside;
+    margin-bottom: 1.5rem;
+
+    li {
+      color: #232323;
+      font-size: 0.9375rem;
+      color: #232323;
+      margin-bottom: 0.5rem;
+
+      * {
+        color: #232323;
+      }
+    }
+  }
+
+  ul {
+    list-style-type: disc;
+  }
+
+  a {
+    color: $brand-primary;
+
+    &:hover {
+      color: darken($brand-primary, 10%);
+    }
+  }
+
+  b {
+    font-weight: 600;
+  }
+
+  table {
+    width: 100% !important;
+    margin-bottom: 1.5rem;
+    border-collapse: collapse;
+    border-spacing: 0;
+
+    th,
+    td {
+      padding: 0.75rem;
+      text-align: center !important;
+      border: 1px solid $gray-light;
+    }
+
+    th {
+      background-color: $gray-lighter;
+    }
+
+    tbody tr:nth-of-type(odd) {
+      background-color: $gray-lighter;
+    }
   }
 }
