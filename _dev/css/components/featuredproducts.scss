@@ -148,8 +148,18 @@ $product-description-height: 70px;
 
   .product-price-and-shipping {
     font-weight: 700;
-    color: $gray-darker;
+    color: $fp-blue;
     text-align: center;
+
+    .regular-price {
+      color: $fp-red;
+    }
+
+    .price {
+      color: $fp-blue;
+    }
+
+
 
     .discount-product {
       display: none;
