@@ -344,31 +344,18 @@
       overflow: hidden;
       color: $gray;
       border: 0 solid transparent;
-      padding-right: 8px;
-      margin-right: 4px;
-
-      &::after {
-        content: "";
-        display: block;
-        height: 100%;
-        width: 1px;
-        background: $gray-light;
-        position: absolute;
-        top: 0;
-        right: 0;
-        border-radius: 20px;
-      }
+      margin-right: 8px;
 
       &.active {
         color: $white;
-        background: $fp-orange;
+        background: $fp-red;
         border: none;
         // border-bottom: $brand-primary 3px solid;
       }
 
       &:hover {
         color: $white;
-        background: $fp-orange;
+        background: $fp-red;
         border: none;
         // border-bottom: $brand-primary 3px solid;
         transition: background 0.3s ease-in-out;
@@ -377,6 +364,8 @@
 
     .nav-item {
       float: left;
+
+      border-right: 1px solid $gray;
     }
   }
 }
