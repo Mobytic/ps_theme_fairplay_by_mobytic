@@ -4,6 +4,17 @@
     color: $fp-red;
   }
 
+  .product-reference {
+    text-align: left;
+    margin-bottom: 1.5rem;
+
+    .label,
+    .value {
+      font-size: 0.875rem;
+      color: $gray;
+    }
+  }
+
   #content {
     position: relative;
     max-width: 452px;
