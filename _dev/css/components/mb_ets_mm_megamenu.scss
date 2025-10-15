@@ -1,7 +1,7 @@
 #header {
   .ets_mm_megamenu {
     * {
-      font-family: "Capriola", sans-serif;
+      font-family: "Capriola", sans-serif !important;
     }
 
     @include media-breakpoint-down(sm) {
