@@ -18,24 +18,10 @@
     {/foreach}
 
     <ul class="product-mini-features-list list-unstyled d-flex flex-wrap mb-2">
-        {if $mf_age}
-            <li class="mini-feature me-3 d-flex align-items-center" title="{l s='Age' d='Shop.Theme.Catalog'}">
-                <i class="material-icons me-1" aria-hidden="true">cake</i>
-                <span class="feature-value">{$mf_age|escape:'html':'UTF-8'}</span>
-            </li>
-        {/if}
-
         {if $mf_players}
             <li class="mini-feature me-3 d-flex align-items-center" title="{l s='Players' d='Shop.Theme.Catalog'}">
                 <i class="material-icons me-1" aria-hidden="true">people</i>
                 <span class="feature-value">{$mf_players|escape:'html':'UTF-8'}</span>
-            </li>
-        {/if}
-
-        {if $mf_lang}
-            <li class="mini-feature me-3 d-flex align-items-center" title="{l s='Language' d='Shop.Theme.Catalog'}">
-                <i class="material-icons me-1" aria-hidden="true">language</i>
-                <span class="feature-value">{$mf_lang|escape:'html':'UTF-8'}</span>
             </li>
         {/if}
 
@@ -45,5 +31,21 @@
                 <span class="feature-value">{$mf_duration|escape:'html':'UTF-8'}</span>
             </li>
         {/if}
+        
+        {if $mf_age}
+            <li class="mini-feature me-3 d-flex align-items-center" title="{l s='Age' d='Shop.Theme.Catalog'}">
+                <i class="material-icons me-1" aria-hidden="true">cake</i>
+                <span class="feature-value">{$mf_age|escape:'html':'UTF-8'}</span>
+            </li>
+        {/if}
+
+
+        {if $mf_lang}
+            <li class="mini-feature me-3 d-flex align-items-center" title="{l s='Language' d='Shop.Theme.Catalog'}">
+                <i class="material-icons me-1" aria-hidden="true">language</i>
+                <span class="feature-value">{$mf_lang|escape:'html':'UTF-8'}</span>
+            </li>
+        {/if}
+
     </ul>
 </div>
