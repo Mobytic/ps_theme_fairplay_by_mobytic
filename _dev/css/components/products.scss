@@ -1,4 +1,9 @@
 #product {
+  h1.h1 {
+    text-transform: unset;
+    color: $fp-red;
+  }
+
   #content {
     position: relative;
     max-width: 452px;
@@ -9,7 +14,7 @@
 .product-price {
   display: inline-block;
   max-width: 100%;
-  color: $brand-primary;
+  color: $fp-blue
 }
 
 #product-description-short {
@@ -234,7 +239,7 @@
 .has-discount {
   &.product-price,
   p {
-    color: $brand-secondary;
+    color: $fp-red;
   }
 
   .discount {
@@ -254,7 +259,7 @@
   margin-bottom: 0;
   overflow: hidden;
   font-size: $font-size-xs;
-  color: $gray;
+  color: $fp-red;
   text-overflow: ellipsis;
 }
 
@@ -490,7 +495,7 @@
 
   .product-price {
     display: block;
-    color: $gray-dark;
+    color: $fp-blue;
     @include media-breakpoint-down(sm) {
       padding: 0 0.5rem;
     }
