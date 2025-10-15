@@ -937,3 +937,25 @@
     }
   }
 }
+
+.product-mini-features {
+  .product-mini-features-list {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -0.625rem;
+    gap: 0.625rem;
+
+    .mini-feature {
+      padding: 0 0.625rem;
+      font-size: 0.875rem;
+      background: $fp-beige;
+      border-radius: 15px;
+      color: $gray-darker;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.3125rem;
+    }
+  }
+}
