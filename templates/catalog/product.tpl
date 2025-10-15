@@ -76,11 +76,22 @@
             <h1 class="h1">{block name='page_title'}{$product.name}{/block}</h1>
           {/block}
 
+          <hr>
+
+          {* product reference *}
+          {block name='product_reference'}
+            {if $product.reference}
+              <p class="product-reference">
+                <span class="label">{l s='Reference:' d='Shop.Theme.Catalog'}</span>
+                <span class="value">{$product.reference|escape:'html':'UTF-8'}</span>
+              </p>
+            {/if}
+          {/block}
+
           {include file='catalog/_partials/mb-product-feature-short.tpl'}
         {/block}
         {block name='product_prices'}
           {include file='catalog/_partials/product-prices.tpl'}
-          
         {/block}
 
         <div class="product-information">
