@@ -79,15 +79,12 @@
           <hr>
 
           {* product reference *}
-          {block name='product_reference'}
-            {$product.reference|@var_dump}
-            {if $product.reference}
-              <p class="product-reference">
-                <span class="label">{l s='Reference:' d='Shop.Theme.Catalog'}</span>
-                <span class="value">{$product.reference|escape:'html':'UTF-8'}</span>
-              </p>
-            {/if}
-          {/block}
+          {if $product.reference}
+            <p class="product-reference">
+              <span class="label">{l s='Reference:' d='Shop.Theme.Catalog'}</span>
+              <span class="value">{$product.reference|escape:'html':'UTF-8'}</span>
+            </p>
+          {/if}
 
           {include file='catalog/_partials/mb-product-feature-short.tpl'}
         {/block}
