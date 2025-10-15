@@ -14,7 +14,12 @@
 .product-price {
   display: inline-block;
   max-width: 100%;
-  color: $fp-blue
+  color: $fp-blue;
+
+  .current-price {
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
 }
 
 #product-description-short {
@@ -205,6 +210,10 @@
 .product-prices {
   margin-top: $medium-space;
 
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+
   div {
     margin-bottom: 0.625rem;
   }
@@ -227,7 +236,7 @@
 }
 
 .product-discount {
-  color: $gray;
+  color: $fp-red;
 
   .regular-price {
     margin-right: $small-space;
@@ -239,7 +248,7 @@
 .has-discount {
   &.product-price,
   p {
-    color: $fp-red;
+    color: $fp-blue;
   }
 
   .discount {
