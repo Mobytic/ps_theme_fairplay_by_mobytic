@@ -1019,9 +1019,15 @@
       justify-content: center;
       gap: 0.3125rem;
 
+      i {
+        font-size: 1.4rem;
+        color: $fp-orange;
+      }
+
       span {
         font-size: 0.9375rem;
         font-weight: 500;
+        opacity: 0.8;
       }
     }
   }
