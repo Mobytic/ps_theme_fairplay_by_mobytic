@@ -156,8 +156,6 @@
     </div>
 
     {block name='product_tabs'}
-      <hr>
-
       <div class="tabs">
         <ul class="nav nav-tabs" role="tablist">
           {if $product.description}
