@@ -335,15 +335,16 @@
     // border-bottom: $gray-light 2px solid;
     border-radius: $btn-border-radius;
     overflow: hidden;
-    background: $fp-beige;
+    background: $gray-second;
     transition: background 0.3s ease-in-out;
+    padding: 8px;
 
     .nav-link {
       border-radius: $btn-border-radius;
       overflow: hidden;
       color: $gray;
       border: 0 solid transparent;
-      margin: 8px;
+      margin-right: 8px;
 
       &.active {
         color: $white;
