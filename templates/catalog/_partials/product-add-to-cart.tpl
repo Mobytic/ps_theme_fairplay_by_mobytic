@@ -29,33 +29,15 @@
     {block name='product_quantity'}
       <div class="product-quantity clearfix">
         <div class="qty">
-          <input
-            type="number"
-            name="qty"
-            id="quantity_wanted"
-            inputmode="numeric"
-            pattern="[0-9]*"
-            {if $product.quantity_wanted}
-              value="{$product.quantity_wanted}"
-              min="{$product.minimal_quantity}"
+          <input type="number" name="qty" id="quantity_wanted" inputmode="numeric" pattern="[0-9]*"
+            {if $product.quantity_wanted} value="{$product.quantity_wanted}" min="{$product.minimal_quantity}" 
             {else}
-              value="1"
-              min="1"
-            {/if}
-            class="input-group"
-            aria-label="{l s='Quantity' d='Shop.Theme.Actions'}"
-          >
+            value="1" min="1" {/if} class="input-group" aria-label="{l s='Quantity' d='Shop.Theme.Actions'}">
         </div>
 
         <div class="add">
-          <button
-            class="btn btn-primary add-to-cart"
-            data-button-action="add-to-cart"
-            type="submit"
-            {if !$product.add_to_cart_url}
-              disabled
-            {/if}
-          >
+          <button class="btn btn-primary add-to-cart" data-button-action="add-to-cart" type="submit"
+            {if !$product.add_to_cart_url} disabled {/if}>
             <i class="material-icons shopping-cart">&#xE547;</i>
             {l s='Add to cart' d='Shop.Theme.Actions'}
           </button>
@@ -66,28 +48,33 @@
     {/block}
 
     {block name='product_availability'}
-      <span id="product-availability" class="js-product-availability">
-        {if $product.show_availability && $product.availability_message}
+      {if $product.show_availability && $product.availability_message}
+        <span id="product-availability" class="js-product-availability">
           {if $product.availability == 'available'}
-            <span class="availability-dot availability-available" role="img" aria-label="{l s='In stock' d='Shop.Theme.Catalog'}" style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#28a745;margin-right:8px;vertical-align:middle"></span>
+            <span class="availability-dot availability-available" role="img"
+              aria-label="{l s='In stock' d='Shop.Theme.Catalog'}"
+              style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#28a745;margin-right:8px;vertical-align:middle"></span>
           {elseif $product.availability == 'last_remaining_items'}
-            <span class="availability-dot availability-low" role="img" aria-label="{l s='Low stock' d='Shop.Theme.Catalog'}" style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#ff8c00;margin-right:8px;vertical-align:middle"></span>
+            <span class="availability-dot availability-low" role="img" aria-label="{l s='Low stock' d='Shop.Theme.Catalog'}"
+              style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#ff8c00;margin-right:8px;vertical-align:middle"></span>
           {else}
-            <span class="availability-dot availability-unavailable" role="img" aria-label="{l s='Out of stock' d='Shop.Theme.Catalog'}" style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#d9534f;margin-right:8px;vertical-align:middle"></span>
+            <span class="availability-dot availability-unavailable" role="img"
+              aria-label="{l s='Out of stock' d='Shop.Theme.Catalog'}"
+              style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#d9534f;margin-right:8px;vertical-align:middle"></span>
           {/if}
           <span class="availability-message">{$product.availability_message}</span>
-        {/if}
-      </span>
+        </span>
+      {/if}
     {/block}
 
     {block name='product_minimal_quantity'}
       <p class="product-minimal-quantity js-product-minimal-quantity">
         {if $product.minimal_quantity > 1}
           {l
-          s='The minimum purchase order quantity for the product is %quantity%.'
-          d='Shop.Theme.Checkout'
-          sprintf=['%quantity%' => $product.minimal_quantity]
-          }
+                s='The minimum purchase order quantity for the product is %quantity%.'
+                d='Shop.Theme.Checkout'
+                sprintf=['%quantity%' => $product.minimal_quantity]
+                }
         {/if}
       </p>
     {/block}
