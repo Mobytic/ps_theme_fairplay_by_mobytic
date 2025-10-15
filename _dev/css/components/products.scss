@@ -320,7 +320,7 @@
 .tabs {
   margin-top: 2rem;
   background: $white;
-  
+
   .tab-pane {
     margin-top: $medium-space;
     padding: $medium-space $large-space;
@@ -339,8 +339,11 @@
     transition: background 0.3s ease-in-out;
 
     .nav-link {
+      border-radius: $btn-border-radius;
+      overflow: hidden;
       color: $gray;
       border: 0 solid transparent;
+      margin: 8px;
 
       &.active {
         color: $white;
