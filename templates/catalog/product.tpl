@@ -79,12 +79,12 @@
           <hr>
 
           {* product reference *}
-          {if $product.reference}
+          {* {if $product.reference}
             <p class="product-reference">
               <span class="label">{l s='Réf.:' d='Shop.Theme.Catalog'}</span>
               <span class="value">{$product.reference|escape:'html':'UTF-8'}</span>
             </p>
-          {/if}
+          {/if} *}
 
           {include file='catalog/_partials/mb-product-feature-short.tpl'}
         {/block}
