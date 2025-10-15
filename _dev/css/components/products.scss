@@ -5,7 +5,7 @@
   }
 
   .product-reference {
-    text-align: left;
+    text-align: right;
     margin-bottom: 1.5rem;
 
     .label,
@@ -273,6 +273,7 @@
     color: $white;
     text-transform: uppercase;
     background: $brand-secondary;
+    border-radius: 15px;
   }
 }
 
