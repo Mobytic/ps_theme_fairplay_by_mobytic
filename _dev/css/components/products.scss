@@ -334,7 +334,9 @@
     border: none;
     // border-bottom: $gray-light 2px solid;
     border-radius: $btn-border-radius;
+    overflow: hidden;
     background: $fp-beige;
+    transition: background 0.3s ease-in-out;
 
     .nav-link {
       color: $gray;
@@ -352,6 +354,7 @@
         background: $fp-red;
         border: none;
         // border-bottom: $brand-primary 3px solid;
+        transition: background 0.3s ease-in-out;
       }
     }
 
