@@ -1,8 +1,12 @@
 #header {
   .ets_mm_megamenu {
-    * {
-      font-family: "Capriola", sans-serif !important;
-      font-weight: 400 !important;
+    .mm_menus_ul {
+      > li {
+        > a {
+          font-family: "Capriola", sans-serif !important;
+          font-weight: 400 !important;
+        }
+      }
     }
 
     @include media-breakpoint-down(sm) {
