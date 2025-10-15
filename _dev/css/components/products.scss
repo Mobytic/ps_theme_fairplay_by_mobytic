@@ -5,7 +5,7 @@
   }
 
   .product-reference {
-    text-align: right;
+    // text-align: right;
     margin-bottom: 1.5rem;
 
     .label,
@@ -621,6 +621,8 @@
     .thumb {
       margin-bottom: $small-space;
       cursor: pointer;
+      border-radius: 25px;
+      border: 1px solid $gray;
 
       .images-container & {
         margin-right: 0.8125rem;
@@ -628,7 +630,7 @@
 
       &.selected,
       &:hover {
-        border: $brand-primary 3px solid;
+        border: $fp-red 3px solid;
       }
     }
   }
