@@ -165,9 +165,9 @@
 
   #quantity_wanted {
     width: 100px;
-    height: 3rem;
+    height: 100%;
     padding: 0.175rem 0.5rem;
-    color: $gray-darker;
+    color: $gray;
     background-color: $white;
 
     font-size: 24px;
@@ -191,11 +191,14 @@
     .btn {
       padding: 0.5rem 0.6875rem;
       border-radius: 25px;
+      border: none;
+      background: $gray-darker;
 
       i {
         top: 0.125rem;
         left: 0.1875rem;
         font-size: 1rem;
+        color: $white;
       }
     }
   }
