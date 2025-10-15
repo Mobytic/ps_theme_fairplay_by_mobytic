@@ -193,10 +193,12 @@
       border-radius: 25px;
       border: none;
       background: $gray-darker;
+      position: relative;
 
       i {
-        top: 0.125rem;
-        left: 0.1875rem;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
         font-size: 1rem;
         color: $white;
       }
