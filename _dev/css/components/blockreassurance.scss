@@ -5,7 +5,9 @@
       margin-bottom: 24px;
 
       img {
-        height: 100px;
+        height: 100%;
+        width: auto;
+        object-fit: contain;
       }
     }
     .block-title {
@@ -15,7 +17,7 @@
 
     p {
       color: $fp-orange !important;
-      font-weight: 600;
+      font-weight: 500;
       width: 75%;
       margin: 0 auto;
     }
