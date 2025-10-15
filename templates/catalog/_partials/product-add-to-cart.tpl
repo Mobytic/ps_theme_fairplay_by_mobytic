@@ -68,15 +68,15 @@
     {/block}
 
     {block name='product_minimal_quantity'}
-      <p class="product-minimal-quantity js-product-minimal-quantity">
-        {if $product.minimal_quantity > 1}
+      {if $product.minimal_quantity > 1}
+        <p class="product-minimal-quantity js-product-minimal-quantity">
           {l
-                s='The minimum purchase order quantity for the product is %quantity%.'
-                d='Shop.Theme.Checkout'
-                sprintf=['%quantity%' => $product.minimal_quantity]
-                }
-        {/if}
-      </p>
+            s='The minimum purchase order quantity for the product is %quantity%.'
+            d='Shop.Theme.Checkout'
+            sprintf=['%quantity%' => $product.minimal_quantity]
+          }
+        </p>
+      {/if}
     {/block}
   {/if}
 </div>
