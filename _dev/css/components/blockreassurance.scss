@@ -3,6 +3,10 @@
     .block-icon {
       height: 100px;
       margin-bottom: 24px;
+
+      img {
+        height: 100px;
+      }
     }
     .block-title {
       color: $fp-red !important;
@@ -13,6 +17,7 @@
       color: $fp-orange !important;
       font-weight: 600;
       width: 75%;
+      margin: 0 auto;
     }
   }
 }
