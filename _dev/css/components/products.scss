@@ -344,9 +344,20 @@
       overflow: hidden;
       color: $gray;
       border: 0 solid transparent;
-      padding-right: 4px;
+      padding-right: 8px;
       margin-right: 4px;
-      border-right: 1px solid $gray-light;
+
+      &::after {
+        content: "";
+        display: block;
+        height: 100%;
+        width: 1px;
+        background: $gray-light;
+        position: absolute;
+        top: 0;
+        right: 0;
+        border-radius: 20px;
+      }
 
       &.active {
         color: $white;
