@@ -157,6 +157,7 @@
 
 .product-quantity {
   display: flex;
+  margin-top: 1rem;
 
   .qty,
   .add {
@@ -672,8 +673,8 @@
 }
 
 #product-availability {
-  display: inline;
-  margin-top: 2rem;
+  display: block;
+  margin-top: 1rem;
   font-weight: 700;
 
   .material-icons {
