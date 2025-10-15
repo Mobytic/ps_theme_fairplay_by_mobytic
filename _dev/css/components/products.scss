@@ -188,8 +188,7 @@
 
   .input-group-btn-vertical {
     width: auto;
-    margin-left: 1rem;
-    margin-right: 2rem;
+    margin-left: 12px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -323,7 +322,8 @@
 .tabs {
   padding: $medium-space $large-space;
   margin-top: 2rem;
-  background: $white;
+  background: $fp-beige;
+  border-radius: $btn-border-radius;
 
   .tab-pane {
     padding-top: $medium-space;
