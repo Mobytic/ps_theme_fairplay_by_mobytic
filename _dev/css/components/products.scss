@@ -516,6 +516,8 @@
   .modal-dialog {
     width: 100%;
     max-width: 1140px;
+    border-radius: $btn-border-radius;
+    overflow: hidden;
   }
 
   .product-image {
