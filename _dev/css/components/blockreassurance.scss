@@ -9,6 +9,10 @@
         width: auto;
         object-fit: contain;
       }
+
+      @media (max-width: 575px) {
+        width: unset !important;
+      }
     }
     .block-title {
       color: $fp-red !important;
