@@ -332,21 +332,26 @@
 
   .nav-tabs {
     border: none;
-    border-bottom: $gray-light 2px solid;
+    // border-bottom: $gray-light 2px solid;
+    border-radius: $btn-border-radius;
+    background: $fp-beige;
 
     .nav-link {
       color: $gray;
       border: 0 solid transparent;
 
       &.active {
-        color: $brand-primary;
+        color: $white;
+        background: $fp-red;
         border: none;
-        border-bottom: $brand-primary 3px solid;
+        // border-bottom: $brand-primary 3px solid;
       }
 
       &:hover {
+        color: $white;
+        background: $fp-red;
         border: none;
-        border-bottom: $brand-primary 3px solid;
+        // border-bottom: $brand-primary 3px solid;
       }
     }
 
