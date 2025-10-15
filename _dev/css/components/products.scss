@@ -155,8 +155,6 @@
 
 .product-quantity {
   display: flex;
-  margin-top: 1.25rem;
-  margin-bottom: 1.25rem;
 
   .qty,
   .add {
@@ -425,7 +423,7 @@
 
       .image-caption {
         width: 100%;
-        padding: 0.625rem 1.25rem;
+        padding: 1.25rem;
         background: $white;
         border-top: $gray-light 1px solid;
 
