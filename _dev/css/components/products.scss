@@ -138,8 +138,6 @@
     background: $fp-red;
     color: $white;
 
-
-
     .material-icons {
       line-height: inherit;
     }
@@ -322,11 +320,14 @@
 .tabs {
   padding: $medium-space $large-space;
   margin-top: 2rem;
-  background: $fp-beige;
-  border-radius: $btn-border-radius;
+  background: $white;
 
   .tab-pane {
-    padding-top: $medium-space;
+    margin-top: $medium-space;
+    // padding-top: $medium-space;
+
+    background: $fp-beige;
+    border-radius: $btn-border-radius;
   }
 
   .nav-tabs {
