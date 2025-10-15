@@ -214,6 +214,10 @@
   gap: 1rem;
   align-items: center;
 
+  div {
+    margin-bottom: 0 !important;
+  }
+
   .tax-shipping-delivery-label {
     font-size: 0.8125rem;
     color: $gray;
