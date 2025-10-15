@@ -56,17 +56,17 @@ global_settings:
     to_disable:
       - ps_mainmenu
       - ps_searchbar
+      - blockwishlist
+      - ps_emailsubscription
+      - ps_socialfollow
   hooks:
     modules_to_hook:
       displayAfterBodyOpeningTag:
         - blockreassurance
-      displayAdminCustomers:
-        - blockwishlist
+      # displayAdminCustomers:
       displayCustomerAccount:
-        - blockwishlist
         - psgdpr
       displayMyAccountBlock:
-        - blockwishlist
       # displayNav1:
       displayNav2:
         - ps_contactinfo
@@ -96,7 +96,6 @@ global_settings:
         - ps_linklist
         - ps_customeraccountlinks
         - ps_contactinfo
-        - blockwishlist
       displayFooterAfter:
         - blockreassurance
       displayFooterProduct:
@@ -121,8 +120,7 @@ global_settings:
         - blockreassurance
       displayOrderConfirmation2:
         - ps_featuredproducts
-      displayProductActions:
-        - blockwishlist
+      # displayProductActions:
 
   image_types:
     cart_default:
