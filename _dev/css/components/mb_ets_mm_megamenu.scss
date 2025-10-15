@@ -1,5 +1,9 @@
 #header {
   .ets_mm_megamenu {
+    * {
+      font-family: "Capriola", sans-serif;
+    }
+
     @include media-breakpoint-down(sm) {
       margin-top: 8px;
       position: absolute;
