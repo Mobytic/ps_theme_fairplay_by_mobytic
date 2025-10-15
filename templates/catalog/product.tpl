@@ -80,6 +80,7 @@
 
           {* product reference *}
           {block name='product_reference'}
+            {$product.reference|@var_dump}
             {if $product.reference}
               <p class="product-reference">
                 <span class="label">{l s='Reference:' d='Shop.Theme.Catalog'}</span>
