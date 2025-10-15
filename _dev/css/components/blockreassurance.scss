@@ -1,16 +1,18 @@
 #footer-before {
   .blockreassurance {
-    .block-icon img {
+    .block-icon {
       height: 100px;
       margin-bottom: 24px;
     }
     .block-title {
       color: $fp-red !important;
-      margin-bottom: 12px;
+      margin-bottom: 6px;
     }
 
     p {
       color: $fp-orange !important;
+      font-weight: 600;
+      width: 75%;
     }
   }
 }
