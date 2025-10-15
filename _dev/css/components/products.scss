@@ -164,6 +164,8 @@
   }
 
   #quantity_wanted {
+    width: 3rem;
+    height: 2.75rem;
     padding: 0.175rem 0.5rem;
     color: $gray-darker;
     background-color: $white;
@@ -172,13 +174,9 @@
     font-weight: normal;
     text-align: center;
     vertical-align: middle;
-    height: 40px;
-    width: 100px;
-    border: solid 1px #cccccc;
-    margin: auto;
-    padding: 5px 0px;
-    line-height: 40px;
-    display: inline-block;
+
+    border: 1px solid $gray-light;
+    border-radius: 25px;
   }
 
   .input-group-btn-vertical {
