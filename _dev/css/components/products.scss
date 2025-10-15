@@ -348,14 +348,14 @@
 
       &.active {
         color: $white;
-        background: $fp-red;
+        background: $fp-orange;
         border: none;
         // border-bottom: $brand-primary 3px solid;
       }
 
       &:hover {
         color: $white;
-        background: $fp-red;
+        background: $fp-orange;
         border: none;
         // border-bottom: $brand-primary 3px solid;
         transition: background 0.3s ease-in-out;
@@ -364,7 +364,7 @@
 
     .nav-item {
       float: left;
-      border-right: 2px solid $fp-beige;
+      border-right: 2px solid #e7e7e7;
     }
   }
 }
