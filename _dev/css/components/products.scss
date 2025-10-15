@@ -318,12 +318,12 @@
 }
 
 .tabs {
-  padding: $medium-space $large-space;
   margin-top: 2rem;
   background: $white;
-
+  
   .tab-pane {
     margin-top: $medium-space;
+    padding: $medium-space $large-space;
     // padding-top: $medium-space;
 
     background: $fp-beige;
