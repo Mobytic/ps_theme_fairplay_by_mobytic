@@ -69,13 +69,13 @@
       <span id="product-availability" class="js-product-availability">
         {if $product.show_availability && $product.availability_message}
           {if $product.availability == 'available'}
-            <i class="material-icons rtl-no-flip product-available">&#xE5CA;</i>
+            <span class="availability-dot availability-available" role="img" aria-label="{l s='In stock' d='Shop.Theme.Catalog'}" style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#28a745;margin-right:8px;vertical-align:middle"></span>
           {elseif $product.availability == 'last_remaining_items'}
-            <i class="material-icons product-last-items">&#xE002;</i>
+            <span class="availability-dot availability-low" role="img" aria-label="{l s='Low stock' d='Shop.Theme.Catalog'}" style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#ff8c00;margin-right:8px;vertical-align:middle"></span>
           {else}
-            <i class="material-icons product-unavailable">&#xE14B;</i>
+            <span class="availability-dot availability-unavailable" role="img" aria-label="{l s='Out of stock' d='Shop.Theme.Catalog'}" style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#d9534f;margin-right:8px;vertical-align:middle"></span>
           {/if}
-          {$product.availability_message}
+          <span class="availability-message">{$product.availability_message}</span>
         {/if}
       </span>
     {/block}
