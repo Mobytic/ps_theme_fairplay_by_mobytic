@@ -622,7 +622,7 @@
       margin-bottom: $small-space;
       cursor: pointer;
       border-radius: 25px;
-      border: 1px solid $gray;
+      border: 1px solid $gray-second;
 
       .images-container & {
         margin-right: 0.8125rem;
@@ -630,7 +630,7 @@
 
       &.selected,
       &:hover {
-        border: $fp-red 3px solid;
+        border: $fp-red 2px solid;
       }
     }
   }
