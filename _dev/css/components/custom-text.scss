@@ -88,7 +88,7 @@
   }
 
   p {
-    color: #232323;
+    color: $gray-darker;
     font-size: 0.9375rem;
     line-height: 1.5;
     margin-bottom: 1.5rem;
@@ -96,19 +96,19 @@
 
   ul,
   ol {
-    color: #232323;
+    color: $gray-darker;
     padding-left: 1.25rem;
     list-style-position: inside;
     margin-bottom: 1.5rem;
 
     li {
-      color: #232323;
+      color: $gray-darker;
       font-size: 0.9375rem;
-      color: #232323;
+      color: $gray-darker;
       margin-bottom: 0.5rem;
 
       * {
-        color: #232323;
+        color: $gray-darker;
       }
     }
   }
