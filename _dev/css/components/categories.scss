@@ -221,6 +221,9 @@
     .facet-title {
       font-size: 1rem;
       color: $gray-darker;
+      border-radius: $btn-border-radius;
+      border: none;
+      background: $fp-beige;
     }
 
     .facet-label {
@@ -234,11 +237,11 @@
       }
     }
 
-    &-dropdown {
-      border-radius: $btn-border-radius;
-      border: none;
-      background: $fp-beige;
-    }
+    // &-dropdown {
+    //   border-radius: $btn-border-radius;
+    //   border: none;
+    //   background: $fp-beige;
+    // }
   }
 }
 

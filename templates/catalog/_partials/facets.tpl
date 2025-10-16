@@ -45,7 +45,7 @@
       {/if}
 
       <section class="facet clearfix">
-        <p class="h6 facet-title hidden-sm-down">{$facet.label}</p>
+        <p class="facet-title hidden-sm-down">{$facet.label}</p>
         {assign var=_expand_id value=10|mt_rand:100000}
         {assign var=_collapse value=true}
         {foreach from=$facet.filters item="filter"}
