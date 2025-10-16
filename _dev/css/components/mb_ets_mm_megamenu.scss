@@ -7,6 +7,20 @@
           font-weight: 400 !important;
         }
       }
+
+      .mm_menus_li {
+        &.promo {
+          &:hover {
+            background: $fp-red;
+          }
+
+          > a {
+            &:hover {
+              color: $white;
+            }
+          }
+        }
+      }
     }
 
     @include media-breakpoint-down(sm) {
