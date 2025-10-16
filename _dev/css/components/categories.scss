@@ -206,6 +206,12 @@
   margin-bottom: 1.563rem;
   background: $white;
 
+  > section.facet {
+    &:first-child {
+      padding-top: 1rem;
+    }
+  }
+
   > .h6 {
     font-size: 1.5rem;
     font-weight: 500;
@@ -217,7 +223,7 @@
     .check-mode {
       display: flex;
       flex-wrap: wrap;
-      gap: 4px;
+      gap: 8px;
     }
 
     .select-mode {
@@ -525,7 +531,7 @@
 #category {
   #left-column {
     .h6 {
-      font-size: 1.125rem;
+      font-size: 1.25rem;
       font-weight: 500;
       color: $fp-blue;
       text-transform: initial !important;
