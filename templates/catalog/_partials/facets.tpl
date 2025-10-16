@@ -71,7 +71,7 @@
                 {/if}
 
                 <li>
-                  <label class="facet-label{if $filter.active} active {/if}" for="facet_input_{$_expand_id}_{$filter_key}">
+                  <label class="facet-label{if $filter.active} active {/if} {if $facet.multipleSelectionAllowed}custom-checkbox{else}custom-radio{/if}" for="facet_input_{$_expand_id}_{$filter_key}">
                     {if $facet.multipleSelectionAllowed}
                       <span class="custom-checkbox">
                         <input

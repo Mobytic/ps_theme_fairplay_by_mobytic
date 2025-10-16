@@ -224,7 +224,7 @@
       border: none;
       background: $fp-beige;
       color: $fp-orange !important;
-      padding: 0.4rem 0.7rem;
+      padding: 8px 12px;
       width: 100% !important;
     }
 
@@ -239,11 +239,10 @@
       }
     }
 
-    // &-dropdown {
-    //   border-radius: $btn-border-radius;
-    //   border: none;
-    //   background: $fp-beige;
-    // }
+    &-dropdown {
+      border-radius: $btn-border-radius;
+      border: 1px solid $gray-lighter-second;
+    }
   }
 }
 
