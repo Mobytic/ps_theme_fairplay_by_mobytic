@@ -28,7 +28,7 @@ $product-description-height: 70px;
 
       position: absolute;
       bottom: -1.875rem;
-      left: calc(50% - 6.125rem - 2px)
+      left: calc(50% - 6.125rem - 2px);
       transform: translateX(-50%);
     }
 
@@ -43,7 +43,7 @@ $product-description-height: 70px;
 
       position: absolute;
       bottom: -1.25rem;
-      left: calc(50% + 3.125rem + 2px)
+      left: calc(50% + 3.125rem + 2px);
       transform: translateX(-50%);
     } 
   }
