@@ -214,9 +214,11 @@
   .facet {
     padding-top: 1.5rem;
 
-    .collapse {
-      display: flex;
-      flex-wrap: wrap;
+    &.check-mode {
+      .collapse {
+        display: flex;
+        flex-wrap: wrap;
+      }
     }
 
     .facet-title {
@@ -258,6 +260,7 @@
       &.active {
         a {
           border-color: $fp-orange;
+          color: $fp-orange;
         }
       }
 
