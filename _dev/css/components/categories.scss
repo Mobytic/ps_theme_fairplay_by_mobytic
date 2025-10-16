@@ -152,12 +152,12 @@
   box-shadow: 1px 1px 1px 1px $gray-light;
 
   &.open {
-    border: 0;
+    // border: 0;
 
-    > .select-title {
-      background: $gray-lighter;
-      border: 3px solid $brand-primary;
-    }
+    // > .select-title {
+    background: $gray-lighter;
+    border: 3px solid $brand-primary;
+    // }
   }
 
   .select-title {
