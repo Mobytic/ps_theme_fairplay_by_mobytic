@@ -237,6 +237,21 @@
         font-size: $font-size-lg;
         color: $gray-darker;
       }
+
+      &.custom-checkbox-radio {
+        display: inline-flex;
+        gap: 0.5rem;
+        justify-content: flex-start;
+        align-items: center;
+
+        p {
+          margin: 0;
+        }
+
+        .custom-checkbox {
+          position: unset;
+        }
+      }
     }
 
     &-dropdown {
