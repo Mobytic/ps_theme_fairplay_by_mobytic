@@ -233,6 +233,12 @@
         color: $gray-darker;
       }
     }
+
+    &-dropdown {
+      border-radius: $btn-border-radius;
+      border: none;
+      background: $fp-beige;
+    }
   }
 }
 
