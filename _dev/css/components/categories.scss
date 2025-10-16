@@ -245,8 +245,14 @@
 
         + a {
           border-radius: 0;
-          border: 1px solid $gray-lighter-second;
+          border: 1px solid $gray-lighter;
           padding: 0.5rem 0.75rem;
+        }
+      }
+
+      &.active {
+        a {
+          border-color: $fp-orange;
         }
       }
 
