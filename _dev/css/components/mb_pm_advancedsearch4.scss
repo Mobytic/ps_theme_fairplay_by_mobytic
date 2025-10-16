@@ -5,6 +5,16 @@
       padding-right: 0;
     }
 
+    .card-header {
+      all: unset;
+
+      .PM_ASBlockTitle {
+        font-size: 1.25rem;
+        font-weight: 500;
+        color: $fp-blue;
+      }
+    }
+
     .PM_ASCriterionsGroupTitle {
       color: $fp-orange;
       font-size: 1rem;
