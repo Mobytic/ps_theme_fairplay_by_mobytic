@@ -1,4 +1,10 @@
 #footer-before {
+  > div {
+    > div {
+      margin-bottom: 24px;
+    }
+  }
+
   .blockreassurance {
     .block-icon {
       height: 100px;
