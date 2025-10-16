@@ -15,11 +15,12 @@ $product-description-height: 70px;
     font-weight: bold;
     font-size: 1.5rem;
     text-align: center;
+    position: relative;
 
     &::before {
       content: "";
       display: block;
-      width: 3.125rem;
+      width: 6.125rem;
       height: 0.25rem;
       margin: 0 auto 0.625rem auto;
       background: $fp-blue;
@@ -29,6 +30,19 @@ $product-description-height: 70px;
       bottom: -1.875rem;
       left: 50%;
       transform: translateX(-50%);
+      animation: fadeInDown 0.5s ease-in-out;
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translate3d(0, -20%, 0);
+      }
+
+      to {
+        opacity: 1;
+        transform: none;
+      }
     }
   }
 
