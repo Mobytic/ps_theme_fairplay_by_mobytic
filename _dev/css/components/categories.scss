@@ -135,7 +135,7 @@
     left: 0;
     width: 16.88rem;
     margin: 0;
-    background: $gray-lighter;
+    background: $gray;
     border: none;
     border-radius: 0;
     box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.1);
@@ -155,7 +155,7 @@
     // border: 0;
 
     // > .select-title {
-    background: $gray-lighter;
+    background: $gray;
     border: 3px solid $fp-orange;
     // }
   }
@@ -179,7 +179,7 @@
     display: block;
     padding: $small-space $medium-space;
     color: $gray-darker;
-    background: $gray-lighter;
+    background: $gray;
 
     &:hover {
       color: $white;
@@ -193,7 +193,7 @@
     width: 100%;
     padding: 0;
     margin-top: 3px;
-    background: $gray-lighter;
+    background: $gray;
     border: none;
     box-shadow: 1px 1px 1px 1px $gray-light;
   }
@@ -223,7 +223,7 @@
     .check-mode {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
+      gap: 6px;
     }
 
     .select-mode {
@@ -259,7 +259,7 @@
 
         + a {
           border-radius: 0;
-          border: 1px solid $gray-lighter;
+          border: 1px solid $gray;
           padding: 0.5rem 0.75rem;
           width: 100%;
 
@@ -560,7 +560,7 @@
       #search_filters {
         padding: 0;
         margin-bottom: 20px;
-        border-top: 1px solid $gray-lighter;
+        border-top: 1px solid $gray;
         box-shadow: none;
 
         .ui-slider-horizontal {
@@ -569,7 +569,7 @@
 
         .facet {
           padding-top: 0;
-          border-bottom: 1px solid $gray-lighter;
+          border-bottom: 1px solid $gray;
 
           .title {
             align-items: center;
@@ -628,7 +628,7 @@
 
             li {
               padding: 1.25rem;
-              border-top: 1px solid $gray-lighter;
+              border-top: 1px solid $gray;
             }
           }
         }
