@@ -21,17 +21,15 @@
         }
 
         label {
-          a {
-            border-radius: 0;
-            border: 1px solid $gray-second;
-            padding: 0.5rem 0.75rem;
-            margin: 0;
-            cursor: pointer;
+          border-radius: 0;
+          border: 1px solid $gray-second;
+          padding: 0.5rem 0.75rem;
+          margin: 0;
+          cursor: pointer;
 
-            &:hover {
-              border-color: $fp-orange;
-              color: $fp-orange;
-            }
+          &:hover {
+            border-color: $fp-orange;
+            color: $fp-orange;
           }
         }
       }
