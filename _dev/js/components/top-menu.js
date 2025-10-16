@@ -77,4 +77,19 @@ export default class TopMenu extends DropDown {
       $('#notifications, #wrapper, #footer').show();
     }
   }
+
+
+
+  onScroll() {
+    // make the logo smaller when scrolling the page down #_desktop_logo
+    const $header = $('#header');
+    const $logo = $('#_desktop_logo img');
+    const scrollTop = $(window).scrollTop();
+
+    if (scrollTop > 30) {
+      $logo.css('max-width', '100%');
+    } else {
+      $logo.css('max-width', '80%');
+    }
+  }
 }

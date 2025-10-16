@@ -70,6 +70,7 @@ $(document).ready(() => {
   dropDown.init();
   form.init();
   topMenu.init();
+  topMenu.onScroll();
   productMinitature.init();
   productSelect.init();
   usePasswordPolicy('.field-password-policy');
