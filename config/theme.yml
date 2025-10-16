@@ -59,6 +59,8 @@ global_settings:
       - blockwishlist
       - ps_emailsubscription
       - ps_socialfollow
+      - ps_banner
+      - ps_customtext
   hooks:
     modules_to_hook:
       displayAfterBodyOpeningTag:
