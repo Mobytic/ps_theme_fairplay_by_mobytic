@@ -127,12 +127,12 @@
     &:hover {
       color: $white;
       text-decoration: none;
-      background: $brand-primary;
+      background: $fp-orange;
     }
   }
 
   .dropdown-menu {
-    // left: auto;
+    left: 0;
     width: 16.88rem;
     margin: 0;
     background: $gray-lighter;
@@ -184,7 +184,7 @@
     &:hover {
       color: $white;
       text-decoration: none;
-      background: $brand-primary;
+      background: $fp-orange;
     }
   }
 
@@ -217,6 +217,7 @@
     .check-mode {
       display: flex;
       flex-wrap: wrap;
+      gap: 4px;
     }
 
     .select-mode {
@@ -346,7 +347,7 @@
 
   .current a {
     font-size: 1.25rem;
-    color: $brand-primary;
+    color: $fp-orange;
     text-decoration: none;
   }
 }
@@ -473,7 +474,7 @@
     .add,
     .remove {
       &:hover {
-        color: $brand-primary;
+        color: $fp-orange;
       }
     }
 
@@ -490,7 +491,7 @@
       cursor: pointer;
 
       &:hover {
-        color: $brand-primary;
+        color: $fp-orange;
       }
     }
 
