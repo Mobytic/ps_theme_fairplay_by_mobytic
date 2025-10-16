@@ -28,7 +28,6 @@
   }
 
   &.cart-summary-totals {
-
     .cart-summary-line {
       padding: 0.5rem 0.2rem 0;
 
@@ -109,13 +108,21 @@
     }
   }
 
-  .card-block {
-    padding: 1rem;
+  .cart-container {
+    border: 1px solid $gray-second;
+    border-radius: $btn-border-radius;
+    overflow: hidden;
+    
+    .card-block {
+      padding: 1rem;
+      background: $fp-beige-light;
 
-    h1 {
-      margin-bottom: 0;
-      font-size: 1.5rem;
-      font-weight: 400;
+      h1 {
+        margin-bottom: 0;
+        font-size: 1.5rem;
+        font-weight: 400;
+        text-transform: unset;
+      }
     }
   }
 
