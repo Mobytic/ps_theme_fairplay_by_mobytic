@@ -371,6 +371,12 @@
         content: "-";
       }
     }
+
+    .collapse {
+      > ul {
+        margin-left: 1.25rem;
+      }
+    }
   }
 
   a {
@@ -532,8 +538,6 @@
 
           .collapse {
             display: none;
-
-            margin-left: 1.25rem;
 
             &.in {
               display: block;
