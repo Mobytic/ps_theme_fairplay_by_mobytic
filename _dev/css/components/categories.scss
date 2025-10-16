@@ -215,7 +215,8 @@
     padding-top: 1.5rem;
 
     .collapse {
-      display: block;
+      display: flex;
+      flex-wrap: wrap;
     }
 
     .facet-title {
@@ -245,6 +246,12 @@
           border-radius: 0;
           border: 1px solid $gray-lighter;
           padding: 0.5rem 0.75rem;
+          width: 100%;
+
+          &:hover {
+            border-color: $fp-orange;
+            color: $fp-orange;
+          }
         }
       }
 
