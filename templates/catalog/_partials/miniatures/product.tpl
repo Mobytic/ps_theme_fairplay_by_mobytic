@@ -118,7 +118,7 @@
               {/if}
             {/block}
             {block name='product_list_actions'}
-              <div class="product-list-actions" style="margin-top: .7rem; margin-left: .5rem; margin-right: .5rem;">
+              <div class="product-list-actions">
                 {if $product.main_variants}
                   <a class="btn btn-primary w-100" href="{$product.url}" rel="nofollow">
                     {l s='Select' d='Shop.Theme.Actions'}
@@ -149,7 +149,8 @@
                         data-add-to-cart-btn data-out-label="{l s='Out of stock' d='Shop.Theme.Actions'}" type="submit"
                         {if $isOut}disabled{/if}>
                         {if $isOut}
-                          {l s='Out of stock' d='Shop.Theme.Actions'}
+                          {* {l s='Out of stock' d='Shop.Theme.Actions'} *}
+                          <i class="material-icons remove_shopping_cart">remove_shopping_cart</i>
                         {else}
                           <img height="18px" width="18px" src="{_PS_THEME_URI_}upload/img/icons/card.png"
                             alt="{l s='Shopping cart' d='Shop.Theme.Actions'}" />
@@ -160,7 +161,9 @@
 
                   {else}
                     <a class="btn btn-primary w-100" style="color: white;" href="{$product.url}" rel="nofollow">
-                      {l s='View' d='Shop.Theme.Actions'}
+                      {* {l s='View' d='Shop.Theme.Actions'} *}
+                      {* icon eye *}
+                      <i class="material-icons visibility">visibility</i>
                     </a>
                   {/if}
                 {/if}
