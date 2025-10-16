@@ -25,8 +25,23 @@
       border: none;
     }
 
-    .PM_ASCriterionsOutput {
+    .PM_ASCriterionsGroupOuter {
         padding: 12px 8px;
+    }
+
+    .PM_ASCritRange {
+        .ui-slider-range {
+            background: $fp-orange;
+        }
+
+        .ui-slider-handle {
+            border: 2px solid $fp-orange;
+            background: $white;
+
+            &:hover, &:focus {
+                border-color: $fp-orange;
+            }
+        }
     }
 
     .PM_ASCriterionGroupCheckbox {
