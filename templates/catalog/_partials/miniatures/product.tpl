@@ -160,7 +160,7 @@
                     </form>
 
                   {else}
-                    <a class="btn btn-primary w-100" style="color: white;" href="{$product.url}" rel="nofollow">
+                    <a href="{$product.url}" rel="nofollow">
                       {* {l s='View' d='Shop.Theme.Actions'} *}
                       {* icon eye *}
                       <i class="material-icons visibility">visibility</i>
