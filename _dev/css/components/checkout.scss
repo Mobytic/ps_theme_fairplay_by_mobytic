@@ -3,23 +3,23 @@ $carrier-selector: "carrier";
 body#checkout {
   color: $gray-darker;
 
-  #header .header-nav {
-    max-height: none;
-    padding: 0.9375rem 0;
-    margin-bottom: 0;
-    border: none;
+  // #header .header-nav {
+  //   max-height: none;
+  //   padding: 0.9375rem 0;
+  //   margin-bottom: 0;
+  //   border: none;
 
-    .logo {
-      width: auto;
-      max-height: 4.375rem;
-    }
+  //   .logo {
+  //     width: auto;
+  //     max-height: 4.375rem;
+  //   }
 
-    #_desktop_contact_link {
-      #contact-link {
-        margin-top: 0;
-      }
-    }
-  }
+  //   #_desktop_contact_link {
+  //     #contact-link {
+  //       margin-top: 0;
+  //     }
+  //   }
+  // }
 
   .cart-grid-right {
     .card {
