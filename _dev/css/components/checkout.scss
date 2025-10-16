@@ -23,8 +23,10 @@ body#checkout {
 
   .cart-grid-right {
     .card {
-      border: 0;
       box-shadow: none;
+      border: 1px solid $border-gray;
+      border-radius: $btn-border-radius;
+      overflow: hidden;
 
       .cart-total {
         background-color: inherit;

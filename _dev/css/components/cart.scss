@@ -112,14 +112,14 @@
     border: 1px solid $border-gray;
     border-radius: $btn-border-radius;
     overflow: hidden;
-    
+
     .card-block {
       padding: 1rem;
-      background: $fp-beige-light;
+      background: $border-gray;
 
       h1 {
         margin-bottom: 0;
-        font-size: 1.5rem;
+        font-size: 1.125rem;
         font-weight: 400;
         text-transform: unset;
       }
@@ -133,6 +133,12 @@
 
 /** CART RIGHT **/
 .cart-grid-right {
+  .card {
+    border: 1px solid $border-gray;
+    border-radius: $btn-border-radius;
+    overflow: hidden;
+  }
+
   .promo-discounts {
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
