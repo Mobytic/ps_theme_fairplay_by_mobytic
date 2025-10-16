@@ -22,74 +22,73 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  */
-import $ from 'jquery';
-import prestashop from 'prestashop';
-import DropDown from './drop-down';
+import $ from "jquery";
+import prestashop from "prestashop";
+import DropDown from "./drop-down";
 
 export default class TopMenu extends DropDown {
   init() {
     let elmtClass;
     const self = this;
-    this.el.find('li').on('mouseenter mouseleave', (e) => {
-      if (this.el.parent().hasClass('mobile')) {
+    this.el.find("li").on("mouseenter mouseleave", (e) => {
+      if (this.el.parent().hasClass("mobile")) {
         return;
       }
-      const currentTargetClass = $(e.currentTarget).attr('class');
+      const currentTargetClass = $(e.currentTarget).attr("class");
 
       if (elmtClass !== currentTargetClass) {
         const classesSelected = Array.prototype.slice
           .call(e.currentTarget.classList)
-          .map((elem) => (typeof elem === 'string' ? `.${elem}` : false));
+          .map((elem) => (typeof elem === "string" ? `.${elem}` : false));
 
-        elmtClass = classesSelected.join('');
+        elmtClass = classesSelected.join("");
 
-        if (elmtClass && $(e.target).data('depth') === 0) {
+        if (elmtClass && $(e.target).data("depth") === 0) {
           $(`${elmtClass} .js-sub-menu`).css({
             top: $(`${elmtClass}`).height() + $(`${elmtClass}`).position().top,
           });
         }
       }
     });
-    $('#menu-icon').on('click', () => {
-      $('#mobile_top_menu_wrapper').toggle();
+    $("#menu-icon").on("click", () => {
+      $("#mobile_top_menu_wrapper").toggle();
       self.toggleMobileMenu();
     });
 
-    this.el.on('click', (e) => {
-      if (this.el.parent().hasClass('mobile')) {
+    this.el.on("click", (e) => {
+      if (this.el.parent().hasClass("mobile")) {
         return;
       }
       e.stopPropagation();
     });
 
-    prestashop.on('responsive update', () => {
-      $('.js-sub-menu').removeAttr('style');
+    prestashop.on("responsive update", () => {
+      $(".js-sub-menu").removeAttr("style");
       self.toggleMobileMenu();
     });
     super.init();
   }
 
   toggleMobileMenu() {
-    $('#header').toggleClass('is-open');
-    if ($('#mobile_top_menu_wrapper').is(':visible')) {
-      $('#notifications, #wrapper, #footer').hide();
+    $("#header").toggleClass("is-open");
+    if ($("#mobile_top_menu_wrapper").is(":visible")) {
+      $("#notifications, #wrapper, #footer").hide();
     } else {
-      $('#notifications, #wrapper, #footer').show();
+      $("#notifications, #wrapper, #footer").show();
     }
   }
 
-
-
   onScroll() {
     // make the logo smaller when scrolling the page down #_desktop_logo
-    const $header = $('#header');
-    const $logo = $('#_desktop_logo img');
-    const scrollTop = $(window).scrollTop();
+    const $logo = $("#_desktop_logo img");
 
-    if (scrollTop > 30) {
-      $logo.css('max-width', '100%');
-    } else {
-      $logo.css('max-width', '80%');
-    }
+    $(window).on("scroll", () => {
+      const scrollTop = $(window).scrollTop();
+      if (scrollTop > 30) {
+        $logo.css("max-width", "100%");
+      } else {
+        $logo.css("max-width", "80%");
+      }
+    });
   }
 }
