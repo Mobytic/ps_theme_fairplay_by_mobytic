@@ -20,6 +20,18 @@
     max-width: 452px;
     margin: 0 auto;
   }
+
+  .product-price-add-to-cart {
+    display: inline-flex;
+    gap: 1.5rem;
+
+    button {
+      border: none;
+      background: none;
+      padding: 0;
+      margin: 0;
+    }
+  }
 }
 
 .product-price {

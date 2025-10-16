@@ -83,40 +83,40 @@
             {/if}
           {/block}
 
-          {block name='product_price_and_shipping'}
-            {if $product.show_price}
-              <div class="product-price-and-shipping">
-                {if $product.has_discount}
-                  {hook h='displayProductPriceBlock' product=$product type="old_price"}
 
-                  <span class="regular-price"
-                    aria-label="{l s='Regular price' d='Shop.Theme.Catalog'}">{$product.regular_price}</span>
-                  {if $product.discount_type === 'percentage'}
-                    <span class="discount-percentage discount-product">{$product.discount_percentage}</span>
-                  {elseif $product.discount_type === 'amount'}
-                    <span class="discount-amount discount-product">{$product.discount_amount_to_display}</span>
+          <div class="product-price-add-to-cart">
+            {block name='product_price_and_shipping'}
+              {if $product.show_price}
+                <div class="product-price-and-shipping">
+                  {if $product.has_discount}
+                    {hook h='displayProductPriceBlock' product=$product type="old_price"}
+
+                    <span class="regular-price"
+                      aria-label="{l s='Regular price' d='Shop.Theme.Catalog'}">{$product.regular_price}</span>
+                    {if $product.discount_type === 'percentage'}
+                      <span class="discount-percentage discount-product">{$product.discount_percentage}</span>
+                    {elseif $product.discount_type === 'amount'}
+                      <span class="discount-amount discount-product">{$product.discount_amount_to_display}</span>
+                    {/if}
                   {/if}
-                {/if}
 
-                {hook h='displayProductPriceBlock' product=$product type="before_price"}
+                  {hook h='displayProductPriceBlock' product=$product type="before_price"}
 
-                <span class="price" aria-label="{l s='Price' d='Shop.Theme.Catalog'}">
-                  {capture name='custom_price'}{hook h='displayProductPriceBlock' product=$product type='custom_price' hook_origin='products_list'}{/capture}
-                  {if '' !== $smarty.capture.custom_price}
-                    {$smarty.capture.custom_price nofilter}
-                  {else}
-                    {$product.price}
-                  {/if}
-                </span>
+                  <span class="price" aria-label="{l s='Price' d='Shop.Theme.Catalog'}">
+                    {capture name='custom_price'}{hook h='displayProductPriceBlock' product=$product type='custom_price' hook_origin='products_list'}{/capture}
+                    {if '' !== $smarty.capture.custom_price}
+                      {$smarty.capture.custom_price nofilter}
+                    {else}
+                      {$product.price}
+                    {/if}
+                  </span>
 
-                {hook h='displayProductPriceBlock' product=$product type='unit_price'}
+                  {hook h='displayProductPriceBlock' product=$product type='unit_price'}
 
-                {hook h='displayProductPriceBlock' product=$product type='weight'}
-              </div>
-            {/if}
-          {/block}
-
-          <div>
+                  {hook h='displayProductPriceBlock' product=$product type='weight'}
+                </div>
+              {/if}
+            {/block}
             {block name='product_list_actions'}
               <div class="product-list-actions" style="margin-top: .7rem; margin-left: .5rem; margin-right: .5rem;">
                 {if $product.main_variants}
@@ -143,15 +143,15 @@
                           max="{$product.quantity|default:0}">
                         <button type="button" class="btn btn-light btn-sm quantity-increase" data-qty-incr>+</button>
                       </div> *}
- 
+
                       {assign var=isOut value=($product.quantity <= 0)}
-                      <button class="w-100 btn btn-primary add-to-cart{if $isOut} out-of-stock{/if}"
-                        data-button-action="add-to-cart" data-add-to-cart-btn
-                        data-out-label="{l s='Out of stock' d='Shop.Theme.Actions'}" type="submit" {if $isOut}disabled{/if}>
+                      <button class="add-to-cart{if $isOut} out-of-stock{/if}" data-button-action="add-to-cart"
+                        data-add-to-cart-btn data-out-label="{l s='Out of stock' d='Shop.Theme.Actions'}" type="submit"
+                        {if $isOut}disabled{/if}>
                         {if $isOut}
                           {l s='Out of stock' d='Shop.Theme.Actions'}
                         {else}
-                          <img src="{_PS_THEME_URI_}upload/img/icons/card.png"
+                          <img height="18px" width="18px" src="{_PS_THEME_URI_}upload/img/icons/card.png"
                             alt="{l s='Shopping cart' d='Shop.Theme.Actions'}" />
                           {* <i class="material-icons shopping-cart"></i> {l s='Add' d='Shop.Theme.Actions'} *}
                         {/if}
