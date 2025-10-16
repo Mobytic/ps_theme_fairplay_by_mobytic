@@ -375,6 +375,14 @@
     .collapse {
       > ul {
         margin-left: 1.25rem !important;
+
+        li {
+          &:hover {
+            a {
+              color: $fp-orange;
+            }
+          }
+        }
       }
 
       &.in + a {
