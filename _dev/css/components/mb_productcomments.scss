@@ -3,10 +3,13 @@
   overflow: hidden;
   background: $gray-lighter-second;
   transition: background 0.3s ease-in-out;
+  padding: 8px 0;
+  margin-top: 2rem;
 }
 
 #empty-product-comment,
 #product-comments-list {
+  margin-top: 1.25rem;
   border: 1px solid $gray-second;
   border-radius: $btn-border-radius;
 }
