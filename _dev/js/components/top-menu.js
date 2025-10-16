@@ -85,9 +85,9 @@ export default class TopMenu extends DropDown {
     $(window).on("scroll", () => {
       const scrollTop = $(window).scrollTop();
       if (scrollTop > 30) {
-        $logo.css("max-width", "100%");
-      } else {
         $logo.css("max-width", "80%");
+      } else {
+        $logo.css("max-width", "100%");
       }
     });
   }
