@@ -1,4 +1,10 @@
 #category {
+  #content-wrapper {
+    &.as4-loader-blur {
+      filter: none !important;
+    }
+  }
+
   #PM_ASBlockOutput_1 {
     .card-block {
       padding-left: 0;
@@ -26,22 +32,23 @@
     }
 
     .PM_ASCriterionsGroupOuter {
-        padding: 12px 8px;
+      padding: 12px 8px;
     }
 
     .PM_ASCritRange {
-        .ui-slider-range {
-            background: $fp-orange;
-        }
+      .ui-slider-range {
+        background: $fp-orange;
+      }
 
-        .ui-slider-handle {
-            border: 2px solid $fp-orange;
-            background: $white;
+      .ui-slider-handle {
+        border: 2px solid $fp-orange;
+        background: $white;
 
-            &:hover, &:focus {
-                border-color: $fp-orange;
-            }
+        &:hover,
+        &:focus {
+          border-color: $fp-orange;
         }
+      }
     }
 
     .PM_ASCriterionGroupCheckbox {
