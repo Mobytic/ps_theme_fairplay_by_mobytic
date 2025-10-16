@@ -221,6 +221,7 @@
 
     .facet-title {
       font-size: 1rem !important;
+      font-weight: bold;
       border-radius: $btn-border-radius;
       border: none;
       background: $fp-beige;
@@ -235,7 +236,7 @@
       a {
         display: inline-block;
         margin-top: 0.4375rem;
-        font-size: $font-size-lg;
+        font-size: 14px;
         color: $gray-darker;
       }
 
