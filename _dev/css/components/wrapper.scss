@@ -23,6 +23,10 @@
 
     li {
       display: inline;
+      
+      > * {
+        font-size: 12px;
+      }
 
       &::after {
         margin: 0.3125rem;
