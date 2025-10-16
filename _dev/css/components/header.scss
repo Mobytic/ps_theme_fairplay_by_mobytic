@@ -221,7 +221,7 @@
 
     #_desktop_contact_link {
       display: inline-block;
-      background-color: $fp-orange;
+      background-color: $black;
 
       #contact-link {
         display: inline-flex;
@@ -247,7 +247,7 @@
             padding: 0 0.5rem;
 
             color: $white;
-            background-color: $fp-orange;
+            background-color: $black;
             font-size: 0.8125rem;
 
             &:hover {
