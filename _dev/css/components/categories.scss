@@ -374,7 +374,12 @@
 
     .collapse {
       > ul {
-        margin-left: 1.25rem;
+        margin-left: 1.25rem !important;
+      }
+
+      &.in + a {
+        font-weight: 600;
+        color: $fp-orange;
       }
     }
   }
