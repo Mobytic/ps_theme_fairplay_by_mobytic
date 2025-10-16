@@ -261,7 +261,8 @@
         width: 100% !important;
       }
 
-      .custom-checkbox {
+      .custom-checkbox,
+      .custom-radio {
         display: none;
 
         + a {
