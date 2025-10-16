@@ -8,6 +8,8 @@
     width: 100%;
     min-height: 28.13rem;
     background: $gray-light;
+    border-radius: $btn-border-radius;
+    overflow: hidden;
   }
 
   .modal-header {

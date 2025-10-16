@@ -117,7 +117,7 @@
                 </div>
               {/if}
             {/block}
-            {block name='product_list_actions'}
+            {* {block name='product_list_actions'}
               <div class="product-list-actions">
                 {if $product.main_variants}
                   <a class="btn btn-primary w-100" href="{$product.url}" rel="nofollow">
@@ -136,33 +136,22 @@
                       <input type="hidden" name="add" value="1">
                       <input type="hidden" name="action" value="update">
 
-                      {* <div class="quantity-selector mb-2" data-qty-stepper>
-                        <button type="button" class="btn btn-light btn-sm quantity-decrease" data-qty-decr>-</button>
-                        <input type="number" class="form-control text-center qty-input" name="qty_visible"
-                          value="{$product.minimal_quantity|default:1}" min="{$product.minimal_quantity|default:1}"
-                          max="{$product.quantity|default:0}">
-                        <button type="button" class="btn btn-light btn-sm quantity-increase" data-qty-incr>+</button>
-                      </div> *}
 
                       {assign var=isOut value=($product.quantity <= 0)}
                       <button class="add-to-cart{if $isOut} out-of-stock{/if}" data-button-action="add-to-cart"
                         data-add-to-cart-btn data-out-label="{l s='Out of stock' d='Shop.Theme.Actions'}" type="submit"
                         {if $isOut}disabled{/if}>
                         {if $isOut}
-                          {* {l s='Out of stock' d='Shop.Theme.Actions'} *}
                           <i class="material-icons remove_shopping_cart">remove_shopping_cart</i>
                         {else}
                           <img height="18px" width="18px" src="{_PS_THEME_URI_}upload/img/icons/card.png"
                             alt="{l s='Shopping cart' d='Shop.Theme.Actions'}" />
-                          {* <i class="material-icons shopping-cart"></i> {l s='Add' d='Shop.Theme.Actions'} *}
                         {/if}
                       </button>
                     </form>
 
                   {else}
                     <a href="{$product.url}" rel="nofollow">
-                      {* {l s='View' d='Shop.Theme.Actions'} *}
-                      {* icon eye *}
                       <i class="material-icons visibility">visibility</i>
                     </a>
                   {/if}
@@ -171,7 +160,7 @@
                 {hook h='displayProductListFunctionalButtons' product=$product}
               </div>
 
-            {/block}
+            {/block} *}
           </div>
 
           {block name='product_reviews'}
