@@ -27,20 +27,20 @@ $product-description-height: 70px;
 
       position: absolute;
       bottom: -0.5rem;
-      left: calc(50% - 6.125rem);
+      left: calc(50% - (6.125rem / 2) - 4px);
     }
 
     &::after {
       content: "";
       display: block;
-      width: 3.125rem;
+      width: 1rem;
       height: 0.25rem;
       background: $fp-red;
       border-radius: 25px;
 
       position: absolute;
       bottom: -0.5rem;
-      left: 50%;
+      left: calc(50% + (6.125rem / 2) - 4px);
     }
   }
 
