@@ -212,7 +212,7 @@
   }
 
   .facet {
-    padding-top: $small-space;
+    padding-top: 1.5rem;
 
     .collapse {
       display: block;
@@ -220,12 +220,12 @@
 
     .facet-title {
       font-size: 1rem;
-      color: $gray-darker;
       border-radius: $btn-border-radius;
       border: none;
       background: $fp-beige;
-
+      color: $fp-orange;
       padding: 0.4rem 0.7rem;
+      width: 100%;
     }
 
     .facet-label {
