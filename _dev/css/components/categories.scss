@@ -210,7 +210,7 @@
   background: $white;
 
   > section.facet {
-    &:first-child {
+    &:first-of-type {
       padding-top: 1rem;
     }
   }
