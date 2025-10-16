@@ -1,0 +1,40 @@
+#category {
+  #PM_ASBlockOutput_1 {
+    .PM_ASCriterionGroupTitle.h4 {
+      color: $fp-orange;
+      font-size: 1rem;
+      font-weight: bold;
+      background: $fp-beige;
+      padding: 8px 12px;
+      border-radius: $btn-border-radius;
+      border: none;
+    }
+
+    .PM_ASCriterionGroupCheckbox {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+
+      .radio {
+        input {
+          display: none;
+        }
+
+        label {
+          a {
+            border-radius: 0;
+            border: 1px solid $gray-second;
+            padding: 0.5rem 0.75rem;
+            margin: 0;
+            cursor: pointer;
+
+            &:hover {
+              border-color: $fp-orange;
+              color: $fp-orange;
+            }
+          }
+        }
+      }
+    }
+  }
+}
