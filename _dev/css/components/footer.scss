@@ -264,6 +264,13 @@
       background-position-x: 900px;
     }
   }
+
+  p {
+    margin: 0;
+    padding: 0 0.625rem;
+    font-size: 10px;
+    color: $white;
+  }
 }
 
 .links {

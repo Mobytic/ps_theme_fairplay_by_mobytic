@@ -63,8 +63,8 @@
 <div class="footer-subcontainer" style="background-image: url('{_PS_THEME_URI_}upload/img/bg-header.png');">
   <p class="text-sm-center">
     {block name='copyright_link'}
-      <a href="https://www.prestashop-project.org/" target="_blank" rel="noopener noreferrer nofollow">
-        {l s='%copyright% %year% - Ecommerce software by %prestashop%' sprintf=['%prestashop%' => 'PrestaShop™', '%year%' => 'Y'|date, '%copyright%' => '©'] d='Shop.Theme.Global'}
+      <a href="https://mobytic.com/" target="_blank" rel="noopener noreferrer nofollow">
+        {l s='%copyright% %year% - Ecommerce by %mobytic%' sprintf=['%mobytic%' => 'Mobytic™', '%year%' => 'Y'|date, '%copyright%' => '©'] d='Shop.Theme.Global'}
       </a>
     {/block}
   </p>
