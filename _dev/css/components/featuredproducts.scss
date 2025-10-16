@@ -22,12 +22,11 @@ $product-description-height: 70px;
       display: block;
       width: 6.125rem;
       height: 0.25rem;
-      margin: 0 auto 0.625rem auto;
       background: $fp-blue;
       border-radius: 25px;
 
       position: absolute;
-      bottom: -1rem;
+      bottom: -0.5rem;
       left: calc(50% - 6.125rem);
     }
 
@@ -36,12 +35,11 @@ $product-description-height: 70px;
       display: block;
       width: 3.125rem;
       height: 0.25rem;
-      margin: 0 auto;
       background: $fp-red;
       border-radius: 25px;
 
       position: absolute;
-      bottom: -1rem;
+      bottom: -0.5rem;
       left: 50%;
     }
   }
