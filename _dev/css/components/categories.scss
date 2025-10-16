@@ -540,6 +540,17 @@
       text-transform: initial !important;
     }
   }
+
+
+
+  #js-active-search-filters {
+    border-radius: $btn-border-radius;
+    background: $gray-light-second;
+
+    .filter-block {
+      border-radius: $btn-border-radius;
+    }
+  }
 }
 
 /*** Responsive part ***/
