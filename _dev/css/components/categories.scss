@@ -734,6 +734,30 @@
       background: none;
       padding: 0;
       margin: 0;
+      cursor: pointer;
+
+      &:hover {
+        img {
+          filter: brightness(0) saturate(100%) invert(41%) sepia(83%)
+            saturate(749%) hue-rotate(358deg) brightness(95%) contrast(92%);
+        }
+
+        i {
+          color: $fp-orange;
+        }
+      }
+
+      &.out-of-stock {
+        cursor: not-allowed;
+
+        img {
+          filter: grayscale(100%) brightness(70%);
+        }
+
+        i {
+          color: $gray;
+        }
+      }
     }
   }
 }
