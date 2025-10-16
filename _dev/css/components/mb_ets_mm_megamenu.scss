@@ -10,13 +10,12 @@
 
       .mm_menus_li {
         &.promo {
-          color: $fp-red;
-
           &:hover {
             background: $fp-red;
           }
 
           > a {
+            color: $fp-red;
             &:hover {
               color: $white;
             }
