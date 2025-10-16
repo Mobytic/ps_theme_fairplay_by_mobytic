@@ -27,7 +27,7 @@ $product-description-height: 70px;
       border-radius: 25px;
 
       position: absolute;
-      bottom: -1.875rem;
+      bottom: -1rem;
       left: calc(50% - 6.125rem);
     }
 
@@ -35,15 +35,15 @@ $product-description-height: 70px;
       content: "";
       display: block;
       width: 3.125rem;
-      height: 0.125rem;
+      height: 0.25rem;
       margin: 0 auto;
       background: $fp-red;
       border-radius: 25px;
 
       position: absolute;
-      bottom: -1.25rem;
-      left: calc(50% + 3.125rem);
-    } 
+      bottom: -1rem;
+      left: 50%;
+    }
   }
 
   .all-product-link {
