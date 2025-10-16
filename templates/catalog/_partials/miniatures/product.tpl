@@ -151,7 +151,9 @@
                         {if $isOut}
                           {l s='Out of stock' d='Shop.Theme.Actions'}
                         {else}
-                          <i class="material-icons shopping-cart"></i> {l s='Add' d='Shop.Theme.Actions'}
+                          <img src="{_PS_THEME_URI_}upload/img/icons/card.png"
+                            alt="{l s='Shopping cart' d='Shop.Theme.Actions'}" />
+                          {* <i class="material-icons shopping-cart"></i> {l s='Add' d='Shop.Theme.Actions'} *}
                         {/if}
                       </button>
                     </form>
