@@ -223,7 +223,8 @@
   .facet {
     padding-top: 3rem;
 
-    .check-mode {
+    .check-mode,
+    .radio-mode {
       display: flex;
       flex-wrap: wrap;
       gap: 6px;
@@ -255,6 +256,9 @@
         margin-top: 0.4375rem;
         font-size: 14px;
         color: $gray-darker;
+        text-overflow: unset !important;
+        white-space: unset !important;
+        width: 100% !important;
       }
 
       .custom-checkbox {
@@ -540,8 +544,6 @@
       text-transform: initial !important;
     }
   }
-
-
 
   #js-active-search-filters {
     border-radius: $btn-border-radius;
