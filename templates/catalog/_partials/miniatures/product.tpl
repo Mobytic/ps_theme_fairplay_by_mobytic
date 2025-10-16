@@ -143,7 +143,7 @@
                           max="{$product.quantity|default:0}">
                         <button type="button" class="btn btn-light btn-sm quantity-increase" data-qty-incr>+</button>
                       </div> *}
-
+ 
                       {assign var=isOut value=($product.quantity <= 0)}
                       <button class="w-100 btn btn-primary add-to-cart{if $isOut} out-of-stock{/if}"
                         data-button-action="add-to-cart" data-add-to-cart-btn
