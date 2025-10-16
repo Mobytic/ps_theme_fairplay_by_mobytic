@@ -1,0 +1,12 @@
+#product-comments-list-header {
+  border-radius: $btn-border-radius;
+  overflow: hidden;
+  background: $gray-lighter-second;
+  transition: background 0.3s ease-in-out;
+}
+
+#empty-product-comment,
+#product-comments-list {
+  border: 1px solid $gray-second;
+  border-radius: $btn-border-radius;
+}
