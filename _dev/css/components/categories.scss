@@ -219,13 +219,13 @@
     }
 
     .facet-title {
-      font-size: 1rem;
+      font-size: 1rem !important;
       border-radius: $btn-border-radius;
       border: none;
       background: $fp-beige;
-      color: $fp-orange;
+      color: $fp-orange !important;
       padding: 0.4rem 0.7rem;
-      width: 100%;
+      width: 100% !important;
     }
 
     .facet-label {
