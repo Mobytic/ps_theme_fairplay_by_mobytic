@@ -45,15 +45,14 @@
       {/if}
 
       <section class="facet clearfix">
-        <p class="facet-title hidden-sm-down">{$facet.label}</p>
+        <p class="h6 facet-title hidden-sm-down">{$facet.label}</p>
         {assign var=_expand_id value=10|mt_rand:100000}
         {assign var=_collapse value=true}
         {foreach from=$facet.filters item="filter"}
           {if $filter.active}{assign var=_collapse value=false}{/if}
         {/foreach}
 
-        <div class="title hidden-md-up" data-target="#facet_{$_expand_id}" data-toggle="collapse" {if !$_collapse}
-          aria-expanded="true" {/if}>
+        <div class="title hidden-md-up" data-target="#facet_{$_expand_id}" data-toggle="collapse"{if !$_collapse} aria-expanded="true"{/if}>
           <p class="h6 facet-title">{$facet.label}</p>
           <span class="float-xs-right">
             <span class="navbar-toggler collapse-icons">
@@ -65,37 +64,48 @@
 
         {if $facet.widgetType !== 'dropdown'}
           {block name='facet_item_other'}
-            <ul id="facet_{$_expand_id}" class="collapse{if !$_collapse} in{/if} check-mode" data-type="check-mode">
+            <ul id="facet_{$_expand_id}" class="collapse{if !$_collapse} in{/if}">
               {foreach from=$facet.filters key=filter_key item="filter"}
                 {if !$filter.displayed}
                   {continue}
                 {/if}
 
                 <li>
-                  <label class="facet-label{if $filter.active} active {/if} custom-checkbox-radio"
-                    for="facet_input_{$_expand_id}_{$filter_key}">
+                  <label class="facet-label{if $filter.active} active {/if}" for="facet_input_{$_expand_id}_{$filter_key}">
                     {if $facet.multipleSelectionAllowed}
                       <span class="custom-checkbox">
-                        <input id="facet_input_{$_expand_id}_{$filter_key}" data-search-url="{$filter.nextEncodedFacetsURL}"
-                          type="checkbox" {if $filter.active }checked{/if}>
+                        <input
+                          id="facet_input_{$_expand_id}_{$filter_key}"
+                          data-search-url="{$filter.nextEncodedFacetsURL}"
+                          type="checkbox"
+                          {if $filter.active }checked{/if}
+                        >
                         {if isset($filter.properties.texture)}
                           <span class="color texture" style="background-image:url({$filter.properties.texture})"></span>
                         {elseif isset($filter.properties.color)}
                           <span class="color" style="background-color:{$filter.properties.color}"></span>
                         {else}
-                          <span {if !$js_enabled} class="ps-shown-by-js" {/if}><i
-                              class="material-icons rtl-no-flip checkbox-checked">&#xE5CA;</i></span>
+                          <span {if !$js_enabled} class="ps-shown-by-js" {/if}><i class="material-icons rtl-no-flip checkbox-checked">&#xE5CA;</i></span>
                         {/if}
                       </span>
                     {else}
                       <span class="custom-radio">
-                        <input id="facet_input_{$_expand_id}_{$filter_key}" data-search-url="{$filter.nextEncodedFacetsURL}"
-                          type="radio" name="filter {$facet.label}" {if $filter.active }checked{/if}>
+                        <input
+                          id="facet_input_{$_expand_id}_{$filter_key}"
+                          data-search-url="{$filter.nextEncodedFacetsURL}"
+                          type="radio"
+                          name="filter {$facet.label}"
+                          {if $filter.active }checked{/if}
+                        >
                         <span {if !$js_enabled} class="ps-shown-by-js" {/if}></span>
                       </span>
                     {/if}
 
-                    <a href="{$filter.nextEncodedFacetsURL}" class="_gray-darker search-link js-search-link" rel="nofollow">
+                    <a
+                      href="{$filter.nextEncodedFacetsURL}"
+                      class="_gray-darker search-link js-search-link"
+                      rel="nofollow"
+                    >
                       {$filter.label}
                       {if $filter.magnitude}
                         <span class="magnitude">({$filter.magnitude})</span>
@@ -110,7 +120,7 @@
         {else}
 
           {block name='facet_item_dropdown'}
-            <ul id="facet_{$_expand_id}" class="collapse{if !$_collapse} in{/if} select-mode">
+            <ul id="facet_{$_expand_id}" class="collapse{if !$_collapse} in{/if}">
               <li>
                 <div class="col-sm-12 col-xs-12 col-md-12 facet-dropdown dropdown">
                   <a class="select-title" rel="nofollow" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -134,7 +144,11 @@
                   <div class="dropdown-menu">
                     {foreach from=$facet.filters item="filter"}
                       {if !$filter.active}
-                        <a rel="nofollow" href="{$filter.nextEncodedFacetsURL}" class="select-list">
+                        <a
+                          rel="nofollow"
+                          href="{$filter.nextEncodedFacetsURL}"
+                          class="select-list"
+                        >
                           {$filter.label}
                           {if $filter.magnitude}
                             ({$filter.magnitude})

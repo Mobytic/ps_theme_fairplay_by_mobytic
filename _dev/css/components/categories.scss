@@ -214,11 +214,9 @@
   .facet {
     padding-top: 1.5rem;
 
-    &.check-mode {
-      .collapse {
-        display: flex;
-        flex-wrap: wrap;
-      }
+    .check-mode {
+      display: flex;
+      flex-wrap: wrap;
     }
 
     .facet-title {
