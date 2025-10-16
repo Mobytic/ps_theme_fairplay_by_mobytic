@@ -28,22 +28,24 @@ $product-description-height: 70px;
 
       position: absolute;
       bottom: -1.875rem;
-      left: 50%;
+      left: 44%;
       transform: translateX(-50%);
-      animation: fadeInDown 0.5s ease-in-out;
     }
 
-    @keyframes fadeInDown {
-      from {
-        opacity: 0;
-        transform: translate3d(0, -20%, 0);
-      }
+    &::after {
+      content: "";
+      display: block;
+      width: 3.125rem;
+      height: 0.125rem;
+      margin: 0 auto;
+      background: $fp-red;
+      border-radius: 25px;
 
-      to {
-        opacity: 1;
-        transform: none;
-      }
-    }
+      position: absolute;
+      bottom: -1.25rem;
+      left: calc(44% + 0.1875rem);
+      transform: translateX(-50%);
+    } 
   }
 
   .all-product-link {
@@ -190,8 +192,6 @@ $product-description-height: 70px;
     .price {
       color: $fp-blue;
     }
-
-
 
     .discount-product {
       display: none;
