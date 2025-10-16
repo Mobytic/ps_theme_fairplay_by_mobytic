@@ -168,7 +168,11 @@
     margin-left: 0;
     color: $gray-darker;
     cursor: pointer;
-    background: $gray-second;
+    background: $gray-light;
+
+    &[aria-expanded="true"] {
+      background: $gray-second;
+    }
 
     > i {
       margin-left: auto;
