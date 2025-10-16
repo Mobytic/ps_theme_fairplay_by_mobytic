@@ -34,13 +34,13 @@
     <div class="container">
       <div class="row">
         <div class="hidden-sm-down">
-          <div class="col-md-4 col-xs-12">
+          <div class="col-md-6 col-xs-12">
             <div class="mb-shipping-info">
               <span>{l s='Free shipping for orders over $50' d='Shop.Theme.Global'}</span>
             </div>
             {hook h='displayNav1'}
           </div>
-          <div class="col-md-8 right-nav">
+          <div class="col-md-6 right-nav">
             {hook h='displayNav2'}
           </div>
         </div>
