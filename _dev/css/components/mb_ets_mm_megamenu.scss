@@ -1,9 +1,23 @@
 #header {
-  // @media (max-width: 1200px) {
-  //   .ets_mm_megamenu.mm_menu_right ul.mm_menus_ul {
-  //     display: block;
-  //   }
-  // }
+  @media (max-width: 1200px) {
+    .ets_mm_megamenu.mm_menu_right ul.mm_menus_ul {
+      display: block;
+    }
+
+    .ybc-menu-toggle.ybc-menu-btn {
+      .closed {
+        .mm_menus_ul {
+          display: none;
+        }
+      }
+
+      .opened {
+        .mm_menus_ul {
+          display: block;
+        } 
+      }
+    }
+  }
 
   .ets_mm_megamenu {
     .mm_menus_ul {
