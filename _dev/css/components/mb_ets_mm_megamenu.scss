@@ -5,11 +5,13 @@ body {
         .ets_mm_megamenu_content {
           .ets_mm_megamenu_content_content {
             > ul.mm_menus_ul {
-              position: sticky;
-              top: 0;
-              z-index: 9999;
-
               display: block !important;
+
+              > .close_menu {
+                position: sticky;
+                top: 0;
+                z-index: 9999;
+              }
 
               > .mm_menus_li {
                 &.active {
