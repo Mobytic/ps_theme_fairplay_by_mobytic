@@ -4,8 +4,18 @@
       display: block;
     }
 
-    .ybc-menu-toggle.ybc-menu-btn.closed {
-      display: none;
+    .ybc-menu-toggle.ybc-menu-btn {
+      .closed {
+        .mm_menus_ul {
+          display: none;
+        }
+      }
+
+      .opened {
+        .mm_menus_ul {
+          display: block;
+        } 
+      }
     }
   }
 
