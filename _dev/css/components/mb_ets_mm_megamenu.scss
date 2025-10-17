@@ -10,12 +10,14 @@ body {
               > .mm_menus_li {
                 &.active {
                   > a {
-                    color: $white;
+                    > span {
+                      color: $white;
+                    }
                   }
 
-                  > .arrow {
-                    filter: invert(1);
-                  }
+                  // > .arrow {
+                  //   filter: invert(1);
+                  // }
                 }
                 > .mm_columns_ul {
                   border-radius: 0 !important;
