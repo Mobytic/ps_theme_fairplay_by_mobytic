@@ -8,8 +8,17 @@ body {
               display: block !important;
 
               > .mm_menus_li {
+                &.active {
+                  > a {
+                    color: $white;
+                  }
+
+                  > .arrow {
+                    filter: invert(1);
+                  }
+                }
                 > .mm_columns_ul {
-                  border-radius: 0;
+                  border-radius: 0 !important;
                 }
               }
             }
