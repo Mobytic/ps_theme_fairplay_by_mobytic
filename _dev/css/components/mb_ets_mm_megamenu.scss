@@ -5,7 +5,7 @@ body {
         .ets_mm_megamenu_content {
           .ets_mm_megamenu_content_content {
             > ul.mm_menus_ul {
-              display: block;
+              display: block !important;
             }
           }
         }
@@ -16,7 +16,7 @@ body {
       .ets_mm_megamenu_content {
         .ets_mm_megamenu_content_content {
           > ul.mm_menus_ul {
-            display: none;
+            display: none !important;
           }
         }
       }
