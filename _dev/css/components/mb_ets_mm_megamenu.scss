@@ -6,6 +6,12 @@ body {
           .ets_mm_megamenu_content_content {
             > ul.mm_menus_ul {
               display: block !important;
+
+              > .mm_menus_li {
+                > .mm_columns_ul {
+                  border-radius: 0;
+                }
+              }
             }
           }
         }
@@ -34,8 +40,6 @@ body {
 
   .ets_mm_megamenu {
     .mm_menus_ul {
-      display: none;
-
       > li {
         > a {
           font-family: "Capriola", sans-serif !important;
