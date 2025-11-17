@@ -68,7 +68,17 @@
       > ul.nested {
         margin: 0;
         padding-left: $tree-indent;
-        border-left: 1px solid $tree-line-color; // grande ligne verticale
+        // border-left: 1px solid $tree-line-color; // grande ligne verticale
+
+        &::before {
+          content: "";
+          position: absolute;
+          left: 0;
+          width: 1px;
+          height: calc(100% - 9px);
+          background: $tree-line-color;
+          top: 0;
+        }
 
         > li {
           position: relative;
