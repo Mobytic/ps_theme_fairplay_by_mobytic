@@ -78,17 +78,17 @@ export default class TopMenu extends DropDown {
     }
   }
 
-  onScroll() {
-    // make the logo smaller when scrolling the page down #_desktop_logo
-    const $logo = $("#_desktop_logo img");
+  // onScroll() {
+  //   // make the logo smaller when scrolling the page down #_desktop_logo
+  //   const $logo = $("#_desktop_logo img");
 
-    $(window).on("scroll", () => {
-      const scrollTop = $(window).scrollTop();
-      if (scrollTop > 30) {
-        $logo.css("max-width", "80%");
-      } else {
-        $logo.css("max-width", "100%");
-      }
-    });
-  }
+  //   $(window).on("scroll", () => {
+  //     const scrollTop = $(window).scrollTop();
+  //     if (scrollTop > 30) {
+  //       $logo.css("max-width", "80%");
+  //     } else {
+  //       $logo.css("max-width", "100%");
+  //     }
+  //   });
+  // }
 }
