@@ -32,8 +32,10 @@
       margin-left: 20px;
     }
 
-    > li {
-      margin-bottom: 1rem;
+    &:first-of-type {
+      > li {
+        margin-bottom: 1rem;
+      }
     }
 
     li {
