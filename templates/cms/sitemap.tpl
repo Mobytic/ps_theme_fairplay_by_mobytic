@@ -30,7 +30,7 @@
 
 {block name='page_content_container'}
   <div class="container-fluid">
-    <div class="row sitemap tree">
+    <div class="row sitemap">
       {foreach $sitemapUrls as $group}
         <div class="col-md-6">
           <div>
