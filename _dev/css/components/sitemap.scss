@@ -47,8 +47,10 @@
     padding: 0;
     position: relative;
 
-    > li {
-      margin-bottom: 1rem;
+    &:not(.nested) {
+      > li {
+        margin-bottom: 1rem;
+      }
     }
 
     // 1er niveau
