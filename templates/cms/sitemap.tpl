@@ -32,7 +32,7 @@
   <div class="container-fluid">
     <div class="row sitemap">
       {foreach $sitemapUrls as $group}
-        <div class="col-md-3">
+        <div class="col-md-6">
           <h2>{$group.name}</h2>
           {include file='cms/_partials/sitemap-nested-list.tpl' links=$group.links}
         </div>
