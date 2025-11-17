@@ -38,36 +38,74 @@
     }
   }
 
-  &.tree {
-    ul {
-      list-style: none;
-      margin: 0;
-      padding-left: 1rem;
-      position: relative;
-      border-left: 1px solid #ddd;
+  $tree-line-color: #e1e1e1;
+  $tree-text-color: #c30000; // rouge Fairplay
+  $tree-indent: 22px;
 
-      &::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        width: 1.5rem;
-        border-left: 1px solid #ddd;
+  &.tree {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+
+    // 1er niveau
+    > li {
+      position: relative;
+      padding-left: $tree-indent;
+
+      // racine "home" si tu en as une
+      > a {
+        display: inline-block;
+        color: $tree-text-color;
       }
 
-      li,
-      ul {
-        position: relative;
-        padding-left: 1.5rem;
+      // tout ce qui descend du 1er niveau
+      > ul.nested {
+        margin: 0;
+        padding-left: $tree-indent;
+        border-left: 1px solid $tree-line-color; // grande ligne verticale
 
-        &::before {
-          content: '';
-          position: absolute;
-          top: 50%;
-          left: -1rem;
-          width: 1.5rem;
-          border-top: 1px solid #ddd;
+        > li {
+          position: relative;
+          padding: 3px 0 3px $tree-indent;
+
+          > a {
+            display: inline-block;
+            color: $tree-text-color;
+            text-decoration: none;
+
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+
+          // petite barre horizontale qui joint la verticale au texte
+          &::before {
+            content: "";
+            position: absolute;
+            top: 1.1em; // ajuste si besoin
+            left: -$tree-indent;
+            width: $tree-indent;
+            border-top: 1px solid $tree-line-color;
+          }
+
+          // coupe la ligne verticale après le dernier enfant
+          &:last-child::after {
+            content: "";
+            position: absolute;
+            top: 1.1em;
+            left: -$tree-indent;
+            bottom: -3px;
+            width: 1px;
+            background: #fff; // couleur de fond de ta page
+          }
+
+          // niveaux plus profonds (même style)
+          > ul.nested {
+            margin: 0;
+            padding-left: $tree-indent;
+            border-left: 1px solid $tree-line-color;
+          }
         }
       }
     }
