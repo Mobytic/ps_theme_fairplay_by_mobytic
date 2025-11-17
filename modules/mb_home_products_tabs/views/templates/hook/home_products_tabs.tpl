@@ -9,7 +9,7 @@
     }
 </style>
 <div class="mb-home-products mb-tabs featured-products">
-    <h2 class="h2 products-section-title text-uppercase" style="margin-bottom: 1rem;">
+    <h2 class="h2 products-section-title text-uppercase" style="margin-bottom: 3rem;">
         {$mb_home_tabs_title}
     </h2>
 
