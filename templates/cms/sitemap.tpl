@@ -30,11 +30,13 @@
 
 {block name='page_content_container'}
   <div class="container-fluid">
-    <div class="row sitemap">
+    <div class="row sitemap tree">
       {foreach $sitemapUrls as $group}
         <div class="col-md-6">
-          <h2>{$group.name}</h2>
-          {include file='cms/_partials/sitemap-nested-list.tpl' links=$group.links}
+          <div>
+            <h2>{$group.name}</h2>
+            {include file='cms/_partials/sitemap-nested-list.tpl' links=$group.links}
+          </div>
         </div>
       {/foreach}
     </div>
