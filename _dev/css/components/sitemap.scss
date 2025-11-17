@@ -42,125 +42,31 @@
     ul {
       list-style: none;
       margin: 0;
-      padding: 0;
+      padding-left: 1rem;
       position: relative;
+      border-left: 1px solid #ddd;
 
-      // Vertical line for the root ul
       &::before {
         content: '';
         position: absolute;
         top: 0;
-        left: 1rem;
+        left: 0;
         bottom: 0;
-        width: 1px;
-        background: $gray-light;
+        width: 1.5rem;
+        border-left: 1px solid #ddd;
       }
 
       li {
         position: relative;
-        padding: 0.5rem 0 0.5rem 2rem;
+        padding-left: 1.5rem;
 
-        // Horizontal line for each li
         &::before {
           content: '';
           position: absolute;
           top: 50%;
-          left: 0.5rem;
-          right: 0;
-          height: 1px;
-          background: $gray-light;
-          transform: translateY(-50%);
-        }
-
-        // Dot or connector
-        &::after {
-          content: '';
-          position: absolute;
-          top: 50%;
-          left: 0.9rem;
-          width: 6px;
-          height: 6px;
-          background: $brand-primary;
-          border-radius: 50%;
-          transform: translateY(-50%);
-        }
-
-        // Nested ul
-        ul {
-          margin-top: 0.5rem;
-
-          // Vertical line for nested ul
-          &::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 1.5rem;
-            bottom: 0;
-            width: 1px;
-            background: $gray-light;
-          }
-
-          li {
-            padding-left: 2rem;
-
-            // Horizontal line for nested li
-            &::before {
-              left: 1rem;
-              right: 0;
-            }
-
-            // Dot for nested
-            &::after {
-              left: 1.4rem;
-              width: 4px;
-              height: 4px;
-            }
-
-            // Third level
-            ul {
-              &::before {
-                left: 2rem;
-              }
-
-              li {
-                padding-left: 2.5rem;
-
-                &::before {
-                  left: 1.5rem;
-                }
-
-                &::after {
-                  left: 1.9rem;
-                  width: 3px;
-                  height: 3px;
-                }
-              }
-            }
-          }
-        }
-
-        &:hover {
-          background-color: rgba($brand-primary, 0.05);
-          border-radius: 4px;
-
-          &::after {
-            transform: translateY(-50%) scale(1.2);
-          }
-
-          a {
-            color: $brand-primary;
-          }
-        }
-
-        a {
-          color: $gray-darker;
-          text-decoration: none;
-          font-weight: 500;
-          transition: color 0.3s ease;
-
-          &:hover {
-            color: $brand-primary;
-          }
+          left: -1rem;
+          width: 1.5rem;
+          border-top: 1px solid #ddd;
         }
       }
     }
