@@ -63,6 +63,10 @@
         font-size: 1.75rem;
         font-weight: 700;
         line-height: 120%;
+
+        @include media-breakpoint-down(md) {
+          font-size: 1.5rem;
+        }
       }
     }
 
