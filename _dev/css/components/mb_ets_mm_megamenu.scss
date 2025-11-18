@@ -56,6 +56,10 @@ body {
     }
   }
 
+  .mm_menus_li.mm_sub_align_full.hover.active {
+    background: $fp-red;
+  }
+
   .ets_mm_megamenu {
     .mm_menus_ul {
       > li {
