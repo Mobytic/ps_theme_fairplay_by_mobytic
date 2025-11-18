@@ -15,6 +15,7 @@ body {
 
               > .mm_menus_li {
                 &.active {
+                  background: $fp-red;
                   > a {
                     > span {
                       color: $white;
