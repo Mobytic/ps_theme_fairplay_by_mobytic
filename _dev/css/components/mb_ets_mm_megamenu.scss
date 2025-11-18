@@ -58,6 +58,10 @@ body {
 
   .mm_menus_li.mm_sub_align_full.hover.active {
     background: $fp-red;
+
+    > a {
+      color: $white;
+    }
   }
 
   .ets_mm_megamenu {
@@ -150,6 +154,7 @@ body {
 
     .mm_columns_ul {
       border-radius: 0 0 24px 24px;
+      pointer-events: auto !important;
     }
 
     .ets_mm_megamenu_content_content {
