@@ -147,7 +147,7 @@
               {if isset($configuration.password_policy.minimum_score)}data-minscore="{$configuration.password_policy.minimum_score}"{/if}
               {if $field.autocomplete}autocomplete="{$field.autocomplete}"{/if}
               value=""
-              pattern=".{literal}{{/literal}5,{literal}}{/literal}"
+              {* pattern=".{literal}{{/literal}5,{literal}}{/literal}" *}
               {if $field.required}required{/if}
             >
             <span class="input-group-btn">
