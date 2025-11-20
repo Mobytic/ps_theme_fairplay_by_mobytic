@@ -30,10 +30,10 @@
         <span class="label">{$cart.totals.total.label}&nbsp;{$cart.labels.tax_short}</span>
         <span class="value">{$cart.totals.total.value}</span>
       </div>
-      {* <div class="cart-summary-line cart-total">
+      <div class="cart-summary-line cart-total">
         <span class="label">{$cart.totals.total_including_tax.label}</span>
         <span class="value">{$cart.totals.total_including_tax.value}</span>
-      </div> *}
+      </div>
     {else}
       <div class="cart-summary-line cart-total">
         <span class="label">{$cart.totals.total.label}&nbsp;{if $configuration.display_taxes_label && $configuration.taxes_enabled}{$cart.labels.tax_short}{/if}</span>
