@@ -131,6 +131,26 @@
           </div>
         {/block}
 
+      {* email *}
+      {elseif $field.type === 'email'}
+
+        {block name='form_field_item_email'}
+          <input
+            id="field-{$field.name}"
+            class="form-control"
+            name="{$field.name}"
+            type="email"
+            value="{$field.value|default}"
+            autocomplete="email"
+            {if $field.autocomplete}autocomplete="{$field.autocomplete}"{/if}
+            {if isset($field.availableValues.placeholder)}placeholder="{$field.availableValues.placeholder}"{/if}
+            {if $field.maxLength}maxlength="{$field.maxLength}"{/if}
+            {if $field.required}required{/if}
+          >
+        {/block}
+
+      {* password *}
+
       {elseif $field.type === 'password'}
 
         {block name='form_field_item_password'}
