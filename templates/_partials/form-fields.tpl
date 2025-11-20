@@ -141,6 +141,7 @@
               name="{$field.name}"
               aria-label="{l s='Password input' d='Shop.Forms.Help'}"
               type="password"
+              autocomplete="new-password"
               {if isset($configuration.password_policy.minimum_length)}data-minlength="{$configuration.password_policy.minimum_length}"{/if}
               {if isset($configuration.password_policy.maximum_length)}data-maxlength="{$configuration.password_policy.maximum_length}"{/if}
               {if isset($configuration.password_policy.minimum_score)}data-minscore="{$configuration.password_policy.minimum_score}"{/if}
