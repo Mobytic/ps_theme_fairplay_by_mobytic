@@ -36,15 +36,16 @@ body {
       }
     }
 
-    .ets_mm_megamenu {
-      .ets_mm_megamenu_content {
-        .ets_mm_megamenu_content_content {
-          > ul.mm_menus_ul {
-            display: none !important;
-          }
-        }
-      }
-    }
+    // TODO: Update this part later if needed to avoid having burger menu on desktop on fullwidth megamenu
+    // .ets_mm_megamenu {
+    //   .ets_mm_megamenu_content {
+    //     .ets_mm_megamenu_content_content {
+    //       > ul.mm_menus_ul {
+    //         display: none !important;
+    //       }
+    //     }
+    //   }
+    // }
   }
 }
 

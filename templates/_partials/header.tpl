@@ -29,8 +29,7 @@
 {/block}
 
 {block name='header_nav'}
-  <nav class="header-nav">
-  <div class="mb-header-animation" style="background-image: url('{_PS_THEME_URI_}upload/img/bg-header.png');"></div>
+  <nav class="header-nav" style="background-image: url('{_PS_THEME_URI_}upload/img/bg-header.png');">
     <div class="container">
       <div class="row">
         <div class="hidden-sm-down">

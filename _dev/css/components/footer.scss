@@ -255,8 +255,8 @@
   background-size: 900px;
   min-height: 30px;
   animation: moveBackground 180s linear infinite;
-  background-blend-mode: darken;
-  background-color: $fp-red;
+  background-blend-mode: color-burn;
+  background-color: $fp-orange;
 
   display: flex;
   flex-direction: column;

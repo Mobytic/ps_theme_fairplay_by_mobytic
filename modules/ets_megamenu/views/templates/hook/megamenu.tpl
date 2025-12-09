@@ -30,7 +30,7 @@
         {if isset($mm_config.ETS_MM_ACTIVE_ENABLED)&&$mm_config.ETS_MM_ACTIVE_ENABLED}enable_active_menu{/if} 
         {if isset($mm_layout_direction)&&$mm_layout_direction}{$mm_layout_direction|escape:'html':'UTF-8'}{else}ets-dir-ltr{/if}
         {if isset($mm_config.ETS_MM_HOOK_TO)&&$mm_config.ETS_MM_HOOK_TO=='customhook'}hook-custom{else}hook-default{/if}
-        {if isset($mm_multiLayout)&&$mm_multiLayout}multi_layout{else}single_layout{/if}
+        {if isset($mm_multiLayout)&&$mm_multiLayout}multi_layout{else}single_layout{/if} 
         {if isset($mm_config.ETS_MM_STICKY_DISMOBILE) && $mm_config.ETS_MM_STICKY_DISMOBILE } disable_sticky_mobile {/if}
         {if isset($mm_config.ETS_MM_DISPLAY_SUBMENU_BY_CLICK) && $mm_config.ETS_MM_DISPLAY_SUBMENU_BY_CLICK } click_open_submenu{else} hover {/if}
         {if isset($mm_config.ETS_MM_MENU_ALIGNMENT) && $mm_config.ETS_MM_MENU_ALIGNMENT } mm_menu_{$mm_config.ETS_MM_MENU_ALIGNMENT|escape:'html':'UTF-8'} {/if}
