@@ -1,0 +1,30 @@
+/* Admin styles for availability check module */
+.mb-availability-flag {
+    display: inline-block;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.mb-availability-flag.enabled-global {
+    background-color: #007bff;
+    color: white;
+}
+
+.mb-availability-flag.enabled-per-product {
+    background-color: #ffc107;
+    color: #212529;
+}
+
+.mb-availability-flag.disabled {
+    background-color: #6c757d;
+    color: white;
+}
+
+/* Improve spacing in product list */
+.table-responsive .mb-availability-flag {
+    white-space: nowrap;
+}

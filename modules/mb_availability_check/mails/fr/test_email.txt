@@ -1,0 +1,12 @@
+Ceci est un email de test du module Vérifier la disponibilité.
+
+Si vous recevez cet email, la configuration email fonctionne correctement.
+
+Informations du test :
+- Date : {date}
+- Magasin : {shop_name}
+- URL : {shop_url}
+
+Cordialement,
+{shop_name}
+{shop_url}

@@ -1,0 +1,20 @@
+Nouvelle demande de disponibilité
+
+Client : {firstname} {lastname}
+Email : {customer_email}
+Téléphone : {phone}
+Produit : {product_name} (ID {product_id})
+Quantité souhaitée : {quantity}
+ID de la demande : {request_id}
+
+{if $custom_message}
+Message personnalisé :
+{custom_message}
+
+{/if}
+Lien pour ajouter le produit au panier du client :
+{add_link}
+
+Cordialement,
+{shop_name}
+{shop_url}

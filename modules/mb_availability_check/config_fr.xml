@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<module>
+    <name>mb_availability_check</name>
+    <displayName><![CDATA[Bouton de v&eacute;rification de disponibilit&eacute;]]></displayName>
+    <version><![CDATA[1.0.0]]></version>
+    <description><![CDATA[Remplacer &laquo; Ajouter au panier &raquo; par &laquo; V&eacute;rifier la disponibilit&eacute; &raquo; pour les produits s&eacute;lectionn&eacute;s avec un formulaire de contact.]]></description>
+    <author><![CDATA[Mobytic]]></author>
+    <tab><![CDATA[front_office_features]]></tab>
+    <is_configurable>1</is_configurable>
+    <need_instance>0</need_instance>
+</module>
