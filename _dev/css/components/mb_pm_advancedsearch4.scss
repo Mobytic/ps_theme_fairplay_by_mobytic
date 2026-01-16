@@ -9,7 +9,7 @@
     }
   }
 
-  #PM_ASBlockOutput_1 {
+  [id^="PM_ASBlockOutput_"] {
     .card-block {
       padding-left: 0;
       padding-right: 0;

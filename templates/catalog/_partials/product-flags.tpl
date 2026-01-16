@@ -27,5 +27,7 @@
         {foreach from=$product.flags item=flag}
             <li class="product-flag {$flag.type}">{$flag.label}</li>
         {/foreach}
+
+        {hook h='displayProductFlags' product=$product}
     </ul>
 {/block}

@@ -25,6 +25,7 @@
 <div class="images-container js-images-container">
   {block name='product_cover'}
     <div class="product-cover">
+      {include file='catalog/_partials/product-flags.tpl'}
       {if $product.default_image}
         <picture>
           {if !empty($product.default_image.bySize.large_default.sources.avif)}<source srcset="{$product.default_image.bySize.large_default.sources.avif}" type="image/avif">{/if}

@@ -36,6 +36,8 @@
 
   <body id="{$page.page_name}" class="{$page.body_classes|classnames}">
 
+    <div class="mb-background-pattern" style="background-image: url('{_PS_THEME_URI_}upload/img/bg-pattern.png');"></div>
+
     {block name='hook_after_body_opening_tag'}
       {hook h='displayAfterBodyOpeningTag'}
     {/block}

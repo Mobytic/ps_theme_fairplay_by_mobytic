@@ -56,6 +56,7 @@
           {block name='product_description_short'}
             <div id="product-description-short">{$product.description_short nofilter}</div>
           {/block}
+          {include file='catalog/_partials/product-flags.tpl'}
         </figcaption>
         </figure>
         <aside id="thumbnails" class="thumbnails js-thumbnails text-sm-center">
