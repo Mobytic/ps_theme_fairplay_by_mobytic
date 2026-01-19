@@ -387,6 +387,6 @@
 
 
 
-#cart-subtotal-shipping {
+body:not(#checkout) #cart-subtotal-shipping {
   display: none;
 }
