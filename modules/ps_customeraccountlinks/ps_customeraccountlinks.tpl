@@ -46,16 +46,16 @@
         {else}
           <li><a href="{$urls.pages.address}" title="{l s='Add first address' d='Shop.Theme.Customeraccount'}" rel="nofollow">{l s='Add first address' d='Shop.Theme.Customeraccount'}</a></li>
         {/if}
-        {if !$configuration.is_catalog}
+        {if not ($configuration.is_catalog|default:false)}
           <li><a href="{$urls.pages.history}" title="{l s='Orders' d='Shop.Theme.Customeraccount'}" rel="nofollow">{l s='Orders' d='Shop.Theme.Customeraccount'}</a></li>
         {/if}
-        {if !$configuration.is_catalog}
+        {if not ($configuration.is_catalog|default:false)}
           <li><a href="{$urls.pages.order_slip}" title="{l s='Credit slips' d='Shop.Theme.Customeraccount'}" rel="nofollow">{l s='Credit slips' d='Shop.Theme.Customeraccount'}</a></li>
         {/if}
-        {if $configuration.voucher_enabled && !$configuration.is_catalog}
+        {if ($configuration.voucher_enabled|default:false) && not ($configuration.is_catalog|default:false)}
           <li><a href="{$urls.pages.discount}" title="{l s='Vouchers' d='Shop.Theme.Customeraccount'}" rel="nofollow">{l s='Vouchers' d='Shop.Theme.Customeraccount'}</a></li>
         {/if}
-        {if $configuration.return_enabled && !$configuration.is_catalog}
+        {if ($configuration.return_enabled|default:false) && not ($configuration.is_catalog|default:false)}
           <li><a href="{$urls.pages.order_follow}" title="{l s='Merchandise returns' d='Shop.Theme.Customeraccount'}" rel="nofollow">{l s='Merchandise returns' d='Shop.Theme.Customeraccount'}</a></li>
         {/if}
         {hook h='displayMyAccountBlock'}
