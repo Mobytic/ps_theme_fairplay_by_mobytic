@@ -49,7 +49,10 @@ class Mb_Category_As_Catalogue extends Module
             && Configuration::updateValue('MB_CATALOGUE_TAG_LABEL', '')
             && Configuration::updateValue('MB_CATALOGUE_TAG_BG', '#333333')
             && Configuration::updateValue('MB_CATALOGUE_TAG_COLOR', '#ffffff')
-            && Configuration::updateValue('MB_CATALOGUE_TAG_ICON', '');
+            && Configuration::updateValue('MB_CATALOGUE_TAG_ICON', '')
+            && Configuration::updateValue('MB_CATALOGUE_MESSAGE', json_encode(array()))
+            && Configuration::updateValue('MB_CATALOGUE_MESSAGE_ENABLED', 1)
+            && Configuration::updateValue('MB_CATALOGUE_HIDE_PRICES', 0);
     }
 
     /**
@@ -62,6 +65,9 @@ class Mb_Category_As_Catalogue extends Module
             && Configuration::deleteByName('MB_CATALOGUE_TAG_BG')
             && Configuration::deleteByName('MB_CATALOGUE_TAG_COLOR')
             && Configuration::deleteByName('MB_CATALOGUE_TAG_ICON')
+            && Configuration::deleteByName('MB_CATALOGUE_MESSAGE')
+            && Configuration::deleteByName('MB_CATALOGUE_MESSAGE_ENABLED')
+            && Configuration::deleteByName('MB_CATALOGUE_HIDE_PRICES')
             && parent::uninstall();
     }
 
@@ -79,6 +85,32 @@ class Mb_Category_As_Catalogue extends Module
             $tag_bg = Tools::getValue('MB_CATALOGUE_TAG_BG');
             $tag_color = Tools::getValue('MB_CATALOGUE_TAG_COLOR');
             $tag_icon = Tools::getValue('MB_CATALOGUE_TAG_ICON');
+            $raw_messages = Tools::getValue('MB_CATALOGUE_MESSAGE');
+
+            $message_enabled = Tools::getValue('MB_CATALOGUE_MESSAGE_ENABLED');
+
+            // Normalize multilingual messages: HelperForm may submit either an array
+            // under 'MB_CATALOGUE_MESSAGE' or individual keys like 'MB_CATALOGUE_MESSAGE_<id_lang>'.
+            $messages = array();
+            $languages = Language::getLanguages(false);
+            if (is_array($raw_messages)) {
+                $messages = $raw_messages;
+            } else {
+                foreach ($languages as $lang) {
+                    $id_lang = $lang['id_lang'];
+                    $val = Tools::getValue('MB_CATALOGUE_MESSAGE_' . $id_lang);
+                    if ($val === null) {
+                        // try array-style fallback
+                        $arr = Tools::getValue('MB_CATALOGUE_MESSAGE');
+                        if (is_array($arr) && isset($arr[$id_lang])) {
+                            $val = $arr[$id_lang];
+                        } else {
+                            $val = '';
+                        }
+                    }
+                    $messages[$id_lang] = $val;
+                }
+            }
 
             if (is_array($categories)) {
                 Configuration::updateValue('MB_CATALOGUE_CATEGORIES', json_encode($categories));
@@ -86,6 +118,15 @@ class Mb_Category_As_Catalogue extends Module
                 Configuration::updateValue('MB_CATALOGUE_TAG_BG', $tag_bg);
                 Configuration::updateValue('MB_CATALOGUE_TAG_COLOR', $tag_color);
                 Configuration::updateValue('MB_CATALOGUE_TAG_ICON', $tag_icon);
+                Configuration::updateValue('MB_CATALOGUE_MESSAGE_ENABLED', (int)$message_enabled);
+                $hide_prices = Tools::getValue('MB_CATALOGUE_HIDE_PRICES');
+                Configuration::updateValue('MB_CATALOGUE_HIDE_PRICES', (int)$hide_prices);
+                // Save multilingual messages as JSON
+                if (is_array($messages)) {
+                    Configuration::updateValue('MB_CATALOGUE_MESSAGE', json_encode($messages));
+                } else {
+                    Configuration::updateValue('MB_CATALOGUE_MESSAGE', json_encode(array()));
+                }
 
                 $output .= $this->displayConfirmation($this->l('Settings updated successfully'));
 
@@ -109,9 +150,6 @@ class Mb_Category_As_Catalogue extends Module
         if (!is_array($selectedCategories)) {
             $selectedCategories = array();
         }
-
-        // Get all categories
-        $categories = Category::getCategories($this->context->language->id, true, false);
 
         $fields_form = array(
             'form' => array(
@@ -138,6 +176,54 @@ class Mb_Category_As_Catalogue extends Module
                         'label' => $this->l('Custom tag label'),
                         'name' => 'MB_CATALOGUE_TAG_LABEL',
                         'desc' => $this->l('Label for the custom tag shown for catalogue products')
+                    ),
+                    array(
+                        'type' => 'switch',
+                        'label' => $this->l('Enable custom message'),
+                        'name' => 'MB_CATALOGUE_MESSAGE_ENABLED',
+                        'is_bool' => true,
+                        'values' => array(
+                            array(
+                                'id' => 'mb_catalogue_msg_on',
+                                'value' => 1,
+                                'label' => $this->l('Enabled')
+                            ),
+                            array(
+                                'id' => 'mb_catalogue_msg_off',
+                                'value' => 0,
+                                'label' => $this->l('Disabled')
+                            )
+                        ),
+                        'desc' => $this->l('Enable or disable the custom message shown where Add to cart is hidden')
+                    ),
+                    array(
+                        'type' => 'switch',
+                        'label' => $this->l('Hide prices'),
+                        'name' => 'MB_CATALOGUE_HIDE_PRICES',
+                        'is_bool' => true,
+                        'values' => array(
+                            array(
+                                'id' => 'mb_catalogue_hide_prices_on',
+                                'value' => 1,
+                                'label' => $this->l('Yes')
+                            ),
+                            array(
+                                'id' => 'mb_catalogue_hide_prices_off',
+                                'value' => 0,
+                                'label' => $this->l('No')
+                            )
+                        ),
+                        'desc' => $this->l('Hide product prices for catalogue products')
+                    ),
+                    array(
+                        'type' => 'textarea',
+                        'label' => $this->l('Custom message (shown instead of Add to cart)'),
+                        'name' => 'MB_CATALOGUE_MESSAGE',
+                        'lang' => true,
+                        'cols' => 40,
+                        'rows' => 6,
+                        'autoload_rte' => true,
+                        'desc' => $this->l('Message displayed where the add-to-cart button is hidden (multilingual). HTML is allowed.')
                     ),
                     array(
                         'type' => 'color',
@@ -170,6 +256,7 @@ class Mb_Category_As_Catalogue extends Module
         $helper->table = $this->table;
         $helper->module = $this;
         $helper->default_form_language = $this->context->language->id;
+        $helper->languages = Language::getLanguages(false);
         $helper->allow_employee_form_lang = Configuration::get('PS_BO_ALLOW_EMPLOYEE_FORM_LANG', 0);
         $helper->identifier = $this->identifier;
         $helper->submit_action = 'submitMbCatalogueConfig';
@@ -182,6 +269,17 @@ class Mb_Category_As_Catalogue extends Module
         $helper->fields_value['MB_CATALOGUE_TAG_BG'] = Configuration::get('MB_CATALOGUE_TAG_BG');
         $helper->fields_value['MB_CATALOGUE_TAG_COLOR'] = Configuration::get('MB_CATALOGUE_TAG_COLOR');
         $helper->fields_value['MB_CATALOGUE_TAG_ICON'] = Configuration::get('MB_CATALOGUE_TAG_ICON');
+        $helper->fields_value['MB_CATALOGUE_MESSAGE_ENABLED'] = Configuration::get('MB_CATALOGUE_MESSAGE_ENABLED');
+        $helper->fields_value['MB_CATALOGUE_HIDE_PRICES'] = Configuration::get('MB_CATALOGUE_HIDE_PRICES');
+        // Load multilingual messages into helper fields
+        $storedMessages = json_decode(Configuration::get('MB_CATALOGUE_MESSAGE'), true);
+        if (!is_array($storedMessages)) {
+            $storedMessages = array();
+        }
+        foreach (Language::getLanguages(false) as $lang) {
+            $id_lang = $lang['id_lang'];
+            $helper->fields_value['MB_CATALOGUE_MESSAGE'][$id_lang] = isset($storedMessages[$id_lang]) ? $storedMessages[$id_lang] : '';
+        }
 
         return $helper->generateForm(array($fields_form));
     }
@@ -326,46 +424,53 @@ class Mb_Category_As_Catalogue extends Module
         }
 
         // Product is in catalogue category - hide add-to-cart and inject custom flag
-        $css = '<style>'
-            . '.product-add-to-cart, .add-to-cart, #add_to_cart, button.add-to-cart, .js-buy-btn, .buy-button, .product-page .add-to-cart, .product-miniature .add-to-cart, .quickview .product-add-to-cart, .modal .add-to-cart { display: none !important; }'
-            . '</style>';
+        $hide_prices = (int) Configuration::get('MB_CATALOGUE_HIDE_PRICES');
 
         // Build custom tag settings
-        $tag_label = Configuration::get('MB_CATALOGUE_TAG_LABEL');
-        $tag_bg = Configuration::get('MB_CATALOGUE_TAG_BG');
-        $tag_color = Configuration::get('MB_CATALOGUE_TAG_COLOR');
-        $tag_icon = Configuration::get('MB_CATALOGUE_TAG_ICON');
+        $tag_label = Configuration::get('MB_CATALOGUE_TAG_LABEL'); 
+        $tag_bg = Configuration::get('MB_CATALOGUE_TAG_BG'); 
+        $tag_color = Configuration::get('MB_CATALOGUE_TAG_COLOR'); 
+        $tag_icon = Configuration::get('MB_CATALOGUE_TAG_ICON'); 
+
+        // Prepare multilingual message for current language if enabled
+        $enabled = (int) Configuration::get('MB_CATALOGUE_MESSAGE_ENABLED');
+        $storedMessages = json_decode(Configuration::get('MB_CATALOGUE_MESSAGE'), true);
+        $message = '';
+        if ($enabled) {
+            $currentLang = isset($this->context->language->id) ? $this->context->language->id : null;
+            if ($currentLang && is_array($storedMessages) && isset($storedMessages[$currentLang])) {
+                $message = $storedMessages[$currentLang];
+            }
+        }
 
         // Inject JS to replace/hide existing flags and insert our custom flag into the .product-flags list
         $js = '<script>(function(){'
+            . 'var id=' . (int)$id_product . ';'
             . 'var label=' . json_encode($tag_label) . ';'
             . 'var bg=' . json_encode($tag_bg) . ';'
             . 'var color=' . json_encode($tag_color) . ';'
             . 'var icon=' . json_encode($tag_icon) . ';'
-            . 'function inject(){'
-            . 'var containers = document.querySelectorAll(".product-flags");'
-            . 'if(!containers.length) return;'
-            . 'containers.forEach(function(container){'
-            . 'try{'
-            . 'var children = container.querySelectorAll("li");'
-            . 'children.forEach(function(ch){ if(!ch.classList.contains("mb-cat-custom")) ch.style.display="none"; });'
-            . 'var existing = container.querySelector(".mb-cat-custom");'
-            . 'if(existing) return;'
-            . 'var li=document.createElement("li");'
-            . 'li.className="product-flag mb-cat-custom";'
-            . 'li.style.display="inline-block";li.style.marginRight="5px";li.style.padding="4px 8px";'
-            . 'if(bg) li.style.background=bg; if(color) li.style.color=color; li.style.fontSize="12px";'
-            . 'li.innerHTML = (icon? ("<i class=\""+icon+"\" style=\"margin-right:4px\"></i>") : "") + (label||"Catalogue");'
-            . 'container.insertBefore(li, container.firstChild);'
-            . '}catch(e){}'
-            . '});'
+            . 'var message=' . json_encode($message) . ';'
+            . 'function findContainer(){'
+            . '  var sel = "[data-id-product=\\\""+id+"\\\"], [data-id_product=\\\""+id+"\\\"], .product-miniature[data-id-product=\\\""+id+"\\\"], .product-miniature[data-id_product=\\\""+id+"\\\"], .product[data-product-id=\\\""+id+"\\\"], .product[data-id-product=\\\""+id+"\\\"]";'
+            . '  var el = document.querySelector(sel); if(el) return el; return null;'
             . '}'
-            . 'inject();'
-            . 'setTimeout(inject, 100);'
-            . 'setTimeout(inject, 500);'
+            . 'function inject(){'
+            . '  var containerEl = findContainer(); if(!containerEl) return; var containers = containerEl.querySelectorAll(".product-flags"); if(!containers.length) containers=[containerEl]; containers.forEach(function(container){ try{ var children = container.querySelectorAll("li"); children.forEach(function(ch){ if(!ch.classList.contains("mb-cat-custom")) ch.style.display="none"; }); var existing = container.querySelector(".mb-cat-custom"); if(existing) return; var li=document.createElement("li"); li.className="product-flag mb-cat-custom"; li.style.display="inline-block";li.style.marginRight="5px";li.style.padding="4px 8px"; if(bg) li.style.background=bg; if(color) li.style.color=color; li.style.fontSize="12px"; li.innerHTML = (icon? ("<i class=\\\""+icon+"\\\" style=\\\"margin-right:4px\\\"></i>") : "") + (label||"Catalogue"); container.insertBefore(li, container.firstChild); }catch(e){} });'
+            . '}'
+            . 'function injectMessage(){'
+            . '  try{ console.log("mb_category_as_catalogue: injectMessage, message:", message); }catch(e){}'
+            . '  if(!message) return;'
+            . '  var containerEl = findContainer(); if(!containerEl) return;'
+            . '  var selectors = [".product-add-to-cart", ".add-to-cart", "#add_to_cart", "button.add-to-cart", ".js-buy-btn", ".buy-button", ".product-page .add-to-cart", ".product-miniature .add-to-cart", ".quickview .product-add-to-cart", ".modal .add-to-cart"];'
+            . '  var inserted=false; selectors.forEach(function(sel){ var els = containerEl.querySelectorAll(sel); els.forEach(function(el){ try{ var parent = el.parentElement || (el.closest? el.closest(".product-miniature") : null) || containerEl; if(!parent) return; if(parent.querySelector(".mb-cat-message")) { inserted=true; return; } var msg = document.createElement("div"); msg.className = "mb-cat-message"; msg.style.display = "inline-block"; msg.style.marginTop = "5px"; msg.style.fontSize = "14px"; msg.style.color = "#000"; msg.style.lineHeight = "1.2"; msg.innerHTML = message; el.parentElement.insertBefore(msg, el.nextSibling); inserted=true; }catch(e){} }); }); if(!inserted){ try{ if(!containerEl.querySelector(".mb-cat-message")){ var msg2=document.createElement("div"); msg2.className="mb-cat-message"; msg2.style.marginTop="8px"; msg2.style.color="#000"; msg2.innerHTML=message; containerEl.appendChild(msg2); } }catch(e){} }'
+            . '}'
+            . 'function hideInside(){ try{ var container = findContainer(); if(!container) return; var atcSel=[".product-add-to-cart", ".add-to-cart", "#add_to_cart", "button.add-to-cart", ".js-buy-btn", ".buy-button", ".product-page .add-to-cart", ".product-miniature .add-to-cart", ".quickview .product-add-to-cart", ".modal .add-to-cart"]; atcSel.forEach(function(sel){ var els=container.querySelectorAll(sel); els.forEach(function(e){ try{ e.style.display="none"; }catch(ex){} }); }); var priceSel=[".product-price", ".product-prices", ".current-price", ".regular-price", ".price", ".product-price-and-shipping", ".product-miniature .price", ".product .price"]; priceSel.forEach(function(sel){ var els=container.querySelectorAll(sel); els.forEach(function(e){ try{ e.style.display="none"; }catch(ex){} }); }); }catch(e){} }'
+            . 'if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",function(){inject();injectMessage();hideInside();});}else{inject();injectMessage();hideInside();}'
+            . 'setTimeout(function(){inject();injectMessage();hideInside();},100); setTimeout(function(){inject();injectMessage();hideInside();},500);'
             . '})();</script>';
 
-        return $css . $js;
+        return $js;
     }
 
     /**
@@ -426,11 +531,15 @@ class Mb_Category_As_Catalogue extends Module
             $icon_html = '<i class="' . htmlspecialchars($tag_icon) . '" style="margin-right:4px"></i>';
         }
 
-        // Return custom flag HTML + CSS to hide other flags
-        $output = '<style>.product-flags li:not(.mb-cat-custom) { display: none !important; }</style>';
-        $output .= '<li class="product-flag mb-cat-custom" style="' . $style . '">';
+        // Return custom flag HTML + per-product JS to hide other flags/prices inside this product container
+        $output = '<li class="product-flag mb-cat-custom" data-mb-product-id="' . (int)$id_product . '" style="' . $style . '">';
         $output .= $icon_html . htmlspecialchars($tag_label ?: 'Catalogue');
         $output .= '</li>';
+
+        // Add small script to scope hiding to this product container only
+        $output .= '<script>(function(){var id=' . (int)$id_product . '; try{ var lis=document.querySelectorAll(".mb-cat-custom[data-mb-product-id=\""+id+"\"]"); lis.forEach(function(li){ try{ var container = li.closest(".product-miniature, .product, .product-container, .product-view"); if(!container) return; // hide other flags
+            var others = container.querySelectorAll(".product-flags li:not(.mb-cat-custom)"); others.forEach(function(o){ o.style.display="none"; }); // hide prices inside container
+            var priceSelectors=[".product-price", ".product-prices", ".current-price", ".regular-price", ".price", ".product-price-and-shipping", ".product-miniature .price", ".product .price"]; priceSelectors.forEach(function(sel){ var els=container.querySelectorAll(sel); els.forEach(function(e){ try{ e.style.display="none"; }catch(ex){} }); }); }catch(e){} }); }catch(e){} })();</script>';
 
         return $output;
     }
@@ -479,28 +588,38 @@ class Mb_Category_As_Catalogue extends Module
         $tag_color = Configuration::get('MB_CATALOGUE_TAG_COLOR');
         $tag_icon = Configuration::get('MB_CATALOGUE_TAG_ICON');
 
-        // Inject JS and CSS to manipulate flags on product page
-        $output = '<script>(function(){';
+        // Prepare multilingual message for current language if enabled
+        $enabled = (int) Configuration::get('MB_CATALOGUE_MESSAGE_ENABLED');
+        $storedMessages = json_decode(Configuration::get('MB_CATALOGUE_MESSAGE'), true);
+        $message = '';
+        if ($enabled) {
+            $currentLang = isset($this->context->language->id) ? $this->context->language->id : null;
+            if ($currentLang && is_array($storedMessages) && isset($storedMessages[$currentLang])) {
+                $message = $storedMessages[$currentLang];
+            }
+        }
+
+        // Inject JS to manipulate flags on product page and show message near add-to-cart (scoped per product)
+        $output = '';
+        $output .= '<script>(function(){';
         $output .= 'var label=' . json_encode($tag_label) . ';';
         $output .= 'var bg=' . json_encode($tag_bg) . ';';
         $output .= 'var color=' . json_encode($tag_color) . ';';
         $output .= 'var icon=' . json_encode($tag_icon) . ';';
+        $output .= 'var message=' . json_encode($message) . ';';
+        $output .= 'var id=' . (int)$id_product . ';';
         $output .= 'function injectFlag(){';
         $output .= '  var container = document.querySelector(".product-flags");';
-        $output .= '  if(!container) return;';
-        $output .= '  var children = container.querySelectorAll("li");';
-        $output .= '  children.forEach(function(ch){ if(!ch.classList.contains("mb-cat-custom")) ch.style.display="none"; });';
-        $output .= '  var existing = container.querySelector(".mb-cat-custom");';
-        $output .= '  if(existing) { existing.style.display="inline-block"; return; }';
-        $output .= '  var li=document.createElement("li");';
-        $output .= '  li.className="product-flag mb-cat-custom";';
-        $output .= '  li.style.display="inline-block";li.style.marginRight="5px";li.style.padding="4px 8px";';
-        $output .= '  if(bg) li.style.background=bg; if(color) li.style.color=color; li.style.fontSize="12px";';
-        $output .= '  li.innerHTML = (icon? ("<i class=\""+icon+"\" style=\"margin-right:4px\"></i>") : "") + (label||"Catalogue");';
-        $output .= '  container.insertBefore(li, container.firstChild);';
+        $output .= '  if(container){ try{ var children = container.querySelectorAll("li"); children.forEach(function(ch){ if(!ch.classList.contains("mb-cat-custom")) ch.style.display="none"; }); var existing = container.querySelector(".mb-cat-custom"); if(existing) { existing.style.display="inline-block"; return; } var li=document.createElement("li"); li.className="product-flag mb-cat-custom"; li.setAttribute("data-mb-product-id", id); li.style.display="inline-block";li.style.marginRight="5px";li.style.padding="4px 8px"; if(bg) li.style.background=bg; if(color) li.style.color=color; li.style.fontSize="12px"; li.innerHTML = (icon? ("<i class=\""+icon+"\" style=\"margin-right:4px\"></i>") : "") + (label||"Catalogue"); container.insertBefore(li, container.firstChild); }catch(e){} }';
         $output .= '}';
-        $output .= 'if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",injectFlag);}else{injectFlag();}';
-        $output .= 'setTimeout(injectFlag, 100);';
+        $output .= 'function injectMessage(){';
+        $output .= '  if(!message) return;';
+        $output .= '  try{ var container = document.querySelector("[data-id-product=\""+id+"\"], [data-id_product=\""+id+"\"], .product[data-product-id=\""+id+"\"]") || document.querySelector(".product-add-to-cart, #add_to_cart, .product-page .add-to-cart"); if(!container) return; var parent = container.parentElement || document.body; if(!parent.querySelector(".mb-cat-message")){ var msg = document.createElement("div"); msg.className="mb-cat-message"; msg.style.marginTop="8px"; msg.innerHTML = message; parent.insertBefore(msg, container.nextSibling); } }catch(e){}';
+        $output .= '}';
+        // hide prices and add-to-cart inside the product container only
+        $output .= 'function hideInside(){ try{ var container = document.querySelector("[data-id-product=\""+id+"\"], [data-id_product=\""+id+"\"], .product[data-product-id=\""+id+"\"]") || document.querySelector(".product-miniature[data-id-product=\""+id+"\"], .product-miniature[data-id_product=\""+id+"\"], .product[data-id-product=\""+id+"\"], .product[data-id_product=\""+id+"\"]"); if(!container) return; var atcSel=[".product-add-to-cart", ".add-to-cart", "#add_to_cart", "button.add-to-cart", ".js-buy-btn", ".buy-button", ".product-page .add-to-cart", ".product-miniature .add-to-cart", ".quickview .product-add-to-cart", ".modal .add-to-cart"]; atcSel.forEach(function(sel){ var els=container.querySelectorAll(sel); els.forEach(function(e){ try{ e.style.display="none"; }catch(ex){} }); }); var priceSel=[".product-price", ".product-prices", ".current-price", ".regular-price", ".price", ".product-price-and-shipping", ".product-miniature .price", ".product .price"]; priceSel.forEach(function(sel){ var els=container.querySelectorAll(sel); els.forEach(function(e){ try{ e.style.display="none"; }catch(ex){} }); }); }catch(e){} }';
+        $output .= 'if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",function(){injectFlag();injectMessage();hideInside();});}else{injectFlag();injectMessage();hideInside();}';
+        $output .= 'setTimeout(function(){injectFlag();injectMessage();hideInside();},100); setTimeout(function(){injectFlag();injectMessage();hideInside();},500);';
         $output .= '})();</script>';
 
         return $output;

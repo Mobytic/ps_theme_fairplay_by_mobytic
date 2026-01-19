@@ -1,0 +1,103 @@
+/* Sitemap Accordion styles: tree lines + scale animation */
+
+ul.tree .sitemap-accordion-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+ul.tree .sitemap-link-wrapper a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul.tree .sitemap-toggle {
+  /* background: none; */
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+ul.tree .sitemap-toggle:hover {
+  opacity: 0.7;
+}
+
+ul.tree .sitemap-toggle.active i {
+  transform: rotate(180deg);
+}
+
+ul.tree .sitemap-toggle i {
+  transition: transform 0.3s ease;
+  font-size: 20px;
+}
+
+ul.tree .sitemap-accordion-content {
+  transform-origin: top;
+  transform: scaleY(0);
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+ul.tree .sitemap-accordion-content.is-open {
+  transform: scaleY(1);
+  max-height: 100%;
+  opacity: 1;
+}
+
+/* Tree lines styling */
+ul.tree ul.nested {
+  position: relative;
+  padding: 0 !important;
+  margin-left: 10px;
+}
+
+ul.tree ul.nested::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 1px;
+  background: #ddd;
+}
+
+ul.tree ul.nested > li {
+  position: relative;
+  padding-left: 20px;
+  margin: 8px 0;
+}
+
+ul.tree ul.nested > li::before {
+  content: '';
+  position: absolute;
+  top: 12px;
+  left: 0;
+  width: 15px;
+  height: 1px;
+  background: #ddd;
+}
+
+ul.tree ul.nested > li::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 50%;
+  width: 1px;
+  background: #ddd;
+}
+
+ul.tree ul.nested > li:last-child::after {
+  display: none;
+}
+
+ul.tree ul.nested > li.has-children::before {
+  width: 10px;
+}

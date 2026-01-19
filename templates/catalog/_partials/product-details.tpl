@@ -55,9 +55,15 @@
       <section class="product-features">
         <p class="h6">{l s='Data sheet' d='Shop.Theme.Catalog'}</p>
         <dl class="data-sheet">
+          {assign var='prev_feature_name' value=''}
+          {assign var='prev_feature_value' value=''}
           {foreach from=$product.grouped_features item=feature}
-            <dt class="name">{$feature.name}</dt>
-            <dd class="value">{$feature.value|escape:'htmlall'|nl2br nofilter}</dd>
+            {if $feature.name != $prev_feature_name || $feature.value != $prev_feature_value}
+              <dt class="name">{$feature.name}</dt>
+              <dd class="value">{$feature.value|regex_replace:"/(.*)(\\R\\1)+/Ums":"\\1"|escape:'htmlall'|nl2br nofilter}</dd>
+              {assign var='prev_feature_name' value=$feature.name}
+              {assign var='prev_feature_value' value=$feature.value}
+            {/if}
           {/foreach}
         </dl>
       </section>

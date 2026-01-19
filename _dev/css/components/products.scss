@@ -817,6 +817,7 @@
     &.discount-amount,
     &.discount {
       background-color: $brand-secondary;
+      display: none;
     }
 
     &.on-sale {

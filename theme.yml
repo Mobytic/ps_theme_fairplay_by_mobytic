@@ -1,0 +1,17 @@
+parent: classic 
+name: FairPlay
+display_name: FairPlay Custom Theme
+version: 1.0.0
+assets: 
+  use_parent_assets: true
+
+  css:
+    all:
+      - id: custom-lib-style
+        path: assets/css/child_custom.css
+        priority: 1000
+theme_settings:
+  default_layout: layout-full-width
+  layouts:
+    category: layout-both-columns
+    
