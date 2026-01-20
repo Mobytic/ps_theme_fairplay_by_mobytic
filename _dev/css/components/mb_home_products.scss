@@ -1,0 +1,38 @@
+#index .mb-home-products.mb-tabs {
+  margin-top: 2rem;
+
+  &[data-tab-position="top"] .tab-buttons.is-stuck {
+    box-shadow: unset;
+    background-color: $white;
+  }
+
+  .tab-buttons {
+    ul {
+      border: none;
+      justify-content: center;
+
+      li {
+        border-radius: 100px;
+      }
+    }
+  }
+
+  .mb-card {
+    border: none;
+    padding: 0;
+    margin-top: 2rem;
+  }
+
+  .featured-products > .all-product-link,
+  .btn.btn-primary {
+    background-color: $mb-color-spanish-sky-blue;
+    color: $white;
+    border: 1px solid $mb-color-spanish-sky-blue;
+    text-transform: initial;
+
+    &:hover {
+      background-color: darken($mb-color-spanish-sky-blue, 10%);
+      border: 1px solid darken($mb-color-spanish-sky-blue, 10%);
+    }
+  }
+}

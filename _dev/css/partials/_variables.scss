@@ -1,25 +1,18 @@
-$mb-color-newspaper: #F6F1E8;
-$mb-color-hot-orange: #FF6E00;
-$mb-color-sweet-potato: #E58442;
-$mb-color-golden-red: #DD6A3B;
-$mb-color-sporty-peach: #FFAF9F;
+$mb-color-newspaper: #f6f1e8;
+$mb-color-hot-orange: #ff6e00;
+$mb-color-sweet-potato: #e58442;
+$mb-color-golden-red: #dd6a3b;
+$mb-color-sporty-peach: #ffaf9f;
 $mb-color-kawaii-lilac: #dabde3;
-$mb-color-kawaii-blue: #7C96DB;
-$mb-color-spanish-sky-blue: #00A9DA;
-
-
-
-
-
+$mb-color-kawaii-blue: #7c96db;
+$mb-color-spanish-sky-blue: #00a9da;
 
 $fp-red: #f81b17;
-$fp-blue: #0095da;
+$fp-blue: $mb-color-spanish-sky-blue;
 // $fp-blue: #009fe3;
 $fp-yellow: #fecc00;
-$fp-orange: #e49558;
-$fp-orange-dark: #dd6a3b;
-$fp-beige: #eddec1;
-$fp-beige-light: #eee4d0;
+$fp-orange: $mb-color-sweet-potato;
+$fp-orange-dark: $mb-color-hot-orange;
 
 $white: #fff;
 $black: #232323;
@@ -34,10 +27,10 @@ $gray-lighter-second: #f7f7f7;
 $border-gray: #ddd;
 $brand-primary: $fp-red;
 // $brand-primary: #24b9d7;
-$brand-secondary: #f39d72;
+$brand-secondary: $mb-color-golden-red;
 $brand-success: #4cbb6c;
-$brand-warning: #ff9a52;
-$brand-danger: #ff4c4c;
+$brand-warning: $mb-color-hot-orange;
+$brand-danger: $fp-red;
 $current-step-color: #00c062;
 $label-color: $gray-darker;
 $btn-primary-color: $white;

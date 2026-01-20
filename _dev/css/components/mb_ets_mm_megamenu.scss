@@ -67,6 +67,10 @@ body {
 
   .ets_mm_megamenu {
     .mm_menus_ul {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
       > li {
         > a {
           font-family: "Capriola", sans-serif !important;
@@ -75,6 +79,12 @@ body {
       }
 
       .mm_menus_li {
+        border-left: 1px solid #cdcdcd !important;
+        
+        &:last-child {
+          border-right: 1px solid #cdcdcd !important;
+        }
+
         &.promo {
           &:hover {
             background: $fp-red;
@@ -125,7 +135,7 @@ body {
     .ets_mm_megamenu_content,
     .ets_mm_megamenu_content_content,
     .mm_menus_ul {
-      background: $fp-beige;
+      background: $mb-color-newspaper;
     }
 
     // .mm_block_type_category {

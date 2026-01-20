@@ -11,3 +11,23 @@
    data-mb-availability-btn="1">
     {$mb_availability_button_label|escape:'html':'UTF-8'}
 </a>
+<script type="text/javascript">
+    (function(){
+        function hideMailAlert() {
+            try {
+                var mailAlerts = document.querySelectorAll('.tabs .js-mailalert, #product-availability, .modal-body .product-actions');
+                if (mailAlerts && mailAlerts.length) {
+                    mailAlerts.forEach(function(el){ el.style.display = 'none'; });
+                }
+            } catch (e) {
+                // fail silently
+            }
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', hideMailAlert);
+        } else {
+            hideMailAlert();
+        }
+    })();
+</script>

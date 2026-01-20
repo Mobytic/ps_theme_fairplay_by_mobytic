@@ -38,10 +38,23 @@
 
     .caption {
       position: absolute;
-      bottom: 28px;
-      left: 90px;
-      max-width: 340px;
+      // bottom: 28px;
+      // left: 90px;
+      left: 50%;
+      top: 50%;
+      // max-width: 340px;
       color: $white;
+
+      transform: translate(-50%, -50%);
+      max-width: 75%;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 75%;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 1rem 1.5rem;
+      border-radius: 10px;
 
       .caption-description {
         p {

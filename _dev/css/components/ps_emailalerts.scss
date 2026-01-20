@@ -1,0 +1,21 @@
+.product-additional-info {
+  .tabs {
+    margin-top: 0;
+    background-color: transparent;
+  }
+}
+
+#product .product-additional-info {
+  .tabs {
+    margin-top: 1rem;
+  }
+}
+
+.js-mailalert {
+  display: flex;
+  flex-direction: column;
+
+  button {
+    margin-top: 0.5rem;
+  }
+}

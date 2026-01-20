@@ -29,17 +29,25 @@
 {/block}
 
 {block name='header_nav'}
-  <nav class="header-nav" style="background-image: url('{_PS_THEME_URI_}upload/img/bg-header.png');">
-    <div class="container">
+  {* <nav class="header-nav" style="background-image: url('{_PS_THEME_URI_}upload/img/bg-header.png');"> *}
+  <nav class="header-nav">
+    <div class="container-fluid">
       <div class="row">
-        <div class="hidden-sm-down">
-          <div class="col-md-6 col-xs-12">
+        <div id="mb-top-nav">
+          <div class="left-nav">
             <div class="mb-shipping-info">
               <span>{l s='Free shipping for orders over $50' d='Shop.Theme.Global'}</span>
             </div>
             {hook h='displayNav1'}
           </div>
-          <div class="col-md-6 right-nav">
+
+          <div class="mb-multicolors">
+            <div>&nbsp;</div>
+            <div>&nbsp;</div>
+            <div>&nbsp;</div>
+          </div>
+
+          <div class="right-nav">
             {hook h='displayNav2'}
           </div>
         </div>

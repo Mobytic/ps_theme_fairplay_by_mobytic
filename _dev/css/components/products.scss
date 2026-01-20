@@ -153,7 +153,7 @@
     padding: 1.25rem;
     border-radius: 25px;
 
-    background: $fp-beige;
+    background: $mb-color-newspaper;
   }
 }
 
@@ -739,7 +739,7 @@
       margin-right: $small-space;
       margin-bottom: 0.5rem;
       font-weight: 500;
-      text-transform: capitalize;
+      text-transform: initial;
       word-break: normal;
       background: $gray-light;
 
@@ -791,7 +791,7 @@
     font-size: 12px;
     font-weight: 700;
     color: $white;
-    text-transform: uppercase;
+    // text-transform: uppercase;
     word-break: break-word;
     pointer-events: auto;
     background: $brand-primary;
@@ -1032,7 +1032,7 @@
     .mini-feature {
       padding: 8px 12px;
       font-size: 0.875rem;
-      background: $fp-beige;
+      background: $mb-color-newspaper;
       border-radius: 15px;
       color: $gray-darker;
 
