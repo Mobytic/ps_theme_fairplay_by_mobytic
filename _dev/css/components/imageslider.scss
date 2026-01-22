@@ -177,6 +177,10 @@
         margin: 1.275rem auto 2.5rem;
         text-align: center;
 
+        display: block;
+        transform: none;
+        background: none;
+
         .display-1 {
           font-weight: 500;
           color: $gray-darker;

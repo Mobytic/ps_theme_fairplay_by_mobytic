@@ -93,7 +93,7 @@
 
     .left-nav {
       grid-area: leftnav;
-      min-width: 20vw;
+      min-width: 40vw;
 
       @include media-breakpoint-down(sm) {
         display: none;

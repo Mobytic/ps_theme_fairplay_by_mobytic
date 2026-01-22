@@ -52,7 +52,14 @@ class Mb_Category_As_Catalogue extends Module
             && Configuration::updateValue('MB_CATALOGUE_TAG_ICON', '')
             && Configuration::updateValue('MB_CATALOGUE_MESSAGE', json_encode(array()))
             && Configuration::updateValue('MB_CATALOGUE_MESSAGE_ENABLED', 1)
-            && Configuration::updateValue('MB_CATALOGUE_HIDE_PRICES', 0);
+            && Configuration::updateValue('MB_CATALOGUE_HIDE_PRICES', 0)
+            && Configuration::updateValue('MB_CATALOGUE_CARD_BG', '#f8f9fa')
+            && Configuration::updateValue('MB_CATALOGUE_CARD_TEXT_COLOR', '#333333')
+            && Configuration::updateValue('MB_CATALOGUE_CARD_BORDER_COLOR', '#dee2e6')
+            && Configuration::updateValue('MB_CATALOGUE_CARD_BORDER_RADIUS', '8')
+            && Configuration::updateValue('MB_CATALOGUE_CARD_PADDING', '20')
+            && Configuration::updateValue('MB_CATALOGUE_CARD_FONT_SIZE', '14')
+            && Configuration::updateValue('MB_CATALOGUE_CARD_BOX_SHADOW', '0 2px 4px rgba(0,0,0,0.1)');
     }
 
     /**
@@ -68,6 +75,13 @@ class Mb_Category_As_Catalogue extends Module
             && Configuration::deleteByName('MB_CATALOGUE_MESSAGE')
             && Configuration::deleteByName('MB_CATALOGUE_MESSAGE_ENABLED')
             && Configuration::deleteByName('MB_CATALOGUE_HIDE_PRICES')
+            && Configuration::deleteByName('MB_CATALOGUE_CARD_BG')
+            && Configuration::deleteByName('MB_CATALOGUE_CARD_TEXT_COLOR')
+            && Configuration::deleteByName('MB_CATALOGUE_CARD_BORDER_COLOR')
+            && Configuration::deleteByName('MB_CATALOGUE_CARD_BORDER_RADIUS')
+            && Configuration::deleteByName('MB_CATALOGUE_CARD_PADDING')
+            && Configuration::deleteByName('MB_CATALOGUE_CARD_FONT_SIZE')
+            && Configuration::deleteByName('MB_CATALOGUE_CARD_BOX_SHADOW')
             && parent::uninstall();
     }
 
@@ -121,6 +135,15 @@ class Mb_Category_As_Catalogue extends Module
                 Configuration::updateValue('MB_CATALOGUE_MESSAGE_ENABLED', (int)$message_enabled);
                 $hide_prices = Tools::getValue('MB_CATALOGUE_HIDE_PRICES');
                 Configuration::updateValue('MB_CATALOGUE_HIDE_PRICES', (int)$hide_prices);
+                
+                // Save card design settings
+                Configuration::updateValue('MB_CATALOGUE_CARD_BG', Tools::getValue('MB_CATALOGUE_CARD_BG'));
+                Configuration::updateValue('MB_CATALOGUE_CARD_TEXT_COLOR', Tools::getValue('MB_CATALOGUE_CARD_TEXT_COLOR'));
+                Configuration::updateValue('MB_CATALOGUE_CARD_BORDER_COLOR', Tools::getValue('MB_CATALOGUE_CARD_BORDER_COLOR'));
+                Configuration::updateValue('MB_CATALOGUE_CARD_BORDER_RADIUS', (int)Tools::getValue('MB_CATALOGUE_CARD_BORDER_RADIUS'));
+                Configuration::updateValue('MB_CATALOGUE_CARD_PADDING', (int)Tools::getValue('MB_CATALOGUE_CARD_PADDING'));
+                Configuration::updateValue('MB_CATALOGUE_CARD_FONT_SIZE', (int)Tools::getValue('MB_CATALOGUE_CARD_FONT_SIZE'));
+                Configuration::updateValue('MB_CATALOGUE_CARD_BOX_SHADOW', Tools::getValue('MB_CATALOGUE_CARD_BOX_SHADOW'));
                 // Save multilingual messages as JSON
                 if (is_array($messages)) {
                     Configuration::updateValue('MB_CATALOGUE_MESSAGE', json_encode($messages));
@@ -243,6 +266,48 @@ class Mb_Category_As_Catalogue extends Module
                         'name' => 'MB_CATALOGUE_TAG_ICON',
                         'desc' => $this->l('Optional icon class (e.g., "fa fa-star") to show in the tag')
                     ),
+                    array(
+                        'type' => 'color',
+                        'label' => $this->l('Card background color'),
+                        'name' => 'MB_CATALOGUE_CARD_BG',
+                        'desc' => $this->l('Background color for the custom message card')
+                    ),
+                    array(
+                        'type' => 'color',
+                        'label' => $this->l('Card text color'),
+                        'name' => 'MB_CATALOGUE_CARD_TEXT_COLOR',
+                        'desc' => $this->l('Text color for the custom message card')
+                    ),
+                    array(
+                        'type' => 'color',
+                        'label' => $this->l('Card border color'),
+                        'name' => 'MB_CATALOGUE_CARD_BORDER_COLOR',
+                        'desc' => $this->l('Border color for the custom message card')
+                    ),
+                    array(
+                        'type' => 'text',
+                        'label' => $this->l('Card border radius (px)'),
+                        'name' => 'MB_CATALOGUE_CARD_BORDER_RADIUS',
+                        'desc' => $this->l('Border radius for the custom message card (default: 8)')
+                    ),
+                    array(
+                        'type' => 'text',
+                        'label' => $this->l('Card padding (px)'),
+                        'name' => 'MB_CATALOGUE_CARD_PADDING',
+                        'desc' => $this->l('Padding for the custom message card (default: 20)')
+                    ),
+                    array(
+                        'type' => 'text',
+                        'label' => $this->l('Card font size (px)'),
+                        'name' => 'MB_CATALOGUE_CARD_FONT_SIZE',
+                        'desc' => $this->l('Font size for the custom message card (default: 14)')
+                    ),
+                    array(
+                        'type' => 'text',
+                        'label' => $this->l('Card box shadow'),
+                        'name' => 'MB_CATALOGUE_CARD_BOX_SHADOW',
+                        'desc' => $this->l('Box shadow for the custom message card (default: 0 2px 4px rgba(0,0,0,0.1))')
+                    ),
                 ),
                 'submit' => array(
                     'title' => $this->l('Save'),
@@ -271,6 +336,13 @@ class Mb_Category_As_Catalogue extends Module
         $helper->fields_value['MB_CATALOGUE_TAG_ICON'] = Configuration::get('MB_CATALOGUE_TAG_ICON');
         $helper->fields_value['MB_CATALOGUE_MESSAGE_ENABLED'] = Configuration::get('MB_CATALOGUE_MESSAGE_ENABLED');
         $helper->fields_value['MB_CATALOGUE_HIDE_PRICES'] = Configuration::get('MB_CATALOGUE_HIDE_PRICES');
+        $helper->fields_value['MB_CATALOGUE_CARD_BG'] = Configuration::get('MB_CATALOGUE_CARD_BG');
+        $helper->fields_value['MB_CATALOGUE_CARD_TEXT_COLOR'] = Configuration::get('MB_CATALOGUE_CARD_TEXT_COLOR');
+        $helper->fields_value['MB_CATALOGUE_CARD_BORDER_COLOR'] = Configuration::get('MB_CATALOGUE_CARD_BORDER_COLOR');
+        $helper->fields_value['MB_CATALOGUE_CARD_BORDER_RADIUS'] = Configuration::get('MB_CATALOGUE_CARD_BORDER_RADIUS');
+        $helper->fields_value['MB_CATALOGUE_CARD_PADDING'] = Configuration::get('MB_CATALOGUE_CARD_PADDING');
+        $helper->fields_value['MB_CATALOGUE_CARD_FONT_SIZE'] = Configuration::get('MB_CATALOGUE_CARD_FONT_SIZE');
+        $helper->fields_value['MB_CATALOGUE_CARD_BOX_SHADOW'] = Configuration::get('MB_CATALOGUE_CARD_BOX_SHADOW');
         // Load multilingual messages into helper fields
         $storedMessages = json_decode(Configuration::get('MB_CATALOGUE_MESSAGE'), true);
         if (!is_array($storedMessages)) {
@@ -439,9 +511,19 @@ class Mb_Category_As_Catalogue extends Module
         if ($enabled) {
             $currentLang = isset($this->context->language->id) ? $this->context->language->id : null;
             if ($currentLang && is_array($storedMessages) && isset($storedMessages[$currentLang])) {
-                $message = $storedMessages[$currentLang];
+                // Decode HTML entities to render HTML properly in front-end
+                $message = html_entity_decode($storedMessages[$currentLang], ENT_QUOTES, 'UTF-8');
             }
         }
+
+        // Get card design settings
+        $card_bg = Configuration::get('MB_CATALOGUE_CARD_BG') ?: '#f8f9fa';
+        $card_text_color = Configuration::get('MB_CATALOGUE_CARD_TEXT_COLOR') ?: '#333333';
+        $card_border_color = Configuration::get('MB_CATALOGUE_CARD_BORDER_COLOR') ?: '#dee2e6';
+        $card_border_radius = Configuration::get('MB_CATALOGUE_CARD_BORDER_RADIUS') ?: '8';
+        $card_padding = Configuration::get('MB_CATALOGUE_CARD_PADDING') ?: '20';
+        $card_font_size = Configuration::get('MB_CATALOGUE_CARD_FONT_SIZE') ?: '14';
+        $card_box_shadow = Configuration::get('MB_CATALOGUE_CARD_BOX_SHADOW') ?: '0 2px 4px rgba(0,0,0,0.1)';
 
         // Inject JS to replace/hide existing flags and insert our custom flag into the .product-flags list
         $js = '<script>(function(){'
@@ -451,6 +533,13 @@ class Mb_Category_As_Catalogue extends Module
             . 'var color=' . json_encode($tag_color) . ';'
             . 'var icon=' . json_encode($tag_icon) . ';'
             . 'var message=' . json_encode($message) . ';'
+            . 'var cardBg=' . json_encode($card_bg) . ';'
+            . 'var cardTextColor=' . json_encode($card_text_color) . ';'
+            . 'var cardBorderColor=' . json_encode($card_border_color) . ';'
+            . 'var cardBorderRadius=' . json_encode($card_border_radius) . ';'
+            . 'var cardPadding=' . json_encode($card_padding) . ';'
+            . 'var cardFontSize=' . json_encode($card_font_size) . ';'
+            . 'var cardBoxShadow=' . json_encode($card_box_shadow) . ';'
             . 'function findContainer(){'
             . '  var sel = "[data-id-product=\\\""+id+"\\\"], [data-id_product=\\\""+id+"\\\"], .product-miniature[data-id-product=\\\""+id+"\\\"], .product-miniature[data-id_product=\\\""+id+"\\\"], .product[data-product-id=\\\""+id+"\\\"], .product[data-id-product=\\\""+id+"\\\"]";'
             . '  var el = document.querySelector(sel); if(el) return el; return null;'
@@ -458,16 +547,24 @@ class Mb_Category_As_Catalogue extends Module
             . 'function inject(){'
             . '  var containerEl = findContainer(); if(!containerEl) return; var containers = containerEl.querySelectorAll(".product-flags"); if(!containers.length) containers=[containerEl]; containers.forEach(function(container){ try{ var children = container.querySelectorAll("li"); children.forEach(function(ch){ if(!ch.classList.contains("mb-cat-custom")) ch.style.display="none"; }); var existing = container.querySelector(".mb-cat-custom"); if(existing) return; var li=document.createElement("li"); li.className="product-flag mb-cat-custom"; li.style.display="inline-block";li.style.marginRight="5px";li.style.padding="4px 8px"; if(bg) li.style.background=bg; if(color) li.style.color=color; li.style.fontSize="12px"; li.innerHTML = (icon? ("<i class=\\\""+icon+"\\\" style=\\\"margin-right:4px\\\"></i>") : "") + (label||"Catalogue"); container.insertBefore(li, container.firstChild); }catch(e){} });'
             . '}'
-            . 'function injectMessage(){'
-            . '  try{ console.log("mb_category_as_catalogue: injectMessage, message:", message); }catch(e){}'
+            . 'function handleQuickView(){'
             . '  if(!message) return;'
-            . '  var containerEl = findContainer(); if(!containerEl) return;'
-            . '  var selectors = [".product-add-to-cart", ".add-to-cart", "#add_to_cart", "button.add-to-cart", ".js-buy-btn", ".buy-button", ".product-page .add-to-cart", ".product-miniature .add-to-cart", ".quickview .product-add-to-cart", ".modal .add-to-cart"];'
-            . '  var inserted=false; selectors.forEach(function(sel){ var els = containerEl.querySelectorAll(sel); els.forEach(function(el){ try{ var parent = el.parentElement || (el.closest? el.closest(".product-miniature") : null) || containerEl; if(!parent) return; if(parent.querySelector(".mb-cat-message")) { inserted=true; return; } var msg = document.createElement("div"); msg.className = "mb-cat-message"; msg.style.display = "inline-block"; msg.style.marginTop = "5px"; msg.style.fontSize = "14px"; msg.style.color = "#000"; msg.style.lineHeight = "1.2"; msg.innerHTML = message; el.parentElement.insertBefore(msg, el.nextSibling); inserted=true; }catch(e){} }); }); if(!inserted){ try{ if(!containerEl.querySelector(".mb-cat-message")){ var msg2=document.createElement("div"); msg2.className="mb-cat-message"; msg2.style.marginTop="8px"; msg2.style.color="#000"; msg2.innerHTML=message; containerEl.appendChild(msg2); } }catch(e){} }'
+            . '  var quickview = document.querySelector(".quickview.modal, #quickview, .modal.show, .modal-dialog"); if(!quickview) return;'
+            . '  var productInModal = quickview.querySelector("[data-id-product=\\\""+id+"\\\"], [data-id_product=\\\""+id+"\\\"]"); if(!productInModal) productInModal = quickview;'
+            . '  if(quickview.getAttribute("data-mb-processed-"+id)) return; quickview.setAttribute("data-mb-processed-"+id, "1");'
+            . '  var atcSelectors = [".product-add-to-cart", ".add-to-cart", "#add_to_cart", "button.add-to-cart", ".add", "form[data-button-action]", ".product-actions .add-to-cart", ".js-product-add-to-cart"];'
+            . '  var notifSelectors = [".product-additional-info", ".availability-form", "[data-module]", ".out-of-stock-text", ".product-quantities"];'
+            . '  atcSelectors.forEach(function(sel){ var els = quickview.querySelectorAll(sel); els.forEach(function(e){ try{ e.style.display="none"; }catch(ex){} }); });'
+            . '  notifSelectors.forEach(function(sel){ var els = quickview.querySelectorAll(sel); els.forEach(function(e){ try{ e.style.display="none"; }catch(ex){} }); });'
+            . '  if(quickview.querySelector(".mb-cat-message")) return;'
+            . '  var insertPoint = quickview.querySelector(".product-information, .product-prices, .modal-body, .product-add-to-cart") || quickview;'
+            . '  var msg = document.createElement("div"); msg.className = "mb-cat-message"; msg.style.marginTop = "20px"; msg.style.marginBottom = "15px"; msg.style.padding = cardPadding+"px"; msg.style.fontSize = cardFontSize+"px"; msg.style.color = cardTextColor; msg.style.lineHeight = "1.6"; msg.style.backgroundColor = cardBg; msg.style.border = "1px solid "+cardBorderColor; msg.style.borderRadius = cardBorderRadius+"px"; msg.style.boxShadow = cardBoxShadow; msg.innerHTML = message;'
+            . '  if(insertPoint === quickview) { quickview.appendChild(msg); } else { insertPoint.parentElement.insertBefore(msg, insertPoint.nextSibling); }'
             . '}'
-            . 'function hideInside(){ try{ var container = findContainer(); if(!container) return; var atcSel=[".product-add-to-cart", ".add-to-cart", "#add_to_cart", "button.add-to-cart", ".js-buy-btn", ".buy-button", ".product-page .add-to-cart", ".product-miniature .add-to-cart", ".quickview .product-add-to-cart", ".modal .add-to-cart"]; atcSel.forEach(function(sel){ var els=container.querySelectorAll(sel); els.forEach(function(e){ try{ e.style.display="none"; }catch(ex){} }); }); var priceSel=[".product-price", ".product-prices", ".current-price", ".regular-price", ".price", ".product-price-and-shipping", ".product-miniature .price", ".product .price"]; priceSel.forEach(function(sel){ var els=container.querySelectorAll(sel); els.forEach(function(e){ try{ e.style.display="none"; }catch(ex){} }); }); }catch(e){} }'
-            . 'if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",function(){inject();injectMessage();hideInside();});}else{inject();injectMessage();hideInside();}'
-            . 'setTimeout(function(){inject();injectMessage();hideInside();},100); setTimeout(function(){inject();injectMessage();hideInside();},500);'
+            . 'function hideInside(){ try{ var container = findContainer(); if(!container) return; var atcSel=[".product-add-to-cart", ".add-to-cart", "#add_to_cart", "button.add-to-cart", ".js-buy-btn", ".buy-button", ".product-page .add-to-cart", ".product-miniature .add-to-cart"]; atcSel.forEach(function(sel){ var els=container.querySelectorAll(sel); els.forEach(function(e){ try{ e.style.display="none"; }catch(ex){} }); }); var priceSel=[".product-price", ".product-prices", ".current-price", ".regular-price", ".price", ".product-price-and-shipping", ".product-miniature .price", ".product .price"]; priceSel.forEach(function(sel){ var els=container.querySelectorAll(sel); els.forEach(function(e){ try{ e.style.display="none"; }catch(ex){} }); }); }catch(e){} }'
+            . 'var observer = new MutationObserver(function(mutations){ mutations.forEach(function(mutation){ if(mutation.addedNodes.length){ handleQuickView(); } }); }); observer.observe(document.body, {childList: true, subtree: true});'
+            . 'if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",function(){inject();hideInside();handleQuickView();});}else{inject();hideInside();handleQuickView();}'
+            . 'setTimeout(function(){inject();hideInside();handleQuickView();},100); setTimeout(function(){handleQuickView();},500); setTimeout(function(){handleQuickView();},1000);'
             . '})();</script>';
 
         return $js;
@@ -595,9 +692,19 @@ class Mb_Category_As_Catalogue extends Module
         if ($enabled) {
             $currentLang = isset($this->context->language->id) ? $this->context->language->id : null;
             if ($currentLang && is_array($storedMessages) && isset($storedMessages[$currentLang])) {
-                $message = $storedMessages[$currentLang];
+                // Decode HTML entities to render HTML properly in front-end
+                $message = html_entity_decode($storedMessages[$currentLang], ENT_QUOTES, 'UTF-8');
             }
         }
+
+        // Get card design settings
+        $card_bg = Configuration::get('MB_CATALOGUE_CARD_BG') ?: '#f8f9fa';
+        $card_text_color = Configuration::get('MB_CATALOGUE_CARD_TEXT_COLOR') ?: '#333333';
+        $card_border_color = Configuration::get('MB_CATALOGUE_CARD_BORDER_COLOR') ?: '#dee2e6';
+        $card_border_radius = Configuration::get('MB_CATALOGUE_CARD_BORDER_RADIUS') ?: '8';
+        $card_padding = Configuration::get('MB_CATALOGUE_CARD_PADDING') ?: '20';
+        $card_font_size = Configuration::get('MB_CATALOGUE_CARD_FONT_SIZE') ?: '14';
+        $card_box_shadow = Configuration::get('MB_CATALOGUE_CARD_BOX_SHADOW') ?: '0 2px 4px rgba(0,0,0,0.1)';
 
         // Inject JS to manipulate flags on product page and show message near add-to-cart (scoped per product)
         $output = '';
@@ -608,18 +715,27 @@ class Mb_Category_As_Catalogue extends Module
         $output .= 'var icon=' . json_encode($tag_icon) . ';';
         $output .= 'var message=' . json_encode($message) . ';';
         $output .= 'var id=' . (int)$id_product . ';';
+        $output .= 'var cardBg=' . json_encode($card_bg) . ';';
+        $output .= 'var cardTextColor=' . json_encode($card_text_color) . ';';
+        $output .= 'var cardBorderColor=' . json_encode($card_border_color) . ';';
+        $output .= 'var cardBorderRadius=' . json_encode($card_border_radius) . ';';
+        $output .= 'var cardPadding=' . json_encode($card_padding) . ';';
+        $output .= 'var cardFontSize=' . json_encode($card_font_size) . ';';
+        $output .= 'var cardBoxShadow=' . json_encode($card_box_shadow) . ';';
         $output .= 'function injectFlag(){';
         $output .= '  var container = document.querySelector(".product-flags");';
         $output .= '  if(container){ try{ var children = container.querySelectorAll("li"); children.forEach(function(ch){ if(!ch.classList.contains("mb-cat-custom")) ch.style.display="none"; }); var existing = container.querySelector(".mb-cat-custom"); if(existing) { existing.style.display="inline-block"; return; } var li=document.createElement("li"); li.className="product-flag mb-cat-custom"; li.setAttribute("data-mb-product-id", id); li.style.display="inline-block";li.style.marginRight="5px";li.style.padding="4px 8px"; if(bg) li.style.background=bg; if(color) li.style.color=color; li.style.fontSize="12px"; li.innerHTML = (icon? ("<i class=\""+icon+"\" style=\"margin-right:4px\"></i>") : "") + (label||"Catalogue"); container.insertBefore(li, container.firstChild); }catch(e){} }';
         $output .= '}';
         $output .= 'function injectMessage(){';
         $output .= '  if(!message) return;';
-        $output .= '  try{ var container = document.querySelector("[data-id-product=\""+id+"\"], [data-id_product=\""+id+"\"], .product[data-product-id=\""+id+"\"]") || document.querySelector(".product-add-to-cart, #add_to_cart, .product-page .add-to-cart"); if(!container) return; var parent = container.parentElement || document.body; if(!parent.querySelector(".mb-cat-message")){ var msg = document.createElement("div"); msg.className="mb-cat-message"; msg.style.marginTop="8px"; msg.innerHTML = message; parent.insertBefore(msg, container.nextSibling); } }catch(e){}';
+        $output .= '  try{ var container = document.querySelector(".product-add-to-cart, #add_to_cart, .product-actions"); if(!container) return; var parent = container.parentElement || document.body; if(!parent.querySelector(".mb-cat-message")){ var msg = document.createElement("div"); msg.className="mb-cat-message"; msg.style.marginTop="20px"; msg.style.marginBottom="15px"; msg.style.padding=cardPadding+"px"; msg.style.fontSize=cardFontSize+"px"; msg.style.lineHeight="1.6"; msg.style.color=cardTextColor; msg.style.backgroundColor=cardBg; msg.style.border="1px solid "+cardBorderColor; msg.style.borderRadius=cardBorderRadius+"px"; msg.style.boxShadow=cardBoxShadow; msg.innerHTML = message; parent.insertBefore(msg, container.nextSibling); } }catch(e){}';
         $output .= '}';
         // hide prices and add-to-cart inside the product container only
-        $output .= 'function hideInside(){ try{ var container = document.querySelector("[data-id-product=\""+id+"\"], [data-id_product=\""+id+"\"], .product[data-product-id=\""+id+"\"]") || document.querySelector(".product-miniature[data-id-product=\""+id+"\"], .product-miniature[data-id_product=\""+id+"\"], .product[data-id-product=\""+id+"\"], .product[data-id_product=\""+id+"\"]"); if(!container) return; var atcSel=[".product-add-to-cart", ".add-to-cart", "#add_to_cart", "button.add-to-cart", ".js-buy-btn", ".buy-button", ".product-page .add-to-cart", ".product-miniature .add-to-cart", ".quickview .product-add-to-cart", ".modal .add-to-cart"]; atcSel.forEach(function(sel){ var els=container.querySelectorAll(sel); els.forEach(function(e){ try{ e.style.display="none"; }catch(ex){} }); }); var priceSel=[".product-price", ".product-prices", ".current-price", ".regular-price", ".price", ".product-price-and-shipping", ".product-miniature .price", ".product .price"]; priceSel.forEach(function(sel){ var els=container.querySelectorAll(sel); els.forEach(function(e){ try{ e.style.display="none"; }catch(ex){} }); }); }catch(e){} }';
-        $output .= 'if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",function(){injectFlag();injectMessage();hideInside();});}else{injectFlag();injectMessage();hideInside();}';
-        $output .= 'setTimeout(function(){injectFlag();injectMessage();hideInside();},100); setTimeout(function(){injectFlag();injectMessage();hideInside();},500);';
+        $output .= 'function hideInside(){ try{ var atcSel=[".product-add-to-cart", ".add-to-cart", "#add_to_cart", "button.add-to-cart", ".js-buy-btn", ".buy-button", ".product-actions .add-to-cart", ".js-product-add-to-cart"]; atcSel.forEach(function(sel){ var els=document.querySelectorAll(sel); els.forEach(function(e){ try{ e.style.display="none"; }catch(ex){} }); }); var notifSel=[".product-additional-info", ".availability-form", ".out-of-stock-text", ".product-quantities"]; notifSel.forEach(function(sel){ var els=document.querySelectorAll(sel); els.forEach(function(e){ try{ e.style.display="none"; }catch(ex){} }); }); var priceSel=[".product-price", ".product-prices", ".current-price", ".regular-price", ".price", ".product-price-and-shipping"]; priceSel.forEach(function(sel){ var els=document.querySelectorAll(sel); els.forEach(function(e){ try{ e.style.display="none"; }catch(ex){} }); }); }catch(e){} }';
+        $output .= 'function handleQuickView(){ if(!message) return; var quickview = document.querySelector(".quickview.modal, #quickview, .modal.show, .modal-dialog"); if(!quickview) return; if(quickview.getAttribute("data-mb-processed-"+id)) return; quickview.setAttribute("data-mb-processed-"+id, "1"); var atcSelectors = [".product-add-to-cart", ".add-to-cart", "#add_to_cart", "button.add-to-cart", ".add", "form[data-button-action]", ".product-actions .add-to-cart", ".js-product-add-to-cart"]; var notifSelectors = [".product-additional-info", ".availability-form", "[data-module]", ".out-of-stock-text", ".product-quantities"]; atcSelectors.forEach(function(sel){ var els = quickview.querySelectorAll(sel); els.forEach(function(e){ try{ e.style.display="none"; }catch(ex){} }); }); notifSelectors.forEach(function(sel){ var els = quickview.querySelectorAll(sel); els.forEach(function(e){ try{ e.style.display="none"; }catch(ex){} }); }); if(quickview.querySelector(".mb-cat-message")) return; var insertPoint = quickview.querySelector(".product-information, .product-prices, .modal-body, .product-add-to-cart") || quickview; var msg = document.createElement("div"); msg.className = "mb-cat-message"; msg.style.marginTop = "20px"; msg.style.marginBottom = "15px"; msg.style.padding = cardPadding+"px"; msg.style.fontSize = cardFontSize+"px"; msg.style.color = cardTextColor; msg.style.lineHeight = "1.6"; msg.style.backgroundColor = cardBg; msg.style.border = "1px solid "+cardBorderColor; msg.style.borderRadius = cardBorderRadius+"px"; msg.style.boxShadow = cardBoxShadow; msg.innerHTML = message; if(insertPoint === quickview) { quickview.appendChild(msg); } else { insertPoint.parentElement.insertBefore(msg, insertPoint.nextSibling); } }';
+        $output .= 'var observer = new MutationObserver(function(mutations){ mutations.forEach(function(mutation){ if(mutation.addedNodes.length){ handleQuickView(); } }); }); observer.observe(document.body, {childList: true, subtree: true});';
+        $output .= 'if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",function(){injectFlag();injectMessage();hideInside();handleQuickView();});}else{injectFlag();injectMessage();hideInside();handleQuickView();}';
+        $output .= 'setTimeout(function(){injectFlag();injectMessage();hideInside();handleQuickView();},100); setTimeout(function(){injectMessage();hideInside();handleQuickView();},500); setTimeout(function(){handleQuickView();},1000);';
         $output .= '})();</script>';
 
         return $output;
