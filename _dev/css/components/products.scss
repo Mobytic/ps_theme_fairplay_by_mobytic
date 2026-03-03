@@ -56,15 +56,16 @@
   }
 }
 
+.manufacturer-logo {
+  max-height: 4rem;
+  margin-bottom: 1rem;
+  border: 2px solid $gray-light;
+}
+
 .product-information {
   font-size: $font-size-lg;
   color: $gray-darker;
 
-  .manufacturer-logo {
-    max-height: 4rem;
-    margin-bottom: 1rem;
-    border: 2px solid $gray-light;
-  }
 
   .product-description {
     img {
