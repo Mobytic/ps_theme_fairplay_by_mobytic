@@ -37,10 +37,11 @@
   </button>
   <div class="dropdown-menu">
     {foreach from=$listing.sort_orders item=sort_order}
+      {assign var='sortOrderClasses' value=['current' => $sort_order.current, 'js-search-link' => true]|classnames}
       <a
         rel="nofollow"
         href="{$sort_order.url}"
-        class="select-list {['current' => $sort_order.current, 'js-search-link' => true]|classnames}"
+        class="select-list{if $sortOrderClasses} {$sortOrderClasses}{/if}"
       >
         {$sort_order.label}
       </a>

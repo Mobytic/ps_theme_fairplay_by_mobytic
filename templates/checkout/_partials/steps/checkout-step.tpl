@@ -23,14 +23,15 @@
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
 {block name='step'}
-  <section  id    = "{$identifier}"
-            class = "{[
+  {assign var='stepClasses' value=[
                         'checkout-step'   => true,
                         '-current'        => $step_is_current,
                         '-reachable'      => $step_is_reachable,
                         '-complete'       => $step_is_complete,
                         'js-current-step' => $step_is_current
-                    ]|classnames}"
+                    ]|classnames}
+  <section  id    = "{$identifier}"
+            class = "{if $stepClasses}{$stepClasses}{/if}"
   >
     <h1 class="step-title js-step-title h3">
       <i class="material-icons rtl-no-flip done">&#xE876;</i>

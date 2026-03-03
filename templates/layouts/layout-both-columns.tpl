@@ -34,7 +34,7 @@
     {/block}
   </head>
 
-  <body id="{$page.page_name}" class="{$page.body_classes|classnames}">
+  <body id="{$page.page_name}"{if isset($page.body_classes) && $page.body_classes} class="{$page.body_classes|classnames}"{/if}>
 
     {* <div class="mb-background-pattern" style="background-image: url('{_PS_THEME_URI_}upload/img/bg-pattern.png');"></div> *}
 
