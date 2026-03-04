@@ -42,7 +42,8 @@ $(document).ready(() => {
 
       // Update sources of both cover and modal cover
       modalProductCover.prop('src', newSelectedThumb.data('image-large-src'));
-      productCover.prop('src', newSelectedThumb.data('image-medium-src'));
+      // Use the large source for the main product cover as well to avoid low-quality images
+      productCover.prop('src', newSelectedThumb.data('image-large-src'));
 
       // Get data from thumbnail and update cover src, alt and title
       productCover.attr('title', newSelectedThumb.attr('title'));
@@ -50,8 +51,8 @@ $(document).ready(() => {
       productCover.attr('alt', newSelectedThumb.attr('alt'));
       modalProductCover.attr('alt', newSelectedThumb.attr('alt'));
 
-      // Get data from thumbnail and update cover sources
-      updateSources(productCover, newSelectedThumb.data('image-medium-sources'));
+      // Get data from thumbnail and update cover sources (use large sources for better quality)
+      updateSources(productCover, newSelectedThumb.data('image-large-sources'));
       updateSources(modalProductCover, newSelectedThumb.data('image-large-sources'));
     };
 
