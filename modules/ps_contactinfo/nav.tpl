@@ -44,7 +44,11 @@
         </a>
       </div>
       <div>
-        <a class="mb-contact-tel" href="tel:{$contact_infos['phone']|replace:' ':''}">
+        {* <a class="mb-contact-tel" href="tel:{$contact_infos['phone']|replace:' ':''}">
+          <i class="material-icons d-inline">&#xe0cd;</i>
+          <span>{$contact_infos.phone}</span>
+        </a> *}
+        <a class="mb-contact-tel" href="{$urls.pages.contact}">
           <i class="material-icons d-inline">&#xe0cd;</i>
           <span>{$contact_infos.phone}</span>
         </a>
