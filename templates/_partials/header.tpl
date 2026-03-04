@@ -36,7 +36,7 @@
         <div id="mb-top-nav">
           <div class="left-nav">
             <div class="mb-shipping-info">
-              <span>{l s='Free shipping for orders over $50' d='Shop.Theme.Global'}</span>
+              <a href="/content/1-livraison"><span>{l s='Free shipping for orders over $50' d='Shop.Theme.Global'}</span></a>
             </div>
             {hook h='displayNav1'}
           </div>
