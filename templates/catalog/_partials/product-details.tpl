@@ -1,14 +1,12 @@
-<div class="js-product-details tab-pane fade{if !$product.description} in active{/if}"
-     id="product-details"
-     data-product="{$product.embedded_attributes|json_encode}"
-     role="tabpanel"
-  >
+<div class="js-product-details tab-pane fade{if !$product.description} in active{/if}" id="product-details"
+  data-product="{$product.embedded_attributes|json_encode}" role="tabpanel">
   {block name='product_reference'}
     {if isset($product_manufacturer->id)}
       <div class="product-manufacturer">
         {if isset($manufacturer_image_url)}
           <a href="{$product_brand_url}">
-            <img src="{$manufacturer_image_url}" class="img img-fluid manufacturer-logo" alt="{$product_manufacturer->name}" loading="lazy">
+            <img src="{$manufacturer_image_url}" class="img img-fluid manufacturer-logo" alt="{$product_manufacturer->name}"
+              loading="lazy">
           </a>
         {else}
           <label class="label">{l s='Brand' d='Shop.Theme.Catalog'}</label>
@@ -30,7 +28,8 @@
     {if $product.show_quantities}
       <div class="product-quantities">
         <label class="label">{l s='In stock' d='Shop.Theme.Catalog'}</label>
-        <span data-stock="{$product.quantity}" data-allow-oosp="{$product.allow_oosp}">{$product.quantity} {$product.quantity_label}</span>
+        <span data-stock="{$product.quantity}" data-allow-oosp="{$product.allow_oosp}">{$product.quantity}
+          {$product.quantity_label}</span>
       </div>
     {/if}
   {/block}
@@ -55,15 +54,25 @@
       <section class="product-features">
         <p class="h6">{l s='Data sheet' d='Shop.Theme.Catalog'}</p>
         <dl class="data-sheet">
-          {assign var='prev_feature_name' value=''}
-          {assign var='prev_feature_value' value=''}
+          {assign var='features_grouped' value=[]}
+
           {foreach from=$product.grouped_features item=feature}
-            {if $feature.name != $prev_feature_name || $feature.value != $prev_feature_value}
-              <dt class="name">{$feature.name}</dt>
-              <dd class="value">{$feature.value|regex_replace:"/(.*)(\\R\\1)+/Ums":"\\1"|escape:'htmlall'|nl2br nofilter}</dd>
-              {assign var='prev_feature_name' value=$feature.name}
-              {assign var='prev_feature_value' value=$feature.value}
+            {assign var='clean_value' value=$feature.value|regex_replace:"/(\r\n|\r|\n)+/":", "}
+
+            {if isset($features_grouped[$feature.name])}
+              {assign var='features_grouped' value=$features_grouped|@array_merge:[
+              $feature.name => $features_grouped[$feature.name]|cat:', '|cat:$clean_value
+            ]}
+            {else}
+              {assign var='features_grouped' value=$features_grouped|@array_merge:[
+              $feature.name => $clean_value
+            ]}
             {/if}
+          {/foreach}
+
+          {foreach from=$features_grouped key=name item=value}
+            <dt class="name">{$name}</dt>
+            <dd class="value">{$value|escape:'htmlall'}</dd>
           {/foreach}
         </dl>
       </section>
@@ -75,12 +84,12 @@
     {if !empty($product.specific_references)}
       <section class="product-features">
         <p class="h6">{l s='Specific References' d='Shop.Theme.Catalog'}</p>
-          <dl class="data-sheet">
-            {foreach from=$product.specific_references item=reference key=key}
-              <dt class="name">{$key}</dt>
-              <dd class="value">{$reference}</dd>
-            {/foreach}
-          </dl>
+        <dl class="data-sheet">
+          {foreach from=$product.specific_references item=reference key=key}
+            <dt class="name">{$key}</dt>
+            <dd class="value">{$reference}</dd>
+          {/foreach}
+        </dl>
       </section>
     {/if}
   {/block}
@@ -89,7 +98,7 @@
     {if $product.condition}
       <div class="product-condition">
         <label class="label">{l s='Condition' d='Shop.Theme.Catalog'} </label>
-        <link href="{$product.condition.schema_url}"/>
+        <link href="{$product.condition.schema_url}" />
         <span>{$product.condition.label}</span>
       </div>
     {/if}
