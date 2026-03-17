@@ -173,6 +173,16 @@
   .myaccount-title a {
     color: $white;
   }
+
+  #loyalty-link {
+    &:hover span {
+      color: $fp-red;
+    }
+
+    i {
+      display: none;
+    }
+  }
 }
 
 .pinterest {

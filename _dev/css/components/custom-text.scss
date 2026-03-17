@@ -53,9 +53,19 @@
   }
 }
 
+#product .product-additional-info {
+  margin-top: 1rem;
+}
+
 .product-description {
-  * {
-    color: $black;
+  // * {
+  //   color: $black;
+  // }
+
+  iframe {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
   }
 
   h2,
