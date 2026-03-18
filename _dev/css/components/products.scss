@@ -26,7 +26,10 @@
       color: $black;
     }
   }
+}
 
+#product,
+#checkout {
   .blockreassurance_product {
     > div {
       // keep the 3 first items and hide the rest
@@ -80,7 +83,6 @@
 .product-information {
   font-size: $font-size-lg;
   color: $black;
-
 
   .product-description {
     img {
