@@ -20,6 +20,21 @@
     max-width: 452px;
     margin: 0 auto;
   }
+
+  #loyalty {
+    p {
+      color: $black;
+    }
+  }
+
+  .blockreassurance_product {
+    > div {
+      // keep the 3 first items and hide the rest
+      &:nth-of-type(n + 4) {
+        display: none;
+      }
+    }
+  }
 }
 
 .product-price {
@@ -38,7 +53,7 @@
 }
 
 #product-description-short {
-  color: $gray-darker;
+  color: $black;
 
   ul,
   ol {
@@ -47,7 +62,7 @@
 
     li {
       font-size: 0.9375rem;
-      color: $gray;
+      color: $black;
     }
   }
 
@@ -64,7 +79,7 @@
 
 .product-information {
   font-size: $font-size-lg;
-  color: $gray-darker;
+  color: $black;
 
 
   .product-description {
@@ -80,7 +95,7 @@
 
       li {
         font-size: 0.9375rem;
-        color: $gray;
+        color: $black;
       }
     }
 
@@ -501,7 +516,7 @@
 }
 
 #blockcart-modal {
-  color: $gray-darker;
+  color: $black;
 
   .modal-header {
     background: $white;
@@ -719,7 +734,7 @@
   .label {
     font-size: $font-size-base;
     font-weight: 500;
-    color: $gray-darker;
+    color: $black;
   }
 }
 
@@ -1035,7 +1050,7 @@
       font-size: 0.875rem;
       background: $mb-color-newspaper;
       border-radius: 15px;
-      color: $gray-darker;
+      color: $black;
 
       display: flex;
       align-items: center;
