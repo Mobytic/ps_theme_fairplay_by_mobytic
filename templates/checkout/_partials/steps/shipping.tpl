@@ -32,6 +32,7 @@
   <div class="delivery-options-list">
     {if $delivery_options|count}
       <form class="clearfix" id="js-delivery"
+        data-selected-delivery-option="{$delivery_option|escape:'html':'UTF-8'}"
         data-url-update="{url entity='order' params=['ajax' => 1, 'action' => 'selectDeliveryOption']}" method="post">
         <div class="form-fields">
           {block name='delivery_options'}
@@ -75,13 +76,17 @@
                 </div>
                 <div class="carrier-extra-content js-carrier-extra-content"
                   {if ($delivery_option != $carrier_id) || ($delivery_option == $carrier_id && empty($carrier.extraContent))}
-                  style="display:none;" {/if}>
+                  style="display:none;" {/if}
+                >
                   {$carrier.extraContent nofilter}
                 </div>
                 <div class="clearfix"></div>
               {/foreach}
             </div>
           {/block}
+          <p class="alert alert-danger js-delivery-option-error" style="display:none;">
+            {l s='Please select a delivery method to continue.' d='Shop.Theme.Checkout'}
+          </p>
           <div class="order-options">
             <div id="delivery">
               <label

@@ -25,14 +25,69 @@
 import $ from 'jquery';
 import prestashop from 'prestashop';
 
+const DELIVERY_STORAGE_KEY = 'fp_selected_delivery_option';
+const DELIVERY_SELECTED_BY_USER_KEY = 'fp_delivery_selected_by_user';
+
+function getDeliverySelectionInput($form) {
+  return $form.find('input[type="radio"][name^="delivery_option"]');
+}
+
+function getCheckedDeliveryOption($form) {
+  return getDeliverySelectionInput($form).filter(':checked');
+}
+
+function toggleDeliveryFormState($form) {
+  const $submitButton = $form.find('button[name="confirmDeliveryOption"]');
+  const hasSelectedCarrier = getCheckedDeliveryOption($form).length > 0;
+
+  $submitButton.prop('disabled', !hasSelectedCarrier);
+}
+
+function restoreDeliverySelection() {
+  const $form = $('#js-delivery');
+  if (!$form.length) {
+    return;
+  }
+
+  const $options = getDeliverySelectionInput($form);
+  if (!$options.length) {
+    return;
+  }
+
+  const selectedByUser = globalThis.sessionStorage.getItem(DELIVERY_SELECTED_BY_USER_KEY) === '1';
+  const savedValue = globalThis.sessionStorage.getItem(DELIVERY_STORAGE_KEY);
+  const selectedValue = selectedByUser ? savedValue : null;
+
+  if (selectedValue) {
+    const selector = `input[type="radio"][name^="delivery_option"][value="${selectedValue}"]`;
+    const $savedOption = $form.find(selector);
+
+    if ($savedOption.length) {
+      $savedOption.prop('checked', true);
+    }
+  }
+
+  toggleDeliveryFormState($form);
+}
+
 function setUpCheckout() {
-  $(prestashop.themeSelectors.checkout.termsLink).on('click', (event) => {
+  $(document)
+    .off('click.fpTermsLink', prestashop.themeSelectors.checkout.termsLink)
+    .on('click.fpTermsLink', prestashop.themeSelectors.checkout.termsLink, (event) => {
     event.preventDefault();
-    let url = $(event.target).attr('href');
+    event.stopPropagation();
+    let url = $(event.currentTarget).attr('href');
 
     if (url) {
-      // TODO: Handle request if no pretty URL
-      url += '?content_only=1';
+      try {
+        const termsUrl = new URL(url, globalThis.location.origin);
+        termsUrl.searchParams.set('content_only', '1');
+        url = termsUrl.toString();
+      } catch {
+        const separator = url.includes('?') ? '&' : '?';
+        url = `${url}${separator}content_only=1`;
+      }
+
       $.get(url, (content) => {
         $(prestashop.themeSelectors.modal)
           .find(prestashop.themeSelectors.modalContent)
@@ -63,24 +118,100 @@ function toggleImage() {
   });
 }
 
+/**
+ * Force l'affichage du sous-total livraison si un transporteur est sélectionné
+ * et qu'un montant existe.
+ */
+function syncShippingSubtotalVisibility() {
+  if ($('body#checkout').length === 0) {
+    return;
+  }
+
+  const $shippingSubtotal = $('#cart-subtotal-shipping');
+
+  if (!$shippingSubtotal.length) {
+    return;
+  }
+
+  const shippingValue = $shippingSubtotal.find('.value').text().trim();
+  const hasShippingValue = shippingValue !== '' && shippingValue !== '-';
+
+  if (hasShippingValue) {
+    $shippingSubtotal.css('display', 'block');
+    $shippingSubtotal.attr('style', ($shippingSubtotal.attr('style') || '').replaceAll(/display\s*:\s*none;?/gi, ''));
+    $shippingSubtotal.show();
+  } else {
+    $shippingSubtotal.hide();
+  }
+}
 $(document).ready(() => {
   if ($('body#checkout').length === 1) {
     setUpCheckout();
     toggleImage();
+    restoreDeliverySelection();
+    syncShippingSubtotalVisibility();
   }
 
-  prestashop.on('updatedDeliveryForm', (params) => {
-    if (typeof params.deliveryOption === 'undefined' || params.deliveryOption.length === 0) {
+  $(document)
+    .off('change.fpDelivery', '#js-delivery input[type="radio"][name^="delivery_option"]')
+    .on('change.fpDelivery', '#js-delivery input[type="radio"][name^="delivery_option"]', (event) => {
+    const $option = $(event.currentTarget);
+    const $form = $option.closest('#js-delivery');
+
+    globalThis.sessionStorage.setItem(DELIVERY_SELECTED_BY_USER_KEY, '1');
+    globalThis.sessionStorage.setItem(DELIVERY_STORAGE_KEY, $option.val());
+
+    $form.find('.js-delivery-option-error').hide();
+    toggleDeliveryFormState($form);
+
+    syncShippingSubtotalVisibility();
+  });
+
+  $(document)
+    .off('submit.fpDelivery', '#js-delivery')
+    .on('submit.fpDelivery', '#js-delivery', (event) => {
+    const $form = $(event.currentTarget);
+
+    if (getCheckedDeliveryOption($form).length > 0) {
       return;
     }
-    // Hide all carrier extra content ...
+
+    event.preventDefault();
+    $form.find('.js-delivery-option-error').show();
+    toggleDeliveryFormState($form);
+  });
+
+  prestashop.on('updatedDeliveryForm', (params) => {
+    restoreDeliverySelection();
+    syncShippingSubtotalVisibility();
+
+    const $form = $('#js-delivery');
+    const $checked = getCheckedDeliveryOption($form);
+
     $(prestashop.themeSelectors.checkout.carrierExtraContent).hide();
 
-    // Show the one related to the selected carrier
-    const carrierExtraContent = params.deliveryOption.next(prestashop.themeSelectors.checkout.carrierExtraContent);
+    if ($checked.length === 0) {
+      return;
+    }
 
-    if (carrierExtraContent.html().trim() !== '') {
+    const deliveryOptionEl =
+      params?.deliveryOption?.length
+        ? params.deliveryOption
+        : $checked;
+
+    const carrierExtraContent = deliveryOptionEl.next(
+      prestashop.themeSelectors.checkout.carrierExtraContent
+    );
+
+    if (carrierExtraContent.length && carrierExtraContent.html().trim() !== '') {
       carrierExtraContent.slideDown();
     }
+  });
+
+  $(document)
+    .off('ajaxComplete.fpDelivery')
+    .on('ajaxComplete.fpDelivery', () => {
+    restoreDeliverySelection();
+    syncShippingSubtotalVisibility();
   });
 });

@@ -57,6 +57,7 @@
   </div>
 
   {if !$cart.is_virtual}
+      {assign var='shipping_subtotal' value=$cart.subtotals.shipping|default:null}
     <div class="row">
       <div class="col-md-12">
         <h4 class="h4">
@@ -76,13 +77,13 @@
               </div>
             </div>
             <div class="col-md-4">
-              <span class="carrier-name">{$selected_delivery_option.name}</span>
+              <span class="carrier-name">{$selected_delivery_option.name|default:($shipping_subtotal.label|default:'')}</span>
             </div>
             <div class="col-md-4">
-              <span class="carrier-delay">{$selected_delivery_option.delay}</span>
+              <span class="carrier-delay">{$selected_delivery_option.delay|default:''}</span>
             </div>
             <div class="col-md-2">
-              <span class="carrier-price">{$selected_delivery_option.price}</span>
+              <span class="carrier-price">{$selected_delivery_option.price|default:($shipping_subtotal.value|default:'')}</span>
             </div>
           </div>
         </div>
