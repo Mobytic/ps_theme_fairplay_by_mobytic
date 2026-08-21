@@ -78,6 +78,11 @@ label .color,
   }
 }
 
+.color.texture {
+  width: 90px;
+  height: 55px;
+}
+
 .facet-label {
   &.active,
   &:hover {

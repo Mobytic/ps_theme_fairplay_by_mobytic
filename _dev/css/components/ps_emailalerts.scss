@@ -19,3 +19,13 @@
     margin-top: 0.5rem;
   }
 }
+
+.js-mailalert-add {
+  background-color: $black;
+  border-color: $black;
+
+  &:hover {
+    background-color: $black;
+    border-color: $black;
+  }
+}
