@@ -54,8 +54,10 @@
 
     .category-cover {
       img {
-        width: auto;
-        height: 180px;
+        // width: auto;
+        // height: 180px;
+        width: 200px;
+        height: 100%;
         object-fit: contain;
       }
     }
