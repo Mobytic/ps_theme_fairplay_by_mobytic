@@ -341,8 +341,8 @@
 
     .nav {
       display: grid;
-      grid-template-columns: 250px 1fr 75px 75px;
-      grid-template-areas: "logo search userinfo cart";
+      grid-template-columns: 250px 1fr 75px 75px 75px;
+      grid-template-areas: "logo search wishlist userinfo cart";
       grid-gap: 1rem;
       align-items: center;
       justify-items: center;
@@ -351,12 +351,17 @@
       width: 100%;
 
       @include media-breakpoint-down(sm) {
-        grid-template-columns: 4fr 1fr 1fr 1fr;
+        grid-template-columns: 3fr 50px 50px 120px;
+        justify-items: left;
         grid-template-areas:
           "logo userinfo cart ."
           "search search search search";
         grid-gap: 0.5rem;
         padding: 0;
+
+        #nav-wishlist {
+          display: none;
+        }
 
         .search-widget {
           width: 100%;
@@ -377,6 +382,9 @@
         }
       }
 
+      #nav-wishlist {
+        grid-area: wishlist;
+      }
       #nav-user_info {
         grid-area: userinfo;
       }
@@ -400,9 +408,13 @@
           font-weight: bold;
           font-size: 0.8125rem;
           color: $fp-orange;
+          white-space: nowrap;
 
           width: 100%;
+          max-width: 100px;
+          overflow: hidden;
           text-align: center;
+          margin: auto;
 
           img {
             height: 28px;
@@ -410,6 +422,48 @@
             object-fit: contain;
             margin-bottom: 4px;
           }
+
+          span {
+            overflow: hidden;
+            max-width: 100%;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+          }
+        }
+      }
+
+      .wishlist-header-link {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
+        font-weight: bold;
+        font-size: 0.8125rem;
+        color: $fp-orange;
+        text-align: center;
+        white-space: nowrap;
+
+        .material-icons {
+          height: 28px;
+          width: 28px;
+          margin-bottom: 4px;
+          font-size: 28px;
+          line-height: 28px;
+        }
+
+        span {
+          overflow: hidden;
+          max-width: 100%;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+        }
+
+        &:hover {
+          color: $brand-primary;
         }
       }
 
@@ -427,6 +481,7 @@
             font-weight: bold;
             font-size: 0.8125rem;
             color: $fp-orange;
+            white-space: nowrap;
           }
 
           img {
@@ -434,6 +489,13 @@
             width: 28px;
             object-fit: contain;
             margin-bottom: 4px;
+          }
+
+          span {
+            overflow: hidden;
+            max-width: 100%;
+            white-space: nowrap;
+            text-overflow: ellipsis;
           }
 
           .cart-products-count {

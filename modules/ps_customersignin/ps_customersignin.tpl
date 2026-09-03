@@ -22,6 +22,13 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
+<div id="_desktop_wishlist nav-wishlist">
+  <a class="wishlist-header-link" href="{$link->getModuleLink('blockwishlist', 'lists')|escape:'html':'UTF-8'}"
+    title="{l s='My wishlists' d='Modules.Blockwishlist.Shop'}" rel="nofollow">
+    <i class="material-icons">favorite_border</i>
+    <span class="hidden-sm-down">{l s='Wishlist' d='Shop.Theme.Global'}</span>
+  </a>
+</div>
 <div id="_desktop_user_info nav-user_info">
   <div class="user-info">
     {if $logged}

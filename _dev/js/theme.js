@@ -50,6 +50,7 @@ import './lib/bootstrap-filestyle.min';
 import './lib/jquery.scrollbox.min';
 
 import './components/block-cart';
+import initWishlistModalFix from './components/wishlist-modal';
 import $ from 'jquery';
 /* eslint-enable */
 
@@ -74,6 +75,7 @@ $(document).ready(() => {
   productMinitature.init();
   productSelect.init();
   usePasswordPolicy('.field-password-policy');
+  initWishlistModalFix();
 
   $('.carousel[data-touch="true"]').swipe({
     swipe(event, direction) {
